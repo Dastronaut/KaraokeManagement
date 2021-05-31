@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import Model.Login;
+import Model.TAIKHOAN;
 
 public class LoginModel {
-    public static List<Login> getAllLogins() {
-        List<Login> lgs = new ArrayList<Login>();
+    public static List<TAIKHOAN> getAllLogins() {
+        List<TAIKHOAN> lgs = new ArrayList<TAIKHOAN>();
         try {
             Connection conn = getJDBCConnection();
             Statement stmt = conn.createStatement();
@@ -19,7 +19,7 @@ public class LoginModel {
             String query = "SELECT * FROM karaokemanagement.taikhoan";
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                Login lg = new Login(rs.getString("Username"), rs.getString("MatKhau"), rs.getString("Ten"), rs.getString("SoDienThoai"), rs.getString("LoaiTaiKhoan"));
+                TAIKHOAN lg = new TAIKHOAN(rs.getString("Username"), rs.getString("MatKhau"), rs.getString("Ten"), rs.getString("SoDienThoai"), rs.getString("LoaiTaiKhoan"));
                 lgs.add(lg);
             }
             rs.close();

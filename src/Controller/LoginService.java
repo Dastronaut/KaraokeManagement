@@ -1,11 +1,11 @@
 package Controller;
 
 import Model.LoginModel;
-import Model.Login;
+import Model.TAIKHOAN;
 import java.util.List;
 public class LoginService {
     public static boolean checkLogin(String usString, String pwString) {
-        List<Login> lgs = LoginModel.getAllLogins();
+        List<TAIKHOAN> lgs = LoginModel.getAllLogins();
         return lgs.stream().anyMatch(lg -> (lg.getUsername().equals(usString) && lg.getMatKhau().equals(pwString)));
     }
     
@@ -14,7 +14,7 @@ public class LoginService {
     }
     
     public static boolean checkNewUser(String usString) {
-        List<Login> lgs = LoginModel.getAllLogins();
+        List<TAIKHOAN> lgs = LoginModel.getAllLogins();
         return lgs.stream().anyMatch(lg -> (lg.getUsername().equals(usString)));
     }
 }

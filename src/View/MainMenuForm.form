@@ -44,17 +44,6 @@
                 <Property name="text" type="java.lang.String" value="L&#x1ecd;c bill &#x111;&#x1a1;n h&#xe0;ng"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="thuchiitem">
-              <Properties>
-                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="F2"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea; doanh thu"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="thuchiitemActionPerformed"/>
-              </Events>
-            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="qlykhomenu">
@@ -85,7 +74,7 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Menu SP D&#x1ecb;ch v&#x1ee5;"/>
+                <Property name="text" type="java.lang.String" value="SP D&#x1ecb;ch v&#x1ee5;"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="spdv">
@@ -153,6 +142,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="C&#xe0;i &#x111;&#x1eb7;t gi&#xe1; ph&#xf2;ng"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -328,9 +320,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xf2;ng 3"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mp3ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mp4">
               <Properties>
@@ -339,9 +328,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xf2;ng 4"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mp4ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mp1">
               <Properties>
@@ -372,9 +358,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xf2;ng 8"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mp8ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mp7">
               <Properties>
@@ -383,9 +366,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xf2;ng 7"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mp7ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mp6">
               <Properties>
@@ -394,9 +374,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xf2;ng 6"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mp6ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mp5">
               <Properties>
@@ -405,9 +382,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xf2;ng 5"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mp5ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mp12">
               <Properties>
@@ -416,9 +390,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xf2;ng 12"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mp12ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mp11">
               <Properties>
@@ -427,9 +398,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xf2;ng 11"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mp11ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mp10">
               <Properties>
@@ -438,9 +406,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xf2;ng 10"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mp10ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mp9">
               <Properties>
@@ -449,9 +414,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xf2;ng 9"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mp9ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mp16">
               <Properties>
@@ -460,9 +422,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xf2;ng 16"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mp16ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mp15">
               <Properties>
@@ -471,9 +430,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xf2;ng 15"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mp15ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mp14">
               <Properties>
@@ -482,9 +438,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xf2;ng 14"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mp14ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mp13">
               <Properties>
@@ -493,9 +446,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ph&#xf2;ng 13"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mp13ActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -503,6 +453,9 @@
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="ancestorMoved" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="pane1AncestorMoved"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Chi ti&#x1ebf;t ph&#xf2;ng">
@@ -1045,102 +998,168 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane3" alignment="0" pref="835" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="835" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane3" alignment="0" pref="549" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="549" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
-              <SubComponents>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable3">
-                      <Properties>
-                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="8" rowCount="1">
-                            <Column editable="false" title="Ph&#xf2;ng" type="java.lang.String"/>
-                            <Column editable="false" title="SP DV" type="java.lang.Integer"/>
-                            <Column editable="false" title="Ti&#x1ec1;n ph&#xf2;ng" type="java.lang.Integer"/>
-                            <Column editable="false" title="Ph&#x1ee5; thu" type="java.lang.Integer"/>
-                            <Column editable="false" title="Gi&#x1ea3;m" type="java.lang.Integer"/>
-                            <Column editable="false" title="Tr&#x1ea3; tr&#x1b0;&#x1edb;c" type="java.lang.Integer"/>
-                            <Column editable="false" title="T. Ti&#x1ec1;n" type="java.lang.Integer"/>
-                            <Column editable="false" title="Nh&#x1ead;n Ph&#xf2;ng" type="java.lang.String"/>
-                          </Table>
-                        </Property>
-                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                          <TableColumnModel selectionModel="0">
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                          </TableColumnModel>
-                        </Property>
-                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                        </Property>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-              </SubComponents>
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+        <Container class="javax.swing.JPanel" name="pane3">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="SP D&#x1ecb;ch v&#x1ee5; &#x111;&#xe3; b&#xe1;n">
-                <Property name="tabTitle" type="java.lang.String" value="SP D&#x1ecb;ch v&#x1ee5; &#x111;&#xe3; b&#xe1;n"/>
+              <JTabbedPaneConstraints tabName="SP d&#x1ecb;ch v&#x1ee5; &#x111;&#xe3; b&#xe1;n">
+                <Property name="tabTitle" type="java.lang.String" value="SP d&#x1ecb;ch v&#x1ee5; &#x111;&#xe3; b&#xe1;n"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="835" max="32767" attributes="0"/>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane4" alignment="0" pref="835" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="549" max="32767" attributes="0"/>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane4" alignment="0" pref="549" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="jTable4">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="3" rowCount="1">
+                        <Column editable="false" title="SP d&#x1ecb;ch v&#x1ee5; &#x111;&#xe3; b&#xe1;n" type="java.lang.String"/>
+                        <Column editable="false" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.Integer"/>
+                        <Column editable="false" title="T&#x1ed5;ng gi&#xe1;" type="java.lang.Integer"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="220" minWidth="180" prefWidth="200" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="120" minWidth="80" prefWidth="100" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="120" minWidth="80" prefWidth="100" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="tab5">
+                <Property name="tabTitle" type="java.lang.String" value="tab5"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="jTable3">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="8" rowCount="1">
+                    <Column editable="false" title="Ph&#xf2;ng" type="java.lang.String"/>
+                    <Column editable="false" title="SP DV" type="java.lang.Integer"/>
+                    <Column editable="false" title="Ti&#x1ec1;n ph&#xf2;ng" type="java.lang.Integer"/>
+                    <Column editable="false" title="Ph&#x1ee5; thu" type="java.lang.Integer"/>
+                    <Column editable="false" title="Gi&#x1ea3;m" type="java.lang.Integer"/>
+                    <Column editable="false" title="Tr&#x1ea3; tr&#x1b0;&#x1edb;c" type="java.lang.Integer"/>
+                    <Column editable="false" title="T. Ti&#x1ec1;n" type="java.lang.Integer"/>
+                    <Column editable="false" title="Nh&#x1ead;n Ph&#xf2;ng" type="java.lang.String"/>
+                  </Table>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>

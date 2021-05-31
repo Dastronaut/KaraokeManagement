@@ -1,16 +1,16 @@
 package Model;
 
-public class Login {
+public class TAIKHOAN {
     private String Username;
     private String MatKhau;
     private String Ten;
     private String SoDienThoai;
     private String LoaiTaiKhoan;
 
-    public Login() {
+    public TAIKHOAN() {
     }
 
-    public Login(String Username, String MatKhau, String Ten, String SoDienThoai, String LoaiTaiKhoan) {
+    public TAIKHOAN(String Username, String MatKhau, String Ten, String SoDienThoai, String LoaiTaiKhoan) {
         this.Username = Username;
         this.MatKhau = MatKhau;
         this.Ten = Ten;

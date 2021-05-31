@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/Controller/LoginService.java</file>
-            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/Model/Login.java</file>
-            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/Model/JDBCConnection.java</file>
+            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/View/SetPhongForm.java</file>
             <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/View/MainMenuForm.java</file>
-            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/Model/LoginModel.java</file>
-            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/View/RegisterForm.java</file>
-            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/View/LoginForm.java</file>
+            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/Model/PHONGModel.java</file>
+            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/Controller/PHONGService.java</file>
         </group>
     </open-files>
 </project-private>

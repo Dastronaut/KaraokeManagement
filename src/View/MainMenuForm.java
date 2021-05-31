@@ -13,6 +13,7 @@ import java.awt.event.ItemListener;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -23,6 +24,8 @@ import javax.swing.JOptionPane;
 public class MainMenuForm extends javax.swing.JFrame {
 
     private static String user = "";
+    private  static JButton checkButon = null;
+    private static List<Boolean> filled;
     public MainMenuForm(String userString) {
         user = userString;
         initComponents();
@@ -90,14 +93,15 @@ public class MainMenuForm extends javax.swing.JFrame {
         tratruoctxt = new javax.swing.JTextField();
         pane2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
+        pane3 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
         navbar = new javax.swing.JMenuBar();
         qlykaramenu = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         locbillitem = new javax.swing.JMenuItem();
-        thuchiitem = new javax.swing.JMenuItem();
         qlykhomenu = new javax.swing.JMenu();
         menusp = new javax.swing.JMenuItem();
         spdv = new javax.swing.JMenuItem();
@@ -113,19 +117,9 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         mp3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp3.setText("Phòng 3");
-        mp3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mp3ActionPerformed(evt);
-            }
-        });
 
         mp4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp4.setText("Phòng 4");
-        mp4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mp4ActionPerformed(evt);
-            }
-        });
 
         mp1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp1.setText("Phòng 1");
@@ -145,99 +139,39 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         mp8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp8.setText("Phòng 8");
-        mp8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mp8ActionPerformed(evt);
-            }
-        });
 
         mp7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp7.setText("Phòng 7");
-        mp7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mp7ActionPerformed(evt);
-            }
-        });
 
         mp6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp6.setText("Phòng 6");
-        mp6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mp6ActionPerformed(evt);
-            }
-        });
 
         mp5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp5.setText("Phòng 5");
-        mp5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mp5ActionPerformed(evt);
-            }
-        });
 
         mp12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp12.setText("Phòng 12");
-        mp12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mp12ActionPerformed(evt);
-            }
-        });
 
         mp11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp11.setText("Phòng 11");
-        mp11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mp11ActionPerformed(evt);
-            }
-        });
 
         mp10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp10.setText("Phòng 10");
-        mp10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mp10ActionPerformed(evt);
-            }
-        });
 
         mp9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp9.setText("Phòng 9");
-        mp9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mp9ActionPerformed(evt);
-            }
-        });
 
         mp16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp16.setText("Phòng 16");
-        mp16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mp16ActionPerformed(evt);
-            }
-        });
 
         mp15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp15.setText("Phòng 15");
-        mp15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mp15ActionPerformed(evt);
-            }
-        });
 
         mp14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp14.setText("Phòng 14");
-        mp14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mp14ActionPerformed(evt);
-            }
-        });
 
         mp13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp13.setText("Phòng 13");
-        mp13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mp13ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pane0Layout = new javax.swing.GroupLayout(pane0);
         pane0.setLayout(pane0Layout);
@@ -313,6 +247,15 @@ public class MainMenuForm extends javax.swing.JFrame {
         tabbedpane.addTab("Quản lý phòng", pane0);
 
         pane1.setEnabled(false);
+        pane1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                pane1AncestorMoved(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
         jPanel1.setEnabled(false);
@@ -642,6 +585,83 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         tabbedpane.addTab("Chi tiết phòng", pane1);
 
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 835, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 549, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout pane2Layout = new javax.swing.GroupLayout(pane2);
+        pane2.setLayout(pane2Layout);
+        pane2Layout.setHorizontalGroup(
+            pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pane2Layout.setVerticalGroup(
+            pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        tabbedpane.addTab("Danh sách bill", pane2);
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null}
+            },
+            new String [] {
+                "SP dịch vụ đã bán", "Số lượng", "Tổng giá"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jTable4);
+        if (jTable4.getColumnModel().getColumnCount() > 0) {
+            jTable4.getColumnModel().getColumn(0).setMinWidth(180);
+            jTable4.getColumnModel().getColumn(0).setPreferredWidth(200);
+            jTable4.getColumnModel().getColumn(0).setMaxWidth(220);
+            jTable4.getColumnModel().getColumn(1).setMinWidth(80);
+            jTable4.getColumnModel().getColumn(1).setPreferredWidth(100);
+            jTable4.getColumnModel().getColumn(1).setMaxWidth(120);
+            jTable4.getColumnModel().getColumn(2).setMinWidth(80);
+            jTable4.getColumnModel().getColumn(2).setPreferredWidth(100);
+            jTable4.getColumnModel().getColumn(2).setMaxWidth(120);
+        }
+
+        javax.swing.GroupLayout pane3Layout = new javax.swing.GroupLayout(pane3);
+        pane3.setLayout(pane3Layout);
+        pane3Layout.setHorizontalGroup(
+            pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 835, Short.MAX_VALUE)
+            .addGroup(pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE))
+        );
+        pane3Layout.setVerticalGroup(
+            pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 549, Short.MAX_VALUE)
+            .addGroup(pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE))
+        );
+
+        tabbedpane.addTab("SP dịch vụ đã bán", pane3);
+
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null}
@@ -673,30 +693,7 @@ public class MainMenuForm extends javax.swing.JFrame {
             jTable3.getColumnModel().getColumn(5).setPreferredWidth(40);
         }
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout pane2Layout = new javax.swing.GroupLayout(pane2);
-        pane2.setLayout(pane2Layout);
-        pane2Layout.setHorizontalGroup(
-            pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        pane2Layout.setVerticalGroup(
-            pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        tabbedpane.addTab("Danh sách bill", pane2);
-        tabbedpane.addTab("SP Dịch vụ đã bán", jTabbedPane1);
+        tabbedpane.addTab("tab5", jScrollPane3);
 
         navbar.setAutoscrolls(true);
         navbar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -716,15 +713,6 @@ public class MainMenuForm extends javax.swing.JFrame {
         locbillitem.setText("Lọc bill đơn hàng");
         qlykaramenu.add(locbillitem);
 
-        thuchiitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
-        thuchiitem.setText("Thống kê doanh thu");
-        thuchiitem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                thuchiitemActionPerformed(evt);
-            }
-        });
-        qlykaramenu.add(thuchiitem);
-
         navbar.add(qlykaramenu);
 
         qlykhomenu.setBackground(new java.awt.Color(204, 204, 255));
@@ -736,7 +724,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         qlykhomenu.setMargin(new java.awt.Insets(0, 8, 0, 8));
 
         menusp.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
-        menusp.setText("Menu SP Dịch vụ");
+        menusp.setText("SP Dịch vụ");
         qlykhomenu.add(menusp);
 
         spdv.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
@@ -768,6 +756,11 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         jMenuItem2.setText("Cài đặt giá phòng");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         settingmenu.add(jMenuItem2);
 
         navbar.add(settingmenu);
@@ -802,107 +795,40 @@ public class MainMenuForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void thuchiitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thuchiitemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_thuchiitemActionPerformed
-
     private void spdvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spdvActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_spdvActionPerformed
 
-    private void roomDetailSelect(String roomname, JButton f) {
+    private void roomDetailSelect(String roomname, JButton f, int index) {
+        checkButon = f;
         tabbedpane.setSelectedIndex(1);
         userlabel.setText(user);
         nameroomlabel.setText(roomname);
-        checkinlabel.setText("0 - 0");
-        checkoutlabel.setText("0 - 0");
+        if (Controller.PHONGService.checkRoomStatus(roomname) == false) {
+            checkinlabel.setText("0 - 0");
+            checkoutlabel.setText("0 - 0");
+            startbtn.setEnabled(true);
+        }
     }
     private void mp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp1ActionPerformed
         String roomname = mp1.getText();
-        roomDetailSelect(roomname, mp1);
+        roomDetailSelect(roomname, mp1, 1);
     }//GEN-LAST:event_mp1ActionPerformed
-
-    private void mp10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp10ActionPerformed
-        String roomname = mp10.getText();
-        roomDetailSelect(roomname, mp1);
-    }//GEN-LAST:event_mp10ActionPerformed
 
     private void mp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp2ActionPerformed
         String roomname = mp2.getText();
-        roomDetailSelect(roomname, mp1);
+        roomDetailSelect(roomname, mp2, 2);
     }//GEN-LAST:event_mp2ActionPerformed
 
-    private void mp3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp3ActionPerformed
-        String roomname = mp3.getText();
-        roomDetailSelect(roomname, mp1);
-    }//GEN-LAST:event_mp3ActionPerformed
-//
-    private void mp4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp4ActionPerformed
-        String roomname = mp4.getText();
-        roomDetailSelect(roomname, mp1);
-    }//GEN-LAST:event_mp4ActionPerformed
-
-    private void mp5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp5ActionPerformed
-        String roomname = mp5.getText();
-        roomDetailSelect(roomname, mp1);
-    }//GEN-LAST:event_mp5ActionPerformed
-
-    private void mp6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp6ActionPerformed
-        String roomname = mp6.getText();
-        roomDetailSelect(roomname, mp1);
-    }//GEN-LAST:event_mp6ActionPerformed
-
-    private void mp7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp7ActionPerformed
-        String roomname = mp7.getText();
-        roomDetailSelect(roomname, mp1);
-    }//GEN-LAST:event_mp7ActionPerformed
-
-    private void mp8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp8ActionPerformed
-        String roomname = mp8.getText();
-        roomDetailSelect(roomname, mp1);
-    }//GEN-LAST:event_mp8ActionPerformed
-
-    private void mp9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp9ActionPerformed
-        String roomname = mp9.getText();
-        roomDetailSelect(roomname, mp1);
-    }//GEN-LAST:event_mp9ActionPerformed
-
-    private void mp11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp11ActionPerformed
-        String roomname = mp11.getText();
-        roomDetailSelect(roomname, mp1);
-    }//GEN-LAST:event_mp11ActionPerformed
-
-    private void mp12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp12ActionPerformed
-        String roomname = mp12.getText();
-        roomDetailSelect(roomname, mp1);
-    }//GEN-LAST:event_mp12ActionPerformed
-
-    private void mp13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp13ActionPerformed
-        String roomname = mp13.getText();
-        roomDetailSelect(roomname, mp1);
-    }//GEN-LAST:event_mp13ActionPerformed
-
-    private void mp14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp14ActionPerformed
-        String roomname = mp14.getText();
-        roomDetailSelect(roomname, mp1);
-    }//GEN-LAST:event_mp14ActionPerformed
-
-    private void mp15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp15ActionPerformed
-        String roomname = mp15.getText();
-        roomDetailSelect(roomname, mp1);
-    }//GEN-LAST:event_mp15ActionPerformed
-
-    private void mp16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp16ActionPerformed
-        String roomname = mp16.getText();
-        roomDetailSelect(roomname, mp1);
-    }//GEN-LAST:event_mp16ActionPerformed
-
     private void startbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startbtnActionPerformed
-        String pattern = "HH:mm:ss";
-        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-        String time = sdf.format(new Date());
-        checkinlabel.setText(time);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        String giovao = sdf.format(new Date()), tenphong = nameroomlabel.getText();
+        checkinlabel.setText(giovao);
         startbtn.setEnabled(false);
+        if (checkButon != null) {
+            checkButon.setBackground(Color.green);
+        }
+        Controller.CHITIETPHONGService.setChiTietPhong(tenphong, true, giovao, "0:0", 0, 0);
     }//GEN-LAST:event_startbtnActionPerformed
 
     private void endroombtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endroombtnActionPerformed
@@ -925,35 +851,19 @@ public class MainMenuForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_sltxtMousePressed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        SetPhongForm f = new SetPhongForm();
+        f.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void pane1AncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_pane1AncestorMoved
+        System.out.println("testing");
+    }//GEN-LAST:event_pane1AncestorMoved
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainMenuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainMenuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainMenuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainMenuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainMenuForm(user).setVisible(true);
@@ -990,10 +900,11 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
     private javax.swing.JMenuItem locbillitem;
     private javax.swing.JMenuItem menusp;
     private javax.swing.JButton mp1;
@@ -1017,6 +928,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JPanel pane0;
     private javax.swing.JPanel pane1;
     private javax.swing.JPanel pane2;
+    private javax.swing.JPanel pane3;
     private javax.swing.JTextField phuthutxt;
     private javax.swing.JMenu qlykaramenu;
     private javax.swing.JMenu qlykhomenu;
@@ -1032,7 +944,6 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabbedpane;
     private javax.swing.JTextField thanhtoantxt;
     private javax.swing.JMenu thoatmenu;
-    private javax.swing.JMenuItem thuchiitem;
     private javax.swing.JTextField tienphongtxt;
     private javax.swing.JTextField tratruoctxt;
     private javax.swing.JLabel userlabel;
