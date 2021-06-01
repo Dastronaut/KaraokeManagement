@@ -5,6 +5,7 @@
  */
 package View;
 
+import Model.SANPHAM;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.event.InputMethodListener;
@@ -16,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,7 +27,6 @@ public class MainMenuForm extends javax.swing.JFrame {
 
     private static String user = "";
     private  static JButton checkButon = null;
-    private static List<Boolean> filled;
     public MainMenuForm(String userString) {
         user = userString;
         initComponents();
@@ -67,9 +68,9 @@ public class MainMenuForm extends javax.swing.JFrame {
         swroombtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablespdv = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablespdvadded = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         sltxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -91,23 +92,21 @@ public class MainMenuForm extends javax.swing.JFrame {
         discounttxt = new javax.swing.JTextField();
         thanhtoantxt = new javax.swing.JTextField();
         tratruoctxt = new javax.swing.JTextField();
-        pane2 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        pane2 = new javax.swing.JScrollPane();
+        tabledsbilll = new javax.swing.JTable();
         pane3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tablesold = new javax.swing.JTable();
         navbar = new javax.swing.JMenuBar();
         qlykaramenu = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        reopenitem = new javax.swing.JMenuItem();
         locbillitem = new javax.swing.JMenuItem();
         qlykhomenu = new javax.swing.JMenu();
         menusp = new javax.swing.JMenuItem();
         spdv = new javax.swing.JMenuItem();
         qlytkmenu = new javax.swing.JMenu();
         settingmenu = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        settingroomitm = new javax.swing.JMenuItem();
         thoatmenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -247,15 +246,6 @@ public class MainMenuForm extends javax.swing.JFrame {
         tabbedpane.addTab("Quản lý phòng", pane0);
 
         pane1.setEnabled(false);
-        pane1.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-                pane1AncestorMoved(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
         jPanel1.setEnabled(false);
@@ -336,16 +326,16 @@ public class MainMenuForm extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablespdv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null}
+
             },
             new String [] {
                 "Sản phẩm dịch vụ", "Giá"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Long.class
+                java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false
@@ -359,7 +349,14 @@ public class MainMenuForm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        tablespdv.setColumnSelectionAllowed(true);
+        tablespdv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablespdvMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablespdv);
+        tablespdv.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -372,9 +369,9 @@ public class MainMenuForm extends javax.swing.JFrame {
             .addComponent(jScrollPane1)
         );
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablespdvadded.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "TT", "SP dịch vụ", "ĐVT", "Giá", "SL", "T. Tiền"
@@ -395,28 +392,28 @@ public class MainMenuForm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable2.setColumnSelectionAllowed(true);
-        jScrollPane2.setViewportView(jTable2);
-        jTable2.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setMinWidth(20);
-            jTable2.getColumnModel().getColumn(0).setPreferredWidth(20);
-            jTable2.getColumnModel().getColumn(0).setMaxWidth(40);
-            jTable2.getColumnModel().getColumn(1).setMinWidth(70);
-            jTable2.getColumnModel().getColumn(1).setPreferredWidth(80);
-            jTable2.getColumnModel().getColumn(1).setMaxWidth(100);
-            jTable2.getColumnModel().getColumn(2).setMinWidth(30);
-            jTable2.getColumnModel().getColumn(2).setPreferredWidth(40);
-            jTable2.getColumnModel().getColumn(2).setMaxWidth(60);
-            jTable2.getColumnModel().getColumn(3).setMinWidth(50);
-            jTable2.getColumnModel().getColumn(3).setPreferredWidth(70);
-            jTable2.getColumnModel().getColumn(3).setMaxWidth(90);
-            jTable2.getColumnModel().getColumn(4).setMinWidth(30);
-            jTable2.getColumnModel().getColumn(4).setPreferredWidth(30);
-            jTable2.getColumnModel().getColumn(4).setMaxWidth(50);
-            jTable2.getColumnModel().getColumn(5).setMinWidth(50);
-            jTable2.getColumnModel().getColumn(5).setPreferredWidth(80);
-            jTable2.getColumnModel().getColumn(5).setMaxWidth(100);
+        tablespdvadded.setColumnSelectionAllowed(true);
+        jScrollPane2.setViewportView(tablespdvadded);
+        tablespdvadded.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tablespdvadded.getColumnModel().getColumnCount() > 0) {
+            tablespdvadded.getColumnModel().getColumn(0).setMinWidth(20);
+            tablespdvadded.getColumnModel().getColumn(0).setPreferredWidth(20);
+            tablespdvadded.getColumnModel().getColumn(0).setMaxWidth(40);
+            tablespdvadded.getColumnModel().getColumn(1).setMinWidth(70);
+            tablespdvadded.getColumnModel().getColumn(1).setPreferredWidth(80);
+            tablespdvadded.getColumnModel().getColumn(1).setMaxWidth(100);
+            tablespdvadded.getColumnModel().getColumn(2).setMinWidth(30);
+            tablespdvadded.getColumnModel().getColumn(2).setPreferredWidth(40);
+            tablespdvadded.getColumnModel().getColumn(2).setMaxWidth(60);
+            tablespdvadded.getColumnModel().getColumn(3).setMinWidth(50);
+            tablespdvadded.getColumnModel().getColumn(3).setPreferredWidth(70);
+            tablespdvadded.getColumnModel().getColumn(3).setMaxWidth(90);
+            tablespdvadded.getColumnModel().getColumn(4).setMinWidth(30);
+            tablespdvadded.getColumnModel().getColumn(4).setPreferredWidth(30);
+            tablespdvadded.getColumnModel().getColumn(4).setMaxWidth(50);
+            tablespdvadded.getColumnModel().getColumn(5).setMinWidth(50);
+            tablespdvadded.getColumnModel().getColumn(5).setPreferredWidth(80);
+            tablespdvadded.getColumnModel().getColumn(5).setMaxWidth(100);
         }
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 255)));
@@ -430,8 +427,18 @@ public class MainMenuForm extends javax.swing.JFrame {
         jLabel2.setText("SP dịch vụ:");
 
         removebtn.setText("Bỏ");
+        removebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removebtnActionPerformed(evt);
+            }
+        });
 
         choosebtn.setText("Đặt");
+        choosebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                choosebtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -585,84 +592,7 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         tabbedpane.addTab("Chi tiết phòng", pane1);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 835, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 549, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout pane2Layout = new javax.swing.GroupLayout(pane2);
-        pane2.setLayout(pane2Layout);
-        pane2Layout.setHorizontalGroup(
-            pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        pane2Layout.setVerticalGroup(
-            pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        tabbedpane.addTab("Danh sách bill", pane2);
-
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
-            new String [] {
-                "SP dịch vụ đã bán", "Số lượng", "Tổng giá"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(jTable4);
-        if (jTable4.getColumnModel().getColumnCount() > 0) {
-            jTable4.getColumnModel().getColumn(0).setMinWidth(180);
-            jTable4.getColumnModel().getColumn(0).setPreferredWidth(200);
-            jTable4.getColumnModel().getColumn(0).setMaxWidth(220);
-            jTable4.getColumnModel().getColumn(1).setMinWidth(80);
-            jTable4.getColumnModel().getColumn(1).setPreferredWidth(100);
-            jTable4.getColumnModel().getColumn(1).setMaxWidth(120);
-            jTable4.getColumnModel().getColumn(2).setMinWidth(80);
-            jTable4.getColumnModel().getColumn(2).setPreferredWidth(100);
-            jTable4.getColumnModel().getColumn(2).setMaxWidth(120);
-        }
-
-        javax.swing.GroupLayout pane3Layout = new javax.swing.GroupLayout(pane3);
-        pane3.setLayout(pane3Layout);
-        pane3Layout.setHorizontalGroup(
-            pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 835, Short.MAX_VALUE)
-            .addGroup(pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE))
-        );
-        pane3Layout.setVerticalGroup(
-            pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 549, Short.MAX_VALUE)
-            .addGroup(pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE))
-        );
-
-        tabbedpane.addTab("SP dịch vụ đã bán", pane3);
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tabledsbilll.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null}
             },
@@ -685,15 +615,68 @@ public class MainMenuForm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable3);
-        if (jTable3.getColumnModel().getColumnCount() > 0) {
-            jTable3.getColumnModel().getColumn(0).setPreferredWidth(40);
-            jTable3.getColumnModel().getColumn(3).setPreferredWidth(40);
-            jTable3.getColumnModel().getColumn(4).setPreferredWidth(40);
-            jTable3.getColumnModel().getColumn(5).setPreferredWidth(40);
+        pane2.setViewportView(tabledsbilll);
+        if (tabledsbilll.getColumnModel().getColumnCount() > 0) {
+            tabledsbilll.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tabledsbilll.getColumnModel().getColumn(3).setPreferredWidth(40);
+            tabledsbilll.getColumnModel().getColumn(4).setPreferredWidth(40);
+            tabledsbilll.getColumnModel().getColumn(5).setPreferredWidth(40);
         }
 
-        tabbedpane.addTab("tab5", jScrollPane3);
+        tabbedpane.addTab("Danh sách bill", pane2);
+
+        tablesold.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null}
+            },
+            new String [] {
+                "SP dịch vụ đã bán", "Số lượng", "Tổng giá"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tablesold);
+        if (tablesold.getColumnModel().getColumnCount() > 0) {
+            tablesold.getColumnModel().getColumn(0).setMinWidth(180);
+            tablesold.getColumnModel().getColumn(0).setPreferredWidth(200);
+            tablesold.getColumnModel().getColumn(0).setMaxWidth(220);
+            tablesold.getColumnModel().getColumn(1).setMinWidth(80);
+            tablesold.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tablesold.getColumnModel().getColumn(1).setMaxWidth(120);
+            tablesold.getColumnModel().getColumn(2).setMinWidth(80);
+            tablesold.getColumnModel().getColumn(2).setPreferredWidth(100);
+            tablesold.getColumnModel().getColumn(2).setMaxWidth(120);
+        }
+
+        javax.swing.GroupLayout pane3Layout = new javax.swing.GroupLayout(pane3);
+        pane3.setLayout(pane3Layout);
+        pane3Layout.setHorizontalGroup(
+            pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 835, Short.MAX_VALUE)
+            .addGroup(pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE))
+        );
+        pane3Layout.setVerticalGroup(
+            pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 549, Short.MAX_VALUE)
+            .addGroup(pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE))
+        );
+
+        tabbedpane.addTab("SP dịch vụ đã bán", pane3);
 
         navbar.setAutoscrolls(true);
         navbar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -705,8 +688,8 @@ public class MainMenuForm extends javax.swing.JFrame {
         qlykaramenu.setBorderPainted(true);
         qlykaramenu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        jMenuItem1.setText("Mở lại phòng vừa đóng");
-        qlykaramenu.add(jMenuItem1);
+        reopenitem.setText("Mở lại phòng vừa đóng");
+        qlykaramenu.add(reopenitem);
 
         locbillitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         locbillitem.setMnemonic('b');
@@ -754,14 +737,14 @@ public class MainMenuForm extends javax.swing.JFrame {
         settingmenu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         settingmenu.setMargin(new java.awt.Insets(0, 8, 0, 8));
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
-        jMenuItem2.setText("Cài đặt giá phòng");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        settingroomitm.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        settingroomitm.setText("Cài đặt giá phòng");
+        settingroomitm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                settingroomitmActionPerformed(evt);
             }
         });
-        settingmenu.add(jMenuItem2);
+        settingmenu.add(settingroomitm);
 
         navbar.add(settingmenu);
 
@@ -821,14 +804,24 @@ public class MainMenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_mp2ActionPerformed
 
     private void startbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startbtnActionPerformed
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        String giovao = sdf.format(new Date()), tenphong = nameroomlabel.getText();
-        checkinlabel.setText(giovao);
-        startbtn.setEnabled(false);
-        if (checkButon != null) {
-            checkButon.setBackground(Color.green);
+        if (!nameroomlabel.getText().equals("")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            String giovao = sdf.format(new Date()), tenphong = nameroomlabel.getText();
+            checkinlabel.setText(giovao);
+            startbtn.setEnabled(false);
+            if (checkButon != null) {
+                checkButon.setBackground(Color.green);
+            }
+            Controller.CHITIETPHONGService.setChiTietPhong(tenphong, true, giovao, "0:0", 0, 0);
+            DefaultTableModel tableModel = (DefaultTableModel)tablespdv.getModel();
+            tableModel.getDataVector().removeAllElements();
+            tableModel.fireTableDataChanged();
+            List<SANPHAM> sps = Controller.SANPHAMService.getAllSanPham();
+            for (SANPHAM sanpham:sps) {
+                Object o[] = {sanpham.getTenSanPham(), sanpham.getGiaBan()};
+                tableModel.addRow(o);
+            }
         }
-        Controller.CHITIETPHONGService.setChiTietPhong(tenphong, true, giovao, "0:0", 0, 0);
     }//GEN-LAST:event_startbtnActionPerformed
 
     private void endroombtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endroombtnActionPerformed
@@ -848,18 +841,58 @@ public class MainMenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_thoatmenuMousePressed
 
     private void sltxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sltxtMousePressed
-        // TODO add your handling code here:
+        NumberForm f = new NumberForm();
+        f.setVisible(true);
     }//GEN-LAST:event_sltxtMousePressed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void settingroomitmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingroomitmActionPerformed
         SetPhongForm f = new SetPhongForm();
         f.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_settingroomitmActionPerformed
 
-    private void pane1AncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_pane1AncestorMoved
-        System.out.println("testing");
-    }//GEN-LAST:event_pane1AncestorMoved
+    private boolean checkExistedSP(String sp) {
+        boolean existed = false;
+        if (tablespdvadded.getRowCount() != 0) {
+            for (int i = 0; i < tablespdvadded.getRowCount(); i++) {
+                if (String.valueOf(tablespdvadded.getValueAt(i, 1)).equals(sp)) {
+                    JOptionPane.showMessageDialog(this, "Sản phẩm đã được thêm. Hãy nhập số lượng.");
+                    existed = true;
+                    break;
+                }
+            }
+        }
+        return existed;
+    }
+    private void tablespdvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablespdvMouseClicked
+        if (evt.getClickCount() == 2) {
+            String tensp = String.valueOf(tablespdv.getValueAt(tablespdv.getSelectedRow(), tablespdv.getSelectedColumn()));
+            DefaultTableModel tableModel = (DefaultTableModel)tablespdvadded.getModel();
+            List<SANPHAM> sps = Controller.SANPHAMService.getAllSanPham();
+            for (int i = 0; i < sps.size(); i++) {
+                if (sps.get(i).getTenSanPham().equals(tensp) && !checkExistedSP(tensp)) {
+                        Object o[] = {i+1, tensp, sps.get(i).getDonVi(), sps.get(i).getGiaBan(), 1, sps.get(i).getGiaBan()};
+                        tableModel.addRow(o);
+                }
+            }
+        }
+    }//GEN-LAST:event_tablespdvMouseClicked
 
+    private void choosebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosebtnActionPerformed
+        if (tablespdvadded.getRowCount() != 0 && tablespdvadded.getRowSelectionAllowed()) {
+            tablespdvadded.setValueAt(Integer.valueOf(sltxt.getText()), tablespdvadded.getSelectedRow(), 4);
+        }
+    }//GEN-LAST:event_choosebtnActionPerformed
+
+    private void removebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removebtnActionPerformed
+        if (tablespdvadded.getRowCount() != 0 && tablespdvadded.getRowSelectionAllowed()) {
+            DefaultTableModel tableModel = (DefaultTableModel)tablespdvadded.getModel();
+            tableModel.removeRow(tablespdvadded.getSelectedRow());
+        }
+    }//GEN-LAST:event_removebtnActionPerformed
+
+    public void setSoLuong(String sl) {
+        sltxt.setText(sl);
+    }
     /**
      * @param args the command line arguments
      */
@@ -890,21 +923,13 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JMenuItem locbillitem;
     private javax.swing.JMenuItem menusp;
     private javax.swing.JButton mp1;
@@ -927,14 +952,16 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JMenuBar navbar;
     private javax.swing.JPanel pane0;
     private javax.swing.JPanel pane1;
-    private javax.swing.JPanel pane2;
+    private javax.swing.JScrollPane pane2;
     private javax.swing.JPanel pane3;
     private javax.swing.JTextField phuthutxt;
     private javax.swing.JMenu qlykaramenu;
     private javax.swing.JMenu qlykhomenu;
     private javax.swing.JMenu qlytkmenu;
     private javax.swing.JButton removebtn;
+    private javax.swing.JMenuItem reopenitem;
     private javax.swing.JMenu settingmenu;
+    private javax.swing.JMenuItem settingroomitm;
     private javax.swing.JTextField sltxt;
     private javax.swing.JMenuItem spdv;
     private javax.swing.JLabel spdvlabel;
@@ -942,6 +969,10 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JButton startbtn;
     private javax.swing.JButton swroombtn;
     private javax.swing.JTabbedPane tabbedpane;
+    private javax.swing.JTable tabledsbilll;
+    private javax.swing.JTable tablesold;
+    private javax.swing.JTable tablespdv;
+    private javax.swing.JTable tablespdvadded;
     private javax.swing.JTextField thanhtoantxt;
     private javax.swing.JMenu thoatmenu;
     private javax.swing.JTextField tienphongtxt;

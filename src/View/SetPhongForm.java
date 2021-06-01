@@ -19,7 +19,7 @@ public class SetPhongForm extends javax.swing.JFrame {
     private void LoadData() {
         String giaphong = "";
         String pString[];
-        List<PHONG> ps = Model.PHONGModel.getAllPhongs();
+        List<PHONG> ps = Controller.PHONGService.getAllPhongs();
         DefaultTableModel tm = (DefaultTableModel)banggiaphong.getModel();
         tm.getDataVector().removeAllElements();
         tm.fireTableDataChanged();
