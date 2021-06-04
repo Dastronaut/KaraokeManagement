@@ -6,6 +6,7 @@
 package View;
 
 import Model.SANPHAM;
+import com.sun.source.tree.NewClassTree;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.event.InputMethodListener;
@@ -105,6 +106,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         menusp = new javax.swing.JMenuItem();
         spdv = new javax.swing.JMenuItem();
         qlytkmenu = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         settingmenu = new javax.swing.JMenu();
         settingroomitm = new javax.swing.JMenuItem();
         thoatmenu = new javax.swing.JMenu();
@@ -728,6 +730,15 @@ public class MainMenuForm extends javax.swing.JFrame {
         qlytkmenu.setBorderPainted(true);
         qlytkmenu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         qlytkmenu.setMargin(new java.awt.Insets(0, 8, 0, 8));
+
+        jMenuItem1.setText("Chi tiết đăng ký");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        qlytkmenu.add(jMenuItem1);
+
         navbar.add(qlytkmenu);
 
         settingmenu.setBackground(new java.awt.Color(204, 204, 255));
@@ -890,6 +901,10 @@ public class MainMenuForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_removebtnActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        RegisterDetailsForm rd = new RegisterDetailsForm();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public void setSoLuong(String sl) {
         sltxt.setText(sl);
     }
@@ -923,6 +938,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
