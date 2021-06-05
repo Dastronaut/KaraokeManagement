@@ -302,8 +302,7 @@ public class NumberForm extends javax.swing.JFrame {
     }//GEN-LAST:event_dongbtnActionPerformed
 
     private void thembtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thembtn1ActionPerformed
-        MainMenuForm f = new MainMenuForm("");
-        f.setSoLuong(soluongtxt.getText());
+
     }//GEN-LAST:event_thembtn1ActionPerformed
 
     /**

@@ -33,10 +33,8 @@ public class PHONG {
 
     public void setTinhTrang(boolean TinhTrang) {
         this.TinhTrang = TinhTrang;
-    }
-
-    
-    
+    }   
+   
     public void setGiaPhong(int GiaPhong) {
         this.GiaPhong = GiaPhong;
     }
