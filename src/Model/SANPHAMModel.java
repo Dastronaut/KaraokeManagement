@@ -6,6 +6,7 @@
 package Model;
 
 import static Model.JDBCConnection.getJDBCConnection;
+import java.security.interfaces.RSAKey;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,5 +37,49 @@ public class SANPHAMModel {
         } catch (SQLException e) {
         }
         return sps;
+    }
+    
+    public static int setSanPham(String ten, int soluong, String donvi, int gianhap, int giaban) {
+        int rs = 0;
+        try {
+            Connection conn = getJDBCConnection();
+            Statement stmt = conn.createStatement();
+            
+            String query = "INSERT INTO SANPHAM(TenSanPham, DonVi, SoLuong, GiaNhap, GiaBan) VALUES ('" + ten + "', '" 
+                    + donvi + "', " + soluong + ", " + gianhap + ", " + giaban + ")";
+            rs = stmt.executeUpdate(query);
+            stmt.close();
+        } catch (SQLException e) {
+        }
+        return rs;
+    }
+    
+    public static int updateSanPham(String tencu, String tenmoi, int soluong, String donvi, int gianhap, int giaban) {
+        int rs = 0;
+        try {
+            Connection conn = getJDBCConnection();
+            Statement stmt = conn.createStatement();
+            
+            String query = "UPDATE karaokemanagement.SANPHAM SET TenSanPham = '" + tenmoi + "', DonVi = '"
+                    + donvi + "', SoLuong = " + soluong + ", GiaNhap = " + gianhap + ", GiaBan = " + giaban + " WHERE TenSanPham = '" + tencu + "'";
+            rs = stmt.executeUpdate(query);
+            stmt.close();
+        } catch (SQLException e) {
+        }
+        return rs;
+    }
+    
+    public static int deleteSanPham(String ten) {
+        int rs = 0;
+        try {
+            Connection conn = getJDBCConnection();
+            Statement stmt = conn.createStatement();
+            
+            String query = "DELETE FROM karaokemanagement.SANPHAM WHERE TenSanPham = '" + ten + "'";
+            rs = stmt.executeUpdate(query);
+            stmt.close();
+        } catch (SQLException e) {
+        }
+        return rs;
     }
 }

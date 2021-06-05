@@ -112,6 +112,9 @@
               <Insets value="[0, 8, 0, 8]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="qlytkmenuMousePressed"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="settingmenu">
           <Properties>

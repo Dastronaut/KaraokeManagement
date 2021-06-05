@@ -2,7 +2,6 @@ package Controller;
 
 import Model.PHONG;
 import java.util.List;
-import javax.swing.table.DefaultTableModel;
 
 public class PHONGService {
     public static List<PHONG> getAllPhongs() {

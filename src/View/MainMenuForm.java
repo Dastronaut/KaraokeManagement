@@ -6,13 +6,8 @@
 package View;
 
 import Model.SANPHAM;
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.event.InputMethodListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JButton;
@@ -21,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author USER
+ * @author Trần Kim Tiến Đạt
  */
 public class MainMenuForm extends javax.swing.JFrame {
 
@@ -771,6 +766,11 @@ public class MainMenuForm extends javax.swing.JFrame {
         qlytkmenu.setBorderPainted(true);
         qlytkmenu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         qlytkmenu.setMargin(new java.awt.Insets(0, 8, 0, 8));
+        qlytkmenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                qlytkmenuMousePressed(evt);
+            }
+        });
         navbar.add(qlytkmenu);
 
         settingmenu.setBackground(new java.awt.Color(204, 204, 255));
@@ -974,6 +974,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         tamtinhbtn.setEnabled(isStart);
         billbtn.setEnabled(isStart);
     }
+    
     private void pane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pane1ComponentShown
         if (startbtn.isEnabled()) {
             setButton(false);
@@ -997,6 +998,10 @@ public class MainMenuForm extends javax.swing.JFrame {
         thanhtoantxt.setText(String.valueOf(getTongTien()));
         // Insert value vào ChiTietOrder
     }//GEN-LAST:event_billbtnActionPerformed
+
+    private void qlytkmenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qlytkmenuMousePressed
+        RegisterDetailsForm rd = new RegisterDetailsForm();
+    }//GEN-LAST:event_qlytkmenuMousePressed
 
     /**
      * @param args the command line arguments
