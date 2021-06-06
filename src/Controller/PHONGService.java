@@ -32,6 +32,7 @@ public class PHONGService {
     public static float getTienPhong(String tenphong, String giovao, String giora) {
         float giodung = 0;
         int giaphong = 0;
+        giovao = giovao.substring(11, 16);
         List<PHONG> ps = Model.PHONGModel.getAllPhongs();
         for (PHONG phong:ps) {
             if (phong.getTenPhong().equals(tenphong)) {

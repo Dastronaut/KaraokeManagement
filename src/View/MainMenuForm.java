@@ -22,6 +22,8 @@ public class MainMenuForm extends javax.swing.JFrame {
 
     private static String user = "";
     private  static JButton checkButon = null;
+    SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
+    SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
     public MainMenuForm(String userString) {
         user = userString;
         initComponents();
@@ -111,12 +113,21 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         mp3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp3.setText("Phòng 3");
+        mp3.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp3.setMinimumSize(null);
+        mp3.setPreferredSize(new java.awt.Dimension(90, 25));
 
         mp4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp4.setText("Phòng 4");
+        mp4.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp4.setMinimumSize(null);
+        mp4.setPreferredSize(new java.awt.Dimension(90, 25));
 
         mp1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp1.setText("Phòng 1");
+        mp1.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp1.setMinimumSize(null);
+        mp1.setPreferredSize(new java.awt.Dimension(90, 25));
         mp1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mp1ActionPerformed(evt);
@@ -125,6 +136,9 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         mp2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp2.setText("Phòng 2");
+        mp2.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp2.setMinimumSize(null);
+        mp2.setPreferredSize(new java.awt.Dimension(90, 25));
         mp2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mp2ActionPerformed(evt);
@@ -133,39 +147,75 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         mp8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp8.setText("Phòng 8");
+        mp8.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp8.setMinimumSize(null);
+        mp8.setPreferredSize(new java.awt.Dimension(90, 25));
 
         mp7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp7.setText("Phòng 7");
+        mp7.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp7.setMinimumSize(null);
+        mp7.setPreferredSize(new java.awt.Dimension(90, 25));
 
         mp6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp6.setText("Phòng 6");
+        mp6.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp6.setMinimumSize(null);
+        mp6.setPreferredSize(new java.awt.Dimension(90, 25));
 
         mp5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp5.setText("Phòng 5");
+        mp5.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp5.setMinimumSize(null);
+        mp5.setPreferredSize(new java.awt.Dimension(90, 25));
 
         mp12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp12.setText("Phòng 12");
+        mp12.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp12.setMinimumSize(null);
+        mp12.setPreferredSize(new java.awt.Dimension(90, 25));
 
         mp11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp11.setText("Phòng 11");
+        mp11.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp11.setMinimumSize(null);
+        mp11.setPreferredSize(new java.awt.Dimension(90, 25));
 
         mp10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp10.setText("Phòng 10");
+        mp10.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp10.setMinimumSize(null);
+        mp10.setPreferredSize(new java.awt.Dimension(90, 25));
 
         mp9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp9.setText("Phòng 9");
+        mp9.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp9.setMinimumSize(null);
+        mp9.setPreferredSize(new java.awt.Dimension(90, 25));
 
         mp16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp16.setText("Phòng 16");
+        mp16.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp16.setMinimumSize(null);
+        mp16.setPreferredSize(new java.awt.Dimension(90, 25));
 
         mp15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp15.setText("Phòng 15");
+        mp15.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp15.setMinimumSize(null);
+        mp15.setPreferredSize(new java.awt.Dimension(90, 25));
 
         mp14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp14.setText("Phòng 14");
+        mp14.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp14.setMinimumSize(null);
+        mp14.setPreferredSize(new java.awt.Dimension(90, 25));
 
         mp13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp13.setText("Phòng 13");
+        mp13.setMaximumSize(new java.awt.Dimension(100, 30));
+        mp13.setMinimumSize(null);
+        mp13.setPreferredSize(new java.awt.Dimension(90, 25));
 
         javax.swing.GroupLayout pane0Layout = new javax.swing.GroupLayout(pane0);
         pane0.setLayout(pane0Layout);
@@ -849,14 +899,13 @@ public class MainMenuForm extends javax.swing.JFrame {
     private void startbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startbtnActionPerformed
         if (!nameroomlabel.getText().equals("")) {
             setButton(true);
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-            String giovao = sdf.format(new Date()), tenphong = nameroomlabel.getText();
+            String giovao = date.format(new Date()) + " " + time.format(new Date()), tenphong = nameroomlabel.getText();
             checkinlabel.setText(giovao);
             startbtn.setEnabled(false);
             if (checkButon != null) {
                 checkButon.setBackground(Color.green);
             }
-            Controller.CHITIETPHONGService.setChiTietPhong(tenphong, true, giovao, "0:0", 0, 0);
+            Controller.CHITIETPHONGService.setChiTietPhong(tenphong, false, giovao, giovao, 0, 0);
             DefaultTableModel tableModel = (DefaultTableModel)tablespdv.getModel();
             tableModel.getDataVector().removeAllElements();
             tableModel.fireTableDataChanged();
@@ -922,7 +971,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_tablespdvMouseClicked
 
     private void choosebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosebtnActionPerformed
-        if (tablespdvadded.getRowCount() != 0 && tablespdvadded.getRowSelectionAllowed() && !sltxt.getText().equals("")) {
+        if (tablespdvadded.getRowCount() != 0 && tablespdvadded.getSelectedRow() != -1 && !sltxt.getText().equals("")) {
             tablespdvadded.setValueAt(Integer.valueOf(sltxt.getText()), tablespdvadded.getSelectedRow(), 4);
         }
         reloadTienDV();
@@ -961,10 +1010,9 @@ public class MainMenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_tablespdvaddedComponentResized
 
     private String setTienPhong() {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        String giotmp = sdf.format(new Date()), tenphong = nameroomlabel.getText(), giovao = checkinlabel.getText();
+        String giotmp = time.format(new Date()), tenphong = nameroomlabel.getText(), giovao = checkinlabel.getText();
         tienphongtxt.setText(String.format("%.1f", Controller.PHONGService.getTienPhong(tenphong, giovao, giotmp)));
-        return giotmp;
+        return (date.format(new Date())+ " " + giotmp);
     }
     private void setButton(boolean isStart) {
         endroombtn.setEnabled(isStart);
@@ -987,16 +1035,24 @@ public class MainMenuForm extends javax.swing.JFrame {
 
     private int getTongTien() {
         int tiensp = Integer.valueOf(spdvtxt.getText()),
-        tienphong = Math.round(Float.valueOf(tienphongtxt.getText())),
-        phuthu = Integer.valueOf(phuthutxt.getText()),
-        giamgia = Integer.valueOf(discounttxt.getText()),
-        tratruoc = Integer.valueOf(tratruoctxt.getText());
+            tienphong = Math.round(Float.valueOf(tienphongtxt.getText())),
+            phuthu = Integer.valueOf(phuthutxt.getText()),
+            giamgia = Integer.valueOf(discounttxt.getText()),
+            tratruoc = Integer.valueOf(tratruoctxt.getText());
         return (tiensp + tienphong + phuthu - giamgia - tratruoc);
     }
     private void billbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billbtnActionPerformed
         checkoutlabel.setText(setTienPhong());
         thanhtoantxt.setText(String.valueOf(getTongTien()));
         // Insert value vào ChiTietOrder
+
+        String giora = date.format(new Date()) + " " + time.format(new Date()),
+                tenphong = nameroomlabel.getText(),
+                giovao = checkinlabel.getText();
+        int tiengio = Math.round(Float.valueOf(tienphongtxt.getText())),
+            tiendv = Integer.valueOf(spdvtxt.getText());
+        Controller.CHITIETPHONGService.updateChiTietPhong(tenphong, giovao, giora, tiengio, tiendv);
+        //System.out.println("phong: " + tenphong + ", gio vao: " + giovao + "gio ra: " + giora + "tien gio: " + tiengio + "tien dvu: " + tiendv);
     }//GEN-LAST:event_billbtnActionPerformed
 
     private void qlytkmenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qlytkmenuMousePressed
