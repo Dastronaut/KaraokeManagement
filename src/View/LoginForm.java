@@ -1,6 +1,6 @@
 package View;
 
-import Controller.LoginService;
+import Controller.TAIKHOANService;
 import javax.swing.JOptionPane;
 
 public class LoginForm extends javax.swing.JFrame {
@@ -157,7 +157,7 @@ public class LoginForm extends javax.swing.JFrame {
         checkFill();
         String us = usernametxt.getText();
         String pw = pwtxt.getText();
-        if (LoginService.checkLogin(us, pw)) {
+        if (TAIKHOANService.checkLogin(us, pw)) {
             this.dispose();
             MainMenuForm f = new MainMenuForm(us);
             f.setVisible(true);
@@ -172,8 +172,7 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_resetbtnActionPerformed
 
     private void registerlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerlabelMouseClicked
-        this.dispose();
-        RegisterForm f = new RegisterForm();
+        RegisterDetailsForm f = new RegisterDetailsForm();
         f.setVisible(true);
     }//GEN-LAST:event_registerlabelMouseClicked
 

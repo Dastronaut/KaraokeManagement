@@ -12,7 +12,6 @@ import javax.swing.JButton;
  * @author USER
  */
 public class NumberForm extends javax.swing.JFrame {
-
     public NumberForm() {
         initComponents();
     }
@@ -216,7 +215,6 @@ public class NumberForm extends javax.swing.JFrame {
                     .addComponent(btn5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(xoabtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -230,6 +228,8 @@ public class NumberForm extends javax.swing.JFrame {
                         .addComponent(dongbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
+
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -302,7 +302,7 @@ public class NumberForm extends javax.swing.JFrame {
     }//GEN-LAST:event_dongbtnActionPerformed
 
     private void thembtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thembtn1ActionPerformed
-
+        MainMenuForm.sltxt.setText(soluongtxt.getText());
     }//GEN-LAST:event_thembtn1ActionPerformed
 
     /**
@@ -353,7 +353,7 @@ public class NumberForm extends javax.swing.JFrame {
     private javax.swing.JButton btn9;
     private javax.swing.JButton dongbtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField soluongtxt;
+    public static javax.swing.JTextField soluongtxt;
     private javax.swing.JButton thembtn1;
     private javax.swing.JButton xoabtn;
     // End of variables declaration//GEN-END:variables

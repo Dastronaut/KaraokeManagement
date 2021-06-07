@@ -28,12 +28,12 @@ public class CHITIETPHONGModel {
         }
     }
     
-    public static void updateChiTietPhong(String tenphong, String giovao, String giora, int tiengio, int tiendv) {
+    public static int updateChiTietPhong(String tenphong, String giovao, String giora, int tiengio, int tiendv) {
+        int idorder = -1;
         try {
             Connection conn = getJDBCConnection();
             Statement stmt = conn.createStatement();
             String idphong = "", query = "";
-            int idorder = 0;
             // Tìm ID_Phong theo Tên phòng
             query = "SELECT * FROM karaokemanagement.PHONG WHERE TenPhong = '" + tenphong + "'";
             ResultSet rs = stmt.executeQuery(query);
@@ -59,5 +59,6 @@ public class CHITIETPHONGModel {
             stmt.close();
         } catch (SQLException e) {
         }
+        return idorder;
     }
 }

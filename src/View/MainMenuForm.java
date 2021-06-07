@@ -9,11 +9,13 @@ import Model.SANPHAM;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import java.lang.Math;
+import java.text.Normalizer;
 /**
  *
  * @author Trần Kim Tiến Đạt
@@ -111,22 +113,22 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         tabbedpane.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        mp3.setBackground(java.awt.Color.lightGray);
         mp3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp3.setText("Phòng 3");
         mp3.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp3.setMinimumSize(null);
         mp3.setPreferredSize(new java.awt.Dimension(90, 25));
 
+        mp4.setBackground(java.awt.Color.lightGray);
         mp4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp4.setText("Phòng 4");
         mp4.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp4.setMinimumSize(null);
         mp4.setPreferredSize(new java.awt.Dimension(90, 25));
 
+        mp1.setBackground(java.awt.Color.lightGray);
         mp1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp1.setText("Phòng 1");
         mp1.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp1.setMinimumSize(null);
         mp1.setPreferredSize(new java.awt.Dimension(90, 25));
         mp1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,10 +136,10 @@ public class MainMenuForm extends javax.swing.JFrame {
             }
         });
 
+        mp2.setBackground(java.awt.Color.lightGray);
         mp2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp2.setText("Phòng 2");
         mp2.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp2.setMinimumSize(null);
         mp2.setPreferredSize(new java.awt.Dimension(90, 25));
         mp2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,76 +147,76 @@ public class MainMenuForm extends javax.swing.JFrame {
             }
         });
 
+        mp8.setBackground(java.awt.Color.lightGray);
         mp8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp8.setText("Phòng 8");
         mp8.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp8.setMinimumSize(null);
         mp8.setPreferredSize(new java.awt.Dimension(90, 25));
 
+        mp7.setBackground(java.awt.Color.lightGray);
         mp7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp7.setText("Phòng 7");
         mp7.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp7.setMinimumSize(null);
         mp7.setPreferredSize(new java.awt.Dimension(90, 25));
 
+        mp6.setBackground(java.awt.Color.lightGray);
         mp6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp6.setText("Phòng 6");
         mp6.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp6.setMinimumSize(null);
         mp6.setPreferredSize(new java.awt.Dimension(90, 25));
 
+        mp5.setBackground(java.awt.Color.lightGray);
         mp5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp5.setText("Phòng 5");
         mp5.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp5.setMinimumSize(null);
         mp5.setPreferredSize(new java.awt.Dimension(90, 25));
 
+        mp12.setBackground(java.awt.Color.lightGray);
         mp12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp12.setText("Phòng 12");
         mp12.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp12.setMinimumSize(null);
         mp12.setPreferredSize(new java.awt.Dimension(90, 25));
 
+        mp11.setBackground(java.awt.Color.lightGray);
         mp11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp11.setText("Phòng 11");
         mp11.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp11.setMinimumSize(null);
         mp11.setPreferredSize(new java.awt.Dimension(90, 25));
 
+        mp10.setBackground(java.awt.Color.lightGray);
         mp10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp10.setText("Phòng 10");
         mp10.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp10.setMinimumSize(null);
         mp10.setPreferredSize(new java.awt.Dimension(90, 25));
 
+        mp9.setBackground(java.awt.Color.lightGray);
         mp9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp9.setText("Phòng 9");
         mp9.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp9.setMinimumSize(null);
         mp9.setPreferredSize(new java.awt.Dimension(90, 25));
 
+        mp16.setBackground(java.awt.Color.lightGray);
         mp16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp16.setText("Phòng 16");
         mp16.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp16.setMinimumSize(null);
         mp16.setPreferredSize(new java.awt.Dimension(90, 25));
 
+        mp15.setBackground(java.awt.Color.lightGray);
         mp15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp15.setText("Phòng 15");
         mp15.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp15.setMinimumSize(null);
         mp15.setPreferredSize(new java.awt.Dimension(90, 25));
 
+        mp14.setBackground(java.awt.Color.lightGray);
         mp14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp14.setText("Phòng 14");
         mp14.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp14.setMinimumSize(null);
         mp14.setPreferredSize(new java.awt.Dimension(90, 25));
 
+        mp13.setBackground(java.awt.Color.lightGray);
         mp13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp13.setText("Phòng 13");
         mp13.setMaximumSize(new java.awt.Dimension(100, 30));
-        mp13.setMinimumSize(null);
         mp13.setPreferredSize(new java.awt.Dimension(90, 25));
 
         javax.swing.GroupLayout pane0Layout = new javax.swing.GroupLayout(pane0);
@@ -796,6 +798,11 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         menusp.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         menusp.setText("SP Dịch vụ");
+        menusp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuspActionPerformed(evt);
+            }
+        });
         qlykhomenu.add(menusp);
 
         spdv.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
@@ -880,7 +887,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         tabbedpane.setSelectedIndex(1);
         userlabel.setText(user);
         nameroomlabel.setText(roomname);
-        if (Controller.PHONGService.checkRoomStatus(roomname) == false) {
+        if (Controller.PHONGService.checkRoomStatus(roomname) == true) {
             checkinlabel.setText("0 - 0");
             checkoutlabel.setText("0 - 0");
             startbtn.setEnabled(true);
@@ -961,9 +968,9 @@ public class MainMenuForm extends javax.swing.JFrame {
             String tensp = String.valueOf(tablespdv.getValueAt(tablespdv.getSelectedRow(), tablespdv.getSelectedColumn()));
             DefaultTableModel tableModel = (DefaultTableModel)tablespdvadded.getModel();
             List<SANPHAM> sps = Controller.SANPHAMService.getAllSanPham();
-            for (int i = 0; i < sps.size(); i++) {
-                if (sps.get(i).getTenSanPham().equals(tensp) && !checkExistedSP(tensp)) {
-                        Object o[] = {i+1, tensp, sps.get(i).getDonVi(), sps.get(i).getGiaBan(), 1, sps.get(i).getGiaBan()};
+            for (SANPHAM sp:sps) {
+                if (sp.getTenSanPham().equals(tensp) && !checkExistedSP(tensp)) {
+                        Object o[] = {tablespdvadded.getRowCount()+1, tensp, sp.getDonVi(), sp.getGiaBan(), 1, sp.getGiaBan()};
                         tableModel.addRow(o);
                 }
             }
@@ -973,6 +980,10 @@ public class MainMenuForm extends javax.swing.JFrame {
     private void choosebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosebtnActionPerformed
         if (tablespdvadded.getRowCount() != 0 && tablespdvadded.getSelectedRow() != -1 && !sltxt.getText().equals("")) {
             tablespdvadded.setValueAt(Integer.valueOf(sltxt.getText()), tablespdvadded.getSelectedRow(), 4);
+            int tongtien, gia = (int)tablespdvadded.getValueAt(tablespdvadded.getSelectedRow(), 3),
+                soluong = (int)tablespdvadded.getValueAt(tablespdvadded.getSelectedRow(), 4);
+            tongtien = gia*soluong;
+            tablespdvadded.setValueAt(tongtien, tablespdvadded.getSelectedRow(), 5);
         }
         reloadTienDV();
     }//GEN-LAST:event_choosebtnActionPerformed
@@ -1033,31 +1044,48 @@ public class MainMenuForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pane1ComponentShown
 
+    private static int round(int d, int decimalPlacesRequired) {
+        double factor = Math.pow(10, decimalPlacesRequired);
+        int result = (int)(Math.round((d * factor)) / factor);
+        return result;
+    }
     private int getTongTien() {
-        int tiensp = Integer.valueOf(spdvtxt.getText()),
+        int tongtien = 0,
+            tiensp = Integer.valueOf(spdvtxt.getText()),
             tienphong = Math.round(Float.valueOf(tienphongtxt.getText())),
             phuthu = Integer.valueOf(phuthutxt.getText()),
             giamgia = Integer.valueOf(discounttxt.getText()),
             tratruoc = Integer.valueOf(tratruoctxt.getText());
-        return (tiensp + tienphong + phuthu - giamgia - tratruoc);
+        tongtien = tiensp + tienphong + phuthu - giamgia - tratruoc;
+        return round(tongtien, -3);
     }
     private void billbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billbtnActionPerformed
         checkoutlabel.setText(setTienPhong());
         thanhtoantxt.setText(String.valueOf(getTongTien()));
-        // Insert value vào ChiTietOrder
-
+        setButton(false);
+        checkButon.setBackground(Color.lightGray);
+        // Insert value vào ChiTietPhong
         String giora = date.format(new Date()) + " " + time.format(new Date()),
                 tenphong = nameroomlabel.getText(),
                 giovao = checkinlabel.getText();
-        int tiengio = Math.round(Float.valueOf(tienphongtxt.getText())),
-            tiendv = Integer.valueOf(spdvtxt.getText());
-        Controller.CHITIETPHONGService.updateChiTietPhong(tenphong, giovao, giora, tiengio, tiendv);
-        //System.out.println("phong: " + tenphong + ", gio vao: " + giovao + "gio ra: " + giora + "tien gio: " + tiengio + "tien dvu: " + tiendv);
+        int tiengio = round(Math.round(Float.valueOf(tienphongtxt.getText())), -3),
+            tiendv = Integer.valueOf(spdvtxt.getText()),
+            idorder = Controller.CHITIETPHONGService.updateChiTietPhong(tenphong, giovao, giora, tiengio, tiendv);
+        // Insert value vao CHITIETORDER
+        HashMap<String, Integer> spdvMap = new HashMap<>();
+        for (int i = 0; i < tablespdvadded.getRowCount(); i++) {
+            spdvMap.put(String.valueOf(tablespdvadded.getValueAt(i, 1)), (int)tablespdvadded.getValueAt(i, 4));
+        }
+        Controller.CHITIETORDERService.insertChiTietOrder(idorder, spdvMap);
     }//GEN-LAST:event_billbtnActionPerformed
 
     private void qlytkmenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qlytkmenuMousePressed
         RegisterDetailsForm rd = new RegisterDetailsForm();
     }//GEN-LAST:event_qlytkmenuMousePressed
+
+    private void menuspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuspActionPerformed
+        new ThemSanPhamForm().setVisible(true);
+    }//GEN-LAST:event_menuspActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1127,7 +1155,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem reopenitem;
     private javax.swing.JMenu settingmenu;
     private javax.swing.JMenuItem settingroomitm;
-    private javax.swing.JTextField sltxt;
+    public static javax.swing.JTextField sltxt;
     private javax.swing.JMenuItem spdv;
     private javax.swing.JLabel spdvlabel;
     private javax.swing.JTextField spdvtxt;

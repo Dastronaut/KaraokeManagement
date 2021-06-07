@@ -5,9 +5,10 @@
  */
 package View;
 
+import Model.TAIKHOAN;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -20,12 +21,8 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
      */
     public RegisterDetailsForm() {
         initComponents();
-        setVisible(true);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        loadTableTaiKhoan();
     }
-    
-    public String loaiTaiKhoan;
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,13 +45,15 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         qtvrbtn = new javax.swing.JRadioButton();
         khrbtn = new javax.swing.JRadioButton();
+        filllabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabletaikhoan = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        Addbtn = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        Delbtn = new javax.swing.JButton();
+        btnadd = new javax.swing.JButton();
+        btnedit = new javax.swing.JButton();
+        btndel = new javax.swing.JButton();
+        btnclose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Register Details");
@@ -79,19 +78,11 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
 
         buttonGroup1.add(qtvrbtn);
         qtvrbtn.setText("Quản trị viên");
-        qtvrbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                qtvrbtnActionPerformed(evt);
-            }
-        });
 
         buttonGroup1.add(khrbtn);
         khrbtn.setText("Khách hàng");
-        khrbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                khrbtnActionPerformed(evt);
-            }
-        });
+
+        filllabel.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -101,6 +92,12 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(qtvrbtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(khrbtn))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -108,16 +105,11 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(filllabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtTen)
                             .addComponent(txtSdt)
                             .addComponent(txtUsername)
-                            .addComponent(txtMatkhau)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(qtvrbtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(khrbtn)))
+                            .addComponent(txtMatkhau))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -139,7 +131,9 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtMatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filllabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(qtvrbtn)
@@ -147,7 +141,7 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabletaikhoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -163,12 +157,12 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabletaikhoan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                tabletaikhoanMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabletaikhoan);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -179,29 +173,36 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        Addbtn.setText("Add");
-        Addbtn.setName("btnAdd"); // NOI18N
-        Addbtn.addActionListener(new java.awt.event.ActionListener() {
+        btnadd.setText("Add");
+        btnadd.setName("btnAdd"); // NOI18N
+        btnadd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddbtnActionPerformed(evt);
+                btnaddActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Edit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnedit.setText("Edit");
+        btnedit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btneditActionPerformed(evt);
             }
         });
 
-        Delbtn.setText("Delete");
-        Delbtn.addActionListener(new java.awt.event.ActionListener() {
+        btndel.setText("Delete");
+        btndel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DelbtnActionPerformed(evt);
+                btndelActionPerformed(evt);
+            }
+        });
+
+        btnclose.setText("Close");
+        btnclose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncloseActionPerformed(evt);
             }
         });
 
@@ -211,21 +212,24 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(Addbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(Delbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addComponent(btnadd, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
+                .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
+                .addComponent(btndel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(btnclose, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Addbtn)
-                    .addComponent(jButton2)
-                    .addComponent(Delbtn))
+                    .addComponent(btnadd)
+                    .addComponent(btnedit)
+                    .addComponent(btndel)
+                    .addComponent(btnclose))
                 .addGap(38, 38, 38))
         );
 
@@ -243,7 +247,7 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -252,58 +256,117 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AddbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddbtnActionPerformed
-        if(txtTen.getText().equals("")||txtSdt.getText().equals("")||txtUsername.getText().equals("")||txtMatkhau.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin!");
-        } else {
-            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-            model.addRow(new Object[]{txtTen.getText(), txtSdt.getText(), txtUsername.getText(), txtMatkhau.getText(), loaiTaiKhoan.toString()});
-            txtTen.setText("");
-            txtSdt.setText("");
-            
+    private void loadTableTaiKhoan() {
+        DefaultTableModel tableModel = (DefaultTableModel)tabletaikhoan.getModel();
+        tableModel.getDataVector().removeAllElements();
+        tableModel.fireTableDataChanged();
+        List<TAIKHOAN> tks = Controller.TAIKHOANService.getAllTaikhoans();
+        for (TAIKHOAN taikhoan:tks) {
+            Object o[] = {taikhoan.getTen(), taikhoan.getSoDienThoai(), taikhoan.getUsername(), taikhoan.getMatKhau(), taikhoan.getLoaiTaiKhoan()};
+            tableModel.addRow(o);
         }
-    }//GEN-LAST:event_AddbtnActionPerformed
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        int i = jTable1.getSelectedRow();
-        TableModel model = jTable1.getModel();
-        txtTen.setText(model.getValueAt(i, 0).toString());
-        txtSdt.setText(model.getValueAt(i, 1).toString());
-        txtUsername.setText(model.getValueAt(i, 2).toString());
-        txtMatkhau.setText(model.getValueAt(i, 3).toString());
-        String loaiTaiKhoan = model.getValueAt(i, 4).toString();
-        if(loaiTaiKhoan.equals("Quản trị viên")) {
-            qtvrbtn.setSelected(true);
+    }
+    private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
+        String usString = txtUsername.getText(),
+                pwString = txtMatkhau.getText(),
+                tenString = txtTen.getText(),
+                sdtString = txtSdt.getText(),
+                loaitk = "";
+        if (khrbtn.isSelected()) 
+            loaitk = "Khách Hàng";
+        if (qtvrbtn.isSelected())
+            loaitk = "Quản Trị";
+        if (usString.equals("") || pwString.equals("") || tenString.equals("") || sdtString.equals("") || loaitk.equals("")) {
+            filllabel.setText("Vui lòng điền đầy đủ thông tin.");
         } else {
-            khrbtn.setSelected(true);
-        }
-    }//GEN-LAST:event_jTable1MouseClicked
-
-    private void qtvrbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qtvrbtnActionPerformed
-        loaiTaiKhoan = "Quản trị viên";
-    }//GEN-LAST:event_qtvrbtnActionPerformed
-
-    private void khrbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_khrbtnActionPerformed
-        loaiTaiKhoan = "Khách hàng";
-    }//GEN-LAST:event_khrbtnActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JOptionPane.showMessageDialog(this, "Lưu tài khoản thành công!");
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void DelbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelbtnActionPerformed
-        DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
-        if(jTable1.getSelectedRowCount() == 1) {
-            JOptionPane.showMessageDialog(this, "Xác nhận xóa tài khoản!");
-            tblModel.removeRow(jTable1.getSelectedRow());
-        } else {
-            if(jTable1.getRowCount() == 0) {
-                JOptionPane.showMessageDialog(this, "Không có dữ liệu!");
-            } else {
-                JOptionPane.showMessageDialog(this, "Vui lòng chọn một tài khoản để xóa!");
+            if (!Controller.TAIKHOANService.checkNewUser(usString, sdtString)) {
+                if (Controller.TAIKHOANService.insertTaiKhoan(usString, pwString, tenString, sdtString, loaitk) == 0) {
+                    JOptionPane.showMessageDialog(this, "Đăng kí thất bại.");
+                }
+                else {
+                    filllabel.setText("");
+                    JOptionPane.showMessageDialog(this, "Đăng kí thành công.");
+                }
+            }
+            else {
+                filllabel.setText("Tên đăng nhập hoặc Số điện thoại đã tồn tại.");
             }
         }
-    }//GEN-LAST:event_DelbtnActionPerformed
+        loadTableTaiKhoan();
+    }//GEN-LAST:event_btnaddActionPerformed
+
+    private void tabletaikhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabletaikhoanMouseClicked
+        if (evt.getClickCount() == 2) {
+            String username = String.valueOf(tabletaikhoan.getValueAt(tabletaikhoan.getSelectedRow(), 2));
+            List<TAIKHOAN> tks = Controller.TAIKHOANService.getAllTaikhoans();
+            for (TAIKHOAN taikhoan:tks) {
+                if (taikhoan.getUsername().equals(username)) {
+                    txtTen.setText(taikhoan.getTen());
+                    txtSdt.setText(taikhoan.getSoDienThoai());
+                    txtUsername.setText(String.valueOf(taikhoan.getUsername()));
+                    txtMatkhau.setText(String.valueOf(taikhoan.getMatKhau()));
+                    if(taikhoan.getLoaiTaiKhoan().equals("Quản Trị")) {
+                        qtvrbtn.setSelected(true);
+                    } else {
+                        khrbtn.setSelected(true);
+                    }
+                    break;
+                }
+            }
+            txtUsername.setEnabled(false);
+        }
+    }//GEN-LAST:event_tabletaikhoanMouseClicked
+
+    private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
+        if (tabletaikhoan.getRowCount() != 0 && tabletaikhoan.getSelectedRow() != -1) {
+            String usString = txtUsername.getText(),
+                pwString = txtMatkhau.getText(),
+                tenString = txtTen.getText(),
+                sdtString = txtSdt.getText(),
+                loaitk = "";
+            if (khrbtn.isSelected()) 
+                loaitk = "Khách Hàng";
+            if (qtvrbtn.isSelected())
+                loaitk = "Quản Trị";
+            if (pwString.equals("") || tenString.equals("") || sdtString.equals("") || loaitk.equals("")) {
+                filllabel.setText("Vui lòng điền đầy đủ thông tin.");
+            } else {
+                if (Controller.TAIKHOANService.updateTaiKhoan(usString, pwString, tenString, sdtString, loaitk) != 0) {
+                    filllabel.setText("");
+                    JOptionPane.showMessageDialog(this, "Sửa tài khoản thành công.");
+                }
+                else {
+                    filllabel.setText("");
+                    JOptionPane.showMessageDialog(this, "Sửa tài khoản thất bại.");
+                }
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Chọn tài khoản cần sửa.");
+        }
+        loadTableTaiKhoan();
+    }//GEN-LAST:event_btneditActionPerformed
+
+    private void btndelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndelActionPerformed
+        if (tabletaikhoan.getRowCount() != 0 && tabletaikhoan.getSelectedRow() != -1) {
+            String username = String.valueOf(tabletaikhoan.getValueAt(tabletaikhoan.getSelectedRow(), 2));
+            if (Controller.TAIKHOANService.deleteTaiKhoan(username) != 0) {
+                DefaultTableModel tableModel = (DefaultTableModel)tabletaikhoan.getModel();
+                tableModel.removeRow(tabletaikhoan.getSelectedRow());
+                JOptionPane.showMessageDialog(this, "Xóa tài khoản thành công.");
+            }
+            else 
+                JOptionPane.showMessageDialog(this, "Xóa tài khoản thất bại.");
+        } 
+        else {
+            JOptionPane.showMessageDialog(this, "Chọn tài khoản trước khi xóa.");
+        }
+        loadTableTaiKhoan();
+    }//GEN-LAST:event_btndelActionPerformed
+
+    private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btncloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -341,10 +404,12 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Addbtn;
-    private javax.swing.JButton Delbtn;
+    private javax.swing.JButton btnadd;
+    private javax.swing.JButton btnclose;
+    private javax.swing.JButton btndel;
+    private javax.swing.JButton btnedit;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel filllabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -354,9 +419,9 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JRadioButton khrbtn;
     private javax.swing.JRadioButton qtvrbtn;
+    private javax.swing.JTable tabletaikhoan;
     private javax.swing.JTextField txtMatkhau;
     private javax.swing.JTextField txtSdt;
     private javax.swing.JTextField txtTen;
