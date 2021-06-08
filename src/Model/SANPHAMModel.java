@@ -5,8 +5,8 @@
  */
 package Model;
 
+import Model.DataModel.SANPHAM;
 import static Model.JDBCConnection.getJDBCConnection;
-import java.security.interfaces.RSAKey;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class SANPHAMModel {
     public static List<SANPHAM> getAllSanPham() {
-        List<SANPHAM> sps = new ArrayList<SANPHAM>();
+        List<SANPHAM> sps = new ArrayList<>();
         try {
             Connection conn = getJDBCConnection();
             Statement stmt = conn.createStatement();
@@ -73,13 +73,14 @@ public class SANPHAMModel {
         int rs = 0;
         try {
             Connection conn = getJDBCConnection();
-            Statement stmt = conn.createStatement();
-            
-            String query = "DELETE FROM karaokemanagement.SANPHAM WHERE TenSanPham = '" + ten + "'";
+            Statement stmt = conn.createStatement(); 
+            String query = "DELETE from SANPHAM where TenSanPham = '" + ten + "'";
             rs = stmt.executeUpdate(query);
             stmt.close();
         } catch (SQLException e) {
         }
         return rs;
     }
+    
+    
 }

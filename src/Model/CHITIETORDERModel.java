@@ -1,5 +1,6 @@
 package Model;
 
+import Model.DataModel.SANPHAM;
 import static Model.JDBCConnection.getJDBCConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,31 +11,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CHITIETORDERModel {
-//    public static List<CHITIETORDER> getAllSanPham() {
-//        List<CHITIETORDER> sps = new ArrayList<CHITIETORDER>();
-//        try {
-//            Connection conn = getJDBCConnection();
-//            Statement stmt = conn.createStatement();
-//            
-//            String query = "SELECT * FROM karaokemanagement.CHITIETORDER";
-//            ResultSet rs = stmt.executeQuery(query);
-//            while (rs.next()) {
-//                CHITIETORDER p = new CHITIETORDER(rs.getInt("ID_SanPham"), rs.getString("TenSanPham"), rs.getString("Donvi"),
-//                        rs.getInt("SoLuong"), rs.getInt("GiaNhap"), rs.getInt("GiaBan"));
-//                sps.add(p);
-//            }
-//            rs.close();
-//            stmt.close();
-//        } catch (SQLException e) {
-//        }
-//        return sps;
-//    }
-    
     public static void insertChiTietOrder(int idorder, HashMap<String, Integer> spdvHashMap) {
         try {
             Connection conn = getJDBCConnection();
             Statement stmt = conn.createStatement();
-            String query = "";
+            String query;
             int idsp = 0;
             List<SANPHAM> sps = SANPHAMModel.getAllSanPham();
             for (String tensp:spdvHashMap.keySet()) {
@@ -51,5 +32,26 @@ public class CHITIETORDERModel {
             stmt.close();
         } catch (SQLException e) {
         }
+    }
+    
+    public static Object[] getSoldbySP(String tensp) {
+        Object[] sanpham = new Object[]{};
+        try {
+            Connection conn = getJDBCConnection();
+            Statement stmt = conn.createStatement();
+            String query = "SELECT SANPHAM.TenSanPham, CHITIETORDER.SOLUONG, (SANPHAM.GiaBan*CHITIETORDER.SOLUONG) "
+                    + "FROM SANPHAM INNER JOIN CHITIETORDER ON SANPHAM.ID_SanPham = CHITIETORDER.ID_SanPham AND SANPHAM.TenSanPham = '" + tensp + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                sanpham = new Object[]{
+                rs.getObject(1),
+                rs.getObject(2),
+                rs.getObject(3)
+            };
+            }
+            stmt.close();
+        } catch (SQLException e) {
+        }
+        return sanpham;
     }
 }

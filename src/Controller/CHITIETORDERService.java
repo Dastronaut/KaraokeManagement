@@ -6,6 +6,7 @@
 package Controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -14,5 +15,9 @@ import java.util.HashMap;
 public class CHITIETORDERService {
     public static void insertChiTietOrder(int idorder, HashMap<String, Integer> spdvHashMap) {
         Model.CHITIETORDERModel.insertChiTietOrder(idorder, spdvHashMap);
+    }
+    
+    public static Object[] getSoldbySP(String tensp) {
+        return Model.CHITIETORDERModel.getSoldbySP(tensp);
     }
 }

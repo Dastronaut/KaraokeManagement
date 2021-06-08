@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import Model.TAIKHOAN;
+import Model.DataModel.TAIKHOAN;
 
 public class TAIKHOANModel {
     public static List<TAIKHOAN> getAllTaikhoans() {

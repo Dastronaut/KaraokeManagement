@@ -5,7 +5,7 @@
  */
 package View;
 
-import Model.PHONG;
+import Model.DataModel.PHONG;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 

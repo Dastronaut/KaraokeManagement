@@ -5,7 +5,7 @@
  */
 package View;
 
-import Model.TAIKHOAN;
+import Model.DataModel.TAIKHOAN;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

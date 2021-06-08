@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.TAIKHOANModel;
-import Model.TAIKHOAN;
+import Model.DataModel.TAIKHOAN;
 import java.util.List;
 public class TAIKHOANService {
     public static List<TAIKHOAN> getAllTaikhoans() {

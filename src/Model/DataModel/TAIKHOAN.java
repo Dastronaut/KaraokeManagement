@@ -1,4 +1,4 @@
-package Model;
+package Model.DataModel;
 
 public class TAIKHOAN {
     private String Username;

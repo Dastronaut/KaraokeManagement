@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.PHONG;
+import Model.DataModel.PHONG;
 import java.util.List;
 
 public class PHONGService {

@@ -5,7 +5,7 @@
  */
 package View;
 
-import Model.SANPHAM;
+import Model.DataModel.SANPHAM;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,8 +14,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import java.lang.Math;
-import java.text.Normalizer;
+
 /**
  *
  * @author Trần Kim Tiến Đạt
@@ -717,22 +716,15 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         tablesold.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null}
+
             },
             new String [] {
                 "SP dịch vụ đã bán", "Số lượng", "Tổng giá"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -757,7 +749,9 @@ public class MainMenuForm extends javax.swing.JFrame {
             pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 835, Short.MAX_VALUE)
             .addGroup(pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE))
+                .addGroup(pane3Layout.createSequentialGroup()
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 373, Short.MAX_VALUE)))
         );
         pane3Layout.setVerticalGroup(
             pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -879,10 +873,12 @@ public class MainMenuForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void spdvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spdvActionPerformed
-        // TODO add your handling code here:
+        tabbedpane.setSelectedIndex(3);
+        LocSanPham f = new LocSanPham();
+        f.setVisible(true);
     }//GEN-LAST:event_spdvActionPerformed
 
-    private void roomDetailSelect(String roomname, JButton f, int index) {
+    private void roomDetailSelect(String roomname, JButton f) {
         checkButon = f;
         tabbedpane.setSelectedIndex(1);
         userlabel.setText(user);
@@ -895,12 +891,12 @@ public class MainMenuForm extends javax.swing.JFrame {
     }
     private void mp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp1ActionPerformed
         String roomname = mp1.getText();
-        roomDetailSelect(roomname, mp1, 1);
+        roomDetailSelect(roomname, mp1);
     }//GEN-LAST:event_mp1ActionPerformed
 
     private void mp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp2ActionPerformed
         String roomname = mp2.getText();
-        roomDetailSelect(roomname, mp2, 2);
+        roomDetailSelect(roomname, mp2);
     }//GEN-LAST:event_mp2ActionPerformed
 
     private void startbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startbtnActionPerformed
@@ -1081,6 +1077,7 @@ public class MainMenuForm extends javax.swing.JFrame {
 
     private void qlytkmenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qlytkmenuMousePressed
         RegisterDetailsForm rd = new RegisterDetailsForm();
+        rd.setVisible(true);
     }//GEN-LAST:event_qlytkmenuMousePressed
 
     private void menuspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuspActionPerformed
@@ -1162,8 +1159,8 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JButton startbtn;
     private javax.swing.JButton swroombtn;
     private javax.swing.JTabbedPane tabbedpane;
-    private javax.swing.JTable tabledsbilll;
-    private javax.swing.JTable tablesold;
+    public static javax.swing.JTable tabledsbilll;
+    public static javax.swing.JTable tablesold;
     private javax.swing.JTable tablespdv;
     private javax.swing.JTable tablespdvadded;
     private javax.swing.JButton tamtinhbtn;

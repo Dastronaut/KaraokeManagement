@@ -1,4 +1,4 @@
-package Model;
+package Model.DataModel;
 
 public class CHITIETPHONG {
     private int ID_Order;

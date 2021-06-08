@@ -1,6 +1,6 @@
 package View;
 
-import Model.SANPHAM;
+import Model.DataModel.SANPHAM;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
