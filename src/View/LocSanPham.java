@@ -9,7 +9,7 @@ public class LocSanPham extends javax.swing.JFrame {
 
     public LocSanPham() {
         initComponents();
-        cboxspdv.setSelected(true);
+        cboxdate.setSelected(true);
         loadCBBSanPham();
     }
 
@@ -183,14 +183,25 @@ public class LocSanPham extends javax.swing.JFrame {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String timefrom = df.format(datechoosefrom.getDate()) + " " + String.valueOf(cbbhourfrom.getSelectedItem()) + ":00:00",
                 timeto = df.format(datechooseto.getDate()) + " " + String.valueOf(cbbhourto.getSelectedItem()) + ":00:00";
-    }
-    
-    private void SearchbyItem() {
-        String tensp = String.valueOf(cbbsp.getSelectedItem());
+        List<Object[]> sanphamList = Controller.CHITIETORDERService.getSPbyDate(timefrom, timeto);
+        System.out.println(sanphamList.size());
+        for (Object[] sanpham:sanphamList) {
+            System.out.println(sanpham.length);
+        }
         DefaultTableModel tableModel = (DefaultTableModel)MainMenuForm.tablesold.getModel();
         tableModel.getDataVector().removeAllElements();
         tableModel.fireTableDataChanged();
+        for (Object[] sanpham:sanphamList) {
+            tableModel.addRow(sanpham);
+       }
+    }
+
+    private void SearchbyItem() {
+        String tensp = String.valueOf(cbbsp.getSelectedItem());
         Object[] sanpham = Controller.CHITIETORDERService.getSoldbySP(tensp);
+        DefaultTableModel tableModel = (DefaultTableModel)MainMenuForm.tablesold.getModel();
+        tableModel.getDataVector().removeAllElements();
+        tableModel.fireTableDataChanged();
         tableModel.addRow(sanpham);
     }
     

@@ -20,4 +20,8 @@ public class CHITIETORDERService {
     public static Object[] getSoldbySP(String tensp) {
         return Model.CHITIETORDERModel.getSoldbySP(tensp);
     }
+    
+    public static List<Object[]> getSPbyDate(String timefrom, String timeto) {
+        return Model.CHITIETORDERModel.getSPbyDate(timefrom, timeto);
+    }
 }

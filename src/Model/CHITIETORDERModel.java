@@ -44,14 +44,38 @@ public class CHITIETORDERModel {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 sanpham = new Object[]{
-                rs.getObject(1),
-                rs.getObject(2),
-                rs.getObject(3)
-            };
+                    rs.getObject(1),
+                    rs.getObject(2),
+                    rs.getObject(3)
+                };
             }
             stmt.close();
         } catch (SQLException e) {
         }
         return sanpham;
+    }
+    
+    public static List<Object[]> getSPbyDate(String timefrom, String timeto) {
+        List<Object[]> spsList = new ArrayList<>();
+        try {
+            Connection conn = getJDBCConnection();
+            Statement stmt = conn.createStatement();
+            String query = "SELECT SANPHAM.TenSanPham, CHITIETORDER.SOLUONG, (SANPHAM.GiaBan*CHITIETORDER.SOLUONG) "
+                + "FROM SANPHAM INNER JOIN CHITIETORDER ON SANPHAM.ID_SanPham = CHITIETORDER.ID_SanPham "
+                + "AND CHITIETORDER.ID_Order IN (SELECT ID_Order FROM CHITIETPHONG WHERE GioVao > '" + timefrom + "' "
+                + "AND GioRa < '" + timeto + "')";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Object[] o = new Object[]{
+                    rs.getObject(1),
+                    rs.getObject(2),
+                    rs.getObject(3)
+                };    
+                spsList.add(o);
+            }
+            stmt.close();
+        } catch (SQLException e) {
+        }
+        return spsList;
     }
 }
