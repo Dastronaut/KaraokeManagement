@@ -1,5 +1,8 @@
 package Model.DataModel;
-
+/**
+ *
+ * @author Trần Kim Tiến Đạt
+ */
 public class CHITIETPHONG {
     private int ID_Order;
     private String ID_Phong;

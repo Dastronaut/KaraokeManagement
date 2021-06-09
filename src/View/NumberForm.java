@@ -1,19 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 /**
  *
- * @author USER
+ * @author Trần Kim Tiến Đạt
  */
 public class NumberForm extends javax.swing.JFrame {
     public NumberForm() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -36,6 +33,11 @@ public class NumberForm extends javax.swing.JFrame {
         xoabtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(850, 150));
+        setMaximumSize(new java.awt.Dimension(448, 309));
+        setMinimumSize(new java.awt.Dimension(448, 309));
+        setResizable(false);
+        setSize(new java.awt.Dimension(448, 309));
 
         btn1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn1.setText("1");

@@ -1,5 +1,8 @@
 package Model.DataModel;
-
+/**
+ *
+ * @author Trần Kim Tiến Đạt
+ */
 public class TAIKHOAN {
     private String Username;
     private String MatKhau;

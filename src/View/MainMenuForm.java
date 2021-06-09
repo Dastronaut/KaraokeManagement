@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import Model.DataModel.SANPHAM;
@@ -12,6 +7,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,6 +24,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     public MainMenuForm(String userString) {
         user = userString;
         initComponents();
+//        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -82,7 +79,6 @@ public class MainMenuForm extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        tamtinhbtn = new javax.swing.JButton();
         billbtn = new javax.swing.JButton();
         spdvtxt = new javax.swing.JTextField();
         tienphongtxt = new javax.swing.JTextField();
@@ -109,6 +105,8 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Phần mềm quản lý Karaoke - Team");
+        setLocation(new java.awt.Point(150, 50));
+        setResizable(false);
 
         tabbedpane.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -551,9 +549,6 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         jLabel11.setText("Trả trước: ");
 
-        tamtinhbtn.setText("In tạm tính");
-        tamtinhbtn.setPreferredSize(new java.awt.Dimension(75, 25));
-
         billbtn.setText("Xuất bill");
         billbtn.setPreferredSize(new java.awt.Dimension(75, 25));
         billbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -620,9 +615,7 @@ public class MainMenuForm extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(168, 168, 168)
-                .addComponent(tamtinhbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(168, 304, Short.MAX_VALUE)
                 .addComponent(billbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
@@ -648,9 +641,7 @@ public class MainMenuForm extends javax.swing.JFrame {
                     .addComponent(thanhtoantxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(billbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                    .addComponent(tamtinhbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(billbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout pane1Layout = new javax.swing.GroupLayout(pane1);
@@ -686,19 +677,12 @@ public class MainMenuForm extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Phòng", "SP DV", "Tiền phòng", "Phụ thu", "Giảm", "Trả trước", "T. Tiền", "Nhận Phòng"
+                "Phòng", "Tiền SP DV", "Tiền phòng", "Phụ thu", "Giảm", "Trả trước", "T. Tiền", "Nhận Phòng"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -778,6 +762,11 @@ public class MainMenuForm extends javax.swing.JFrame {
         locbillitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         locbillitem.setMnemonic('b');
         locbillitem.setText("Lọc bill đơn hàng");
+        locbillitem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                locbillitemActionPerformed(evt);
+            }
+        });
         qlykaramenu.add(locbillitem);
 
         navbar.add(qlykaramenu);
@@ -908,7 +897,7 @@ public class MainMenuForm extends javax.swing.JFrame {
             if (checkButon != null) {
                 checkButon.setBackground(Color.green);
             }
-            Controller.CHITIETPHONGService.setChiTietPhong(tenphong, false, giovao, giovao, 0, 0);
+            Controller.CHITIETPHONGService.setChiTietPhong(tenphong, false, giovao, giovao, 0, 0, 0, 0, 0);
             DefaultTableModel tableModel = (DefaultTableModel)tablespdv.getModel();
             tableModel.getDataVector().removeAllElements();
             tableModel.fireTableDataChanged();
@@ -1026,7 +1015,6 @@ public class MainMenuForm extends javax.swing.JFrame {
         swroombtn.setEnabled(isStart);
         choosebtn.setEnabled(isStart);
         removebtn.setEnabled(isStart);
-        tamtinhbtn.setEnabled(isStart);
         billbtn.setEnabled(isStart);
     }
     
@@ -1066,7 +1054,10 @@ public class MainMenuForm extends javax.swing.JFrame {
                 giovao = checkinlabel.getText();
         int tiengio = round(Math.round(Float.valueOf(tienphongtxt.getText())), -3),
             tiendv = Integer.valueOf(spdvtxt.getText()),
-            idorder = Controller.CHITIETPHONGService.updateChiTietPhong(tenphong, giovao, giora, tiengio, tiendv);
+            phuthu = Integer.valueOf(phuthutxt.getText()),
+            giamgia = Integer.valueOf(discounttxt.getText()),
+            tratruoc = Integer.valueOf(tratruoctxt.getText()),
+            idorder = Controller.CHITIETPHONGService.updateChiTietPhong(tenphong, true, giovao, giora, tiengio, tiendv, phuthu, giamgia, tratruoc);
         // Insert value vao CHITIETORDER
         HashMap<String, Integer> spdvMap = new HashMap<>();
         for (int i = 0; i < tablespdvadded.getRowCount(); i++) {
@@ -1075,14 +1066,20 @@ public class MainMenuForm extends javax.swing.JFrame {
         Controller.CHITIETORDERService.insertChiTietOrder(idorder, spdvMap);
     }//GEN-LAST:event_billbtnActionPerformed
 
+    private void menuspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuspActionPerformed
+        new ThemSanPhamForm().setVisible(true);
+    }//GEN-LAST:event_menuspActionPerformed
+
+    private void locbillitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locbillitemActionPerformed
+        LocBillForm f = new LocBillForm();
+        f.setVisible(true);
+        tabbedpane.setSelectedIndex(2);
+    }//GEN-LAST:event_locbillitemActionPerformed
+
     private void qlytkmenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qlytkmenuMousePressed
         RegisterDetailsForm rd = new RegisterDetailsForm();
         rd.setVisible(true);
     }//GEN-LAST:event_qlytkmenuMousePressed
-
-    private void menuspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuspActionPerformed
-        new ThemSanPhamForm().setVisible(true);
-    }//GEN-LAST:event_menuspActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1163,7 +1160,6 @@ public class MainMenuForm extends javax.swing.JFrame {
     public static javax.swing.JTable tablesold;
     private javax.swing.JTable tablespdv;
     private javax.swing.JTable tablespdvadded;
-    private javax.swing.JButton tamtinhbtn;
     private javax.swing.JTextField thanhtoantxt;
     private javax.swing.JMenu thoatmenu;
     private javax.swing.JTextField tienphongtxt;

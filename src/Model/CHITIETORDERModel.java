@@ -1,5 +1,8 @@
 package Model;
-
+/**
+ *
+ * @author Trần Kim Tiến Đạt
+ */
 import Model.DataModel.SANPHAM;
 import static Model.JDBCConnection.getJDBCConnection;
 import java.sql.Connection;
@@ -73,6 +76,10 @@ public class CHITIETORDERModel {
                 };    
                 spsList.add(o);
             }
+//            int tong = 0;
+//            for (Object[] sp:spsList) {
+//                tong +=
+//            }
             stmt.close();
         } catch (SQLException e) {
         }

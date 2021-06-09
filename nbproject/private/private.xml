@@ -3,17 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/View/RegisterDetailsForm.java</file>
-            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/Model/CHITIETORDER.java</file>
             <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/View/ThemSanPhamForm.java</file>
-            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/Model/TAIKHOANModel.java</file>
             <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/Model/SANPHAMModel.java</file>
             <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/View/NumberForm.java</file>
             <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/View/MainMenuForm.java</file>
+            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/View/LocSanPham.java</file>
             <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/Controller/CHITIETORDERService.java</file>
             <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/Model/CHITIETORDERModel.java</file>
-            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/View/LoginForm.java</file>
-            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/Controller/TAIKHOANService.java</file>
+            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/Model/DataModel/CHITIETORDER.java</file>
+            <file>file:/D:/Tran%20Kim%20Tien%20Dat/TestPBL/MainPBL3/src/View/ReopenRoomForm.java</file>
         </group>
     </open-files>
 </project-private>

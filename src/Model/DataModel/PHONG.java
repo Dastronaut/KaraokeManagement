@@ -1,5 +1,8 @@
 package Model.DataModel;
-
+/**
+ *
+ * @author Trần Kim Tiến Đạt
+ */
 public class PHONG {
     private String ID_Phong;
     private String TenPhong;

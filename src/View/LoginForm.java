@@ -1,7 +1,9 @@
 package View;
-
+/**
+ *
+ * @author Trần Kim Tiến Đạt
+ */
 import Controller.TAIKHOANService;
-import javax.swing.JOptionPane;
 
 public class LoginForm extends javax.swing.JFrame {
 

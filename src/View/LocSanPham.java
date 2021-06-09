@@ -1,23 +1,33 @@
 package View;
-
+/**
+ *
+ * @author Trần Kim Tiến Đạt
+ */
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 public class LocSanPham extends javax.swing.JFrame {
 
     public LocSanPham() {
         initComponents();
-        cboxdate.setSelected(true);
-        loadCBBSanPham();
+        loadUIForm();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
-    private void loadCBBSanPham() {
+    private void loadUIForm() {
         List<String> namesps = Controller.SANPHAMService.getAllnameSP();
         for (String name:namesps) {
             cbbsp.addItem(name);
         }
+        datechoosefrom.setDate(new Date());
+        datechooseto.setDate(new Date());
+        cbbhourfrom.setSelectedIndex(0);
+        cbbhourto.setSelectedIndex(0);
+        cboxdate.setSelected(true);
     }
     
     @SuppressWarnings("unchecked")
@@ -41,6 +51,7 @@ public class LocSanPham extends javax.swing.JFrame {
         btnsearch = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(500, 200));
 
         buttonGroup1.add(cboxdate);
         cboxdate.setText("Theo ngày: ");
@@ -183,17 +194,17 @@ public class LocSanPham extends javax.swing.JFrame {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String timefrom = df.format(datechoosefrom.getDate()) + " " + String.valueOf(cbbhourfrom.getSelectedItem()) + ":00:00",
                 timeto = df.format(datechooseto.getDate()) + " " + String.valueOf(cbbhourto.getSelectedItem()) + ":00:00";
-        List<Object[]> sanphamList = Controller.CHITIETORDERService.getSPbyDate(timefrom, timeto);
-        System.out.println(sanphamList.size());
-        for (Object[] sanpham:sanphamList) {
-            System.out.println(sanpham.length);
-        }
         DefaultTableModel tableModel = (DefaultTableModel)MainMenuForm.tablesold.getModel();
         tableModel.getDataVector().removeAllElements();
         tableModel.fireTableDataChanged();
-        for (Object[] sanpham:sanphamList) {
+        for (Object[] sanpham:Controller.CHITIETORDERService.getSPbyDate(timefrom, timeto)) {
             tableModel.addRow(sanpham);
-       }
+        }
+        int tong = 0;
+        for (int i = 0; i < tableModel.getRowCount(); i++) {
+            tong += Integer.valueOf(String.valueOf(tableModel.getValueAt(i, 2)));
+        }
+        tableModel.addRow(new Object[]{"Tổng", "", String.valueOf(tong)});
     }
 
     private void SearchbyItem() {

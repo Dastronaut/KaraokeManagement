@@ -2,7 +2,7 @@ package Model.DataModel;
 
 /**
  *
- * @author USER
+ * @author Trần Kim Tiến Đạt
  */
 public class SANPHAM {
     private int ID_SanPham;

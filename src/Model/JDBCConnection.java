@@ -1,11 +1,11 @@
 package Model;
-
+/**
+ *
+ * @author Trần Kim Tiến Đạt
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class JDBCConnection {
     public static Connection getJDBCConnection() {

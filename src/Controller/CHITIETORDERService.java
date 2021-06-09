@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package Controller;
-
+/**
+ *
+ * @author Trần Kim Tiến Đạt
+ */
 import java.util.HashMap;
 import java.util.List;
 

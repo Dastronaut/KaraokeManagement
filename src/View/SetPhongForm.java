@@ -1,18 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import Model.DataModel.PHONG;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ *
+ * @author Trần Kim Tiến Đạt
+ */
 public class SetPhongForm extends javax.swing.JFrame {
 
     public SetPhongForm() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         LoadData();
     }
 
@@ -56,6 +57,9 @@ public class SetPhongForm extends javax.swing.JFrame {
         phongtocbb = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(595, 324));
+        setMinimumSize(new java.awt.Dimension(595, 324));
+        setResizable(false);
 
         banggiaphong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -1,5 +1,8 @@
 package Controller;
-
+/**
+ *
+ * @author Trần Kim Tiến Đạt
+ */
 import Model.DataModel.PHONG;
 import java.util.List;
 
@@ -29,6 +32,7 @@ public class PHONGService {
         float mintohour = mins / 60.0f;
         return (hour + mintohour);
     }
+    
     public static float getTienPhong(String tenphong, String giovao, String giora) {
         float giodung = 0;
         int giaphong = 0;
@@ -43,4 +47,10 @@ public class PHONGService {
         giodung = (toHours(giora)-toHours(giovao))*giaphong;
         return giodung;
     }
+    
+    public static List<String> getRecentRoom(String today) {
+        return Model.PHONGModel.getRecentRoom(today);
+    }
+    
+    
 }

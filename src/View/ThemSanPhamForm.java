@@ -2,6 +2,7 @@ package View;
 
 import Model.DataModel.SANPHAM;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,6 +18,7 @@ public class ThemSanPhamForm extends javax.swing.JFrame {
     private static String TenSanPham= "";
     public ThemSanPhamForm() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         loadSanPham();
     }
     @SuppressWarnings("unchecked")
@@ -46,6 +48,10 @@ public class ThemSanPhamForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quản lý Menu Sản phẩm");
+        setLocation(new java.awt.Point(500, 200));
+        setMaximumSize(new java.awt.Dimension(814, 331));
+        setMinimumSize(new java.awt.Dimension(814, 331));
+        setResizable(false);
 
         tablespthem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

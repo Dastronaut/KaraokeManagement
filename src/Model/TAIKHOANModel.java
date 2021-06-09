@@ -1,5 +1,8 @@
 package Model;
-
+/**
+ *
+ * @author Trần Kim Tiến Đạt
+ */
 import static Model.JDBCConnection.getJDBCConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
