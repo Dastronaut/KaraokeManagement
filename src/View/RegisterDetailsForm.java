@@ -133,11 +133,11 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tên", "Số điện thoại", "Username", "Mật khẩu", "Loại tài khoản"
+                "Tên", "Số điện thoại", "Username", "Loại tài khoản"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -249,7 +249,7 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
         tableModel.fireTableDataChanged();
         List<TAIKHOAN> tks = Controller.TAIKHOANService.getAllTaikhoans();
         for (TAIKHOAN taikhoan:tks) {
-            Object o[] = {taikhoan.getTen(), taikhoan.getSoDienThoai(), taikhoan.getUsername(), taikhoan.getMatKhau(), taikhoan.getLoaiTaiKhoan()};
+            Object o[] = {taikhoan.getTen(), taikhoan.getSoDienThoai(), taikhoan.getUsername(), taikhoan.getLoaiTaiKhoan()};
             tableModel.addRow(o);
         }
     }
@@ -267,7 +267,8 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
             filllabel.setText("Vui lòng điền đầy đủ thông tin.");
         } else {
             if (!Controller.TAIKHOANService.checkNewUser(usString, sdtString)) {
-                if (Controller.TAIKHOANService.insertTaiKhoan(usString, pwString, tenString, sdtString, loaitk) == 0) {
+                TAIKHOAN account = new TAIKHOAN(usString, pwString, tenString, sdtString, loaitk);
+                if (Controller.TAIKHOANService.insertTaiKhoan(account) == 0) {
                     JOptionPane.showMessageDialog(this, "Đăng kí thất bại.");
                 }
                 else {
@@ -291,7 +292,7 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
                     txtTen.setText(taikhoan.getTen());
                     txtSdt.setText(taikhoan.getSoDienThoai());
                     txtUsername.setText(String.valueOf(taikhoan.getUsername()));
-                    txtMatkhau.setText(String.valueOf(taikhoan.getMatKhau()));
+                    txtMatkhau.setText("");
                     if(taikhoan.getLoaiTaiKhoan().equals("Quản Trị")) {
                         qtvrbtn.setSelected(true);
                     } else {
@@ -318,7 +319,8 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
             if (pwString.equals("") || tenString.equals("") || sdtString.equals("") || loaitk.equals("")) {
                 filllabel.setText("Vui lòng điền đầy đủ thông tin.");
             } else {
-                if (Controller.TAIKHOANService.updateTaiKhoan(usString, pwString, tenString, sdtString, loaitk) != 0) {
+                TAIKHOAN account = new TAIKHOAN(usString, pwString, tenString, sdtString, loaitk);
+                if (Controller.TAIKHOANService.updateTaiKhoan(account) != 0) {
                     filllabel.setText("");
                     JOptionPane.showMessageDialog(this, "Sửa tài khoản thành công.");
                 }

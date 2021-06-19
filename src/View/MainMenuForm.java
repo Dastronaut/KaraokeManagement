@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,7 +15,6 @@ import javax.swing.table.DefaultTableModel;
  * @author Trần Kim Tiến Đạt
  */
 public class MainMenuForm extends javax.swing.JFrame {
-
     private static String user = "";
     private  static JButton checkButon = null;
     SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
@@ -109,6 +107,11 @@ public class MainMenuForm extends javax.swing.JFrame {
         setResizable(false);
 
         tabbedpane.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tabbedpane.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tabbedpaneStateChanged(evt);
+            }
+        });
 
         mp3.setBackground(java.awt.Color.lightGray);
         mp3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -876,6 +879,12 @@ public class MainMenuForm extends javax.swing.JFrame {
             checkinlabel.setText("0 - 0");
             checkoutlabel.setText("0 - 0");
             startbtn.setEnabled(true);
+            DefaultTableModel tableModel = (DefaultTableModel)tablespdvadded.getModel();
+            tableModel.getDataVector().removeAllElements();
+            tableModel.fireTableDataChanged();
+        }
+        else {
+            // Lấy tên phòng để hiện ra detail phòng
         }
     }
     private void mp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp1ActionPerformed
@@ -888,6 +897,14 @@ public class MainMenuForm extends javax.swing.JFrame {
         roomDetailSelect(roomname, mp2);
     }//GEN-LAST:event_mp2ActionPerformed
 
+    private void setButton(boolean isStart) {
+        endroombtn.setEnabled(isStart);
+        swroombtn.setEnabled(isStart);
+        choosebtn.setEnabled(isStart);
+        removebtn.setEnabled(isStart);
+        billbtn.setEnabled(isStart);
+    }
+    
     private void startbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startbtnActionPerformed
         if (!nameroomlabel.getText().equals("")) {
             setButton(true);
@@ -915,6 +932,7 @@ public class MainMenuForm extends javax.swing.JFrame {
             nameroomlabel.setText("");
             checkinlabel.setText("0 - 0");
             checkoutlabel.setText("0 - 0");
+            checkButon.setBackground(Color.lightGray);
         }
     }//GEN-LAST:event_endroombtnActionPerformed
 
@@ -1010,13 +1028,6 @@ public class MainMenuForm extends javax.swing.JFrame {
         tienphongtxt.setText(String.format("%.1f", Controller.PHONGService.getTienPhong(tenphong, giovao, giotmp)));
         return (date.format(new Date())+ " " + giotmp);
     }
-    private void setButton(boolean isStart) {
-        endroombtn.setEnabled(isStart);
-        swroombtn.setEnabled(isStart);
-        choosebtn.setEnabled(isStart);
-        removebtn.setEnabled(isStart);
-        billbtn.setEnabled(isStart);
-    }
     
     private void pane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pane1ComponentShown
         if (startbtn.isEnabled()) {
@@ -1081,6 +1092,11 @@ public class MainMenuForm extends javax.swing.JFrame {
         rd.setVisible(true);
     }//GEN-LAST:event_qlytkmenuMousePressed
 
+    private void tabbedpaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedpaneStateChanged
+        // TODO add your handling code here:
+        System.out.println("Focus has changed");
+    }//GEN-LAST:event_tabbedpaneStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -1115,7 +1131,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    public static javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JMenuItem locbillitem;
     private javax.swing.JMenuItem menusp;
@@ -1138,7 +1154,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JLabel nameroomlabel;
     private javax.swing.JMenuBar navbar;
     private javax.swing.JPanel pane0;
-    private javax.swing.JPanel pane1;
+    public static javax.swing.JPanel pane1;
     private javax.swing.JScrollPane pane2;
     private javax.swing.JPanel pane3;
     private javax.swing.JTextField phuthutxt;
@@ -1159,7 +1175,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     public static javax.swing.JTable tabledsbilll;
     public static javax.swing.JTable tablesold;
     private javax.swing.JTable tablespdv;
-    private javax.swing.JTable tablespdvadded;
+    public static javax.swing.JTable tablespdvadded;
     private javax.swing.JTextField thanhtoantxt;
     private javax.swing.JMenu thoatmenu;
     private javax.swing.JTextField tienphongtxt;
@@ -1167,3 +1183,9 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JLabel userlabel;
     // End of variables declaration//GEN-END:variables
 }
+
+
+/*
+    - Sửa lại đoạn 888
+    - Các hàm gọi Model phải tạo Constructor trước
+*/

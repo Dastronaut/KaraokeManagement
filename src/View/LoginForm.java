@@ -157,9 +157,10 @@ public class LoginForm extends javax.swing.JFrame {
     
     private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
         checkFill();
-        String us = usernametxt.getText();
-        String pw = pwtxt.getText();
-        if (TAIKHOANService.checkLogin(us, pw)) {
+        String us = usernametxt.getText(),
+            pw = pwtxt.getText(),
+            loaitk = TAIKHOANService.checkLogin(us, pw);
+        if (loaitk.equals("Quản Trị") || loaitk.equals("Khách Hàng")) {
             this.dispose();
             MainMenuForm f = new MainMenuForm(us);
             f.setVisible(true);

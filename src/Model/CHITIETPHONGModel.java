@@ -39,7 +39,7 @@ public class CHITIETPHONGModel {
         try {
             Connection conn = getJDBCConnection();
             Statement stmt = conn.createStatement();
-            String idphong = "", query = "";
+            String idphong = "", query;
             // Tìm ID_Phong theo Tên phòng
             query = "SELECT * FROM karaokemanagement.PHONG WHERE TenPhong = '" + tenphong + "'";
             ResultSet rs = stmt.executeQuery(query);
@@ -48,7 +48,7 @@ public class CHITIETPHONGModel {
             }         
             // Tìm ID_Order theo ID_Phong và giờ ra
             query = "SELECT * FROM karaokemanagement.CHITIETPHONG WHERE ID_Phong = '" + idphong + "' AND GioVao = '" 
-                    + giovao + "' AND GioRa = '" + giovao + "'";
+                    + giovao + "'";
             rs = stmt.executeQuery(query);
             while (rs.next()) {
                 idorder = rs.getInt("ID_Order");
@@ -58,8 +58,7 @@ public class CHITIETPHONGModel {
             stmt.executeUpdate(query);
             // Cập nhật ChiTietPhong sau khi đã tính tiền
             query = "UPDATE karaokemanagement.CHITIETPHONG SET GioRa = '" + giora + "', TienGio = " + tiengio + ", TienDV = " + tiendv
-                    + ", PhuThu = " + phuthu + ", GiamGia = " + giamgia + ", TraTruoc = " + tratruoc
-                    + " WHERE ID_Order = " + idorder;
+                    + ", PhuThu = " + phuthu + ", GiamGia = " + giamgia + ", TraTruoc = " + tratruoc + " WHERE ID_Order = " + idorder;
             stmt.executeUpdate(query);
             rs.close();
             stmt.close();

@@ -1,4 +1,5 @@
 package Model.DataModel;
+import org.mindrot.jbcrypt.BCrypt;
 /**
  *
  * @author Trần Kim Tiến Đạt
@@ -9,7 +10,7 @@ public class TAIKHOAN {
     private String Ten;
     private String SoDienThoai;
     private String LoaiTaiKhoan;
-
+    
     public TAIKHOAN() {
     }
 
