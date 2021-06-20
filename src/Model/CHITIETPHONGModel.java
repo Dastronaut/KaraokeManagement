@@ -96,4 +96,71 @@ public class CHITIETPHONGModel {
         }
         return ls;
     }
+    
+    public static Object[] displayDetailPhong(String tenphong) {
+        Object[] o = null;
+        Connection conn;
+        try {
+            conn = getJDBCConnection();
+            Statement stmt = conn.createStatement();
+            int idorder = 0;
+            String query;
+            query = "SELECT CTP.ID_Order from CHITIETPHONG AS CTP LEFT JOIN PHONG AS P ON CTP.ID_PHONG = P.ID_PHONG WHERE P.TENPHONG = '"
+                    + tenphong + "' and date(ctp.giovao) = current_date() order by ctp.id_order desc limit 1";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                idorder = rs.getInt("ID_Order");
+            }
+            query = "SELECT CTP.GioVao, CTP.GioRa, CTP.TienGio, CTP.TienDV, CTP.PhuThu, CTP.GiamGia from CHITIETPHONG AS CTP WHERE CTP.ID_Order = "
+                    + idorder;
+            rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                o = new Object[]{
+                    rs.getString("GioVao"),
+                    rs.getString("GioRa"),
+                    rs.getInt("TienGio"),
+                    rs.getInt("TienDV"),
+                    rs.getInt("PhuThu"),
+                    rs.getInt("GiamGia"),
+                };
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+        }
+        return o;
+    }
+    
+    public static List<Object[]> displayDetailOrder(String tenphong) {
+        List<Object[]> listOrder = new ArrayList<>();
+        Connection conn;
+        try {
+            conn = getJDBCConnection();
+            Statement stmt = conn.createStatement();
+            int idorder = 0;
+            String query;
+            query = "SELECT CTP.ID_Order from CHITIETPHONG AS CTP LEFT JOIN PHONG AS P ON CTP.ID_PHONG = P.ID_PHONG WHERE P.TENPHONG = '"
+                    + tenphong + "' and date(ctp.giovao) = current_date() order by ctp.id_order desc limit 1";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                idorder = rs.getInt("ID_Order");
+            }
+            query = "SELECT SP.TenSanPham, SP.DonVi, SP.GiaBan, CTO.SoLuong FROM SANPHAM AS SP RIGHT JOIN CHITIETORDER AS CTO ON SP.ID_SanPham = CTO.ID_SanPham WHERE CTO.ID_Order = "
+                    + idorder;
+            rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Object[] o = new Object[]{
+                    rs.getString("TenSanPham"),
+                    rs.getString("DonVi"),
+                    rs.getInt("GiaBan"),
+                    rs.getInt("SoLuong"),
+                };
+                listOrder.add(o);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+        }
+        return listOrder;
+    }
 }

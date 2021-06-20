@@ -34,6 +34,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="M&#x1edf; l&#x1ea1;i ph&#xf2;ng v&#x1eeb;a &#x111;&#xf3;ng"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reopenitemActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="locbillitem">
               <Properties>
@@ -230,9 +233,6 @@
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="tabbedpaneStateChanged"/>
-      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>

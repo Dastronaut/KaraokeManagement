@@ -107,11 +107,6 @@ public class MainMenuForm extends javax.swing.JFrame {
         setResizable(false);
 
         tabbedpane.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tabbedpane.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                tabbedpaneStateChanged(evt);
-            }
-        });
 
         mp3.setBackground(java.awt.Color.lightGray);
         mp3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -760,6 +755,11 @@ public class MainMenuForm extends javax.swing.JFrame {
         qlykaramenu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         reopenitem.setText("Mở lại phòng vừa đóng");
+        reopenitem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reopenitemActionPerformed(evt);
+            }
+        });
         qlykaramenu.add(reopenitem);
 
         locbillitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
@@ -878,13 +878,40 @@ public class MainMenuForm extends javax.swing.JFrame {
         if (Controller.PHONGService.checkRoomStatus(roomname) == true) {
             checkinlabel.setText("0 - 0");
             checkoutlabel.setText("0 - 0");
-            startbtn.setEnabled(true);
+            spdvtxt.setText("0");
+            tienphongtxt.setText("0");
+            phuthutxt.setText("0");
+            discounttxt.setText("0");
+            setButton(false);
             DefaultTableModel tableModel = (DefaultTableModel)tablespdvadded.getModel();
             tableModel.getDataVector().removeAllElements();
             tableModel.fireTableDataChanged();
         }
         else {
             // Lấy tên phòng để hiện ra detail phòng
+            // Hiện phòng
+            setButton(true);
+            Object o[] = Controller.CHITIETPHONGService.displayDetailPhong(roomname);
+            String giovao = String.valueOf(o[0]), giora = String.valueOf(o[1]);
+            checkinlabel.setText(giovao);
+            if (giovao.equals(giora))
+                checkoutlabel.setText("0 - 0");
+            else
+                checkoutlabel.setText(giora);
+            spdvtxt.setText(String.valueOf(o[3]));
+            tienphongtxt.setText(String.valueOf(o[2]));
+            phuthutxt.setText(String.valueOf(o[4]));
+            discounttxt.setText(String.valueOf(o[5]));
+            // hiện order
+            List<Object[]> listOrder = Controller.CHITIETPHONGService.displayDetailOrder(roomname);
+            DefaultTableModel tableadd = (DefaultTableModel)tablespdvadded.getModel();
+            tableadd.getDataVector().removeAllElements();
+            tableadd.fireTableDataChanged();
+            for (Object[] order:listOrder) {
+                int tongtien = ((int) order[2])*((int) order[3]);
+                Object orderrow[] = {tablespdvadded.getRowCount()+1, String.valueOf(order[0]), String.valueOf(order[1]),(int) order[2],(int) order[3], tongtien};
+                tableadd.addRow(orderrow);
+            }
         }
     }
     private void mp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp1ActionPerformed
@@ -903,6 +930,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         choosebtn.setEnabled(isStart);
         removebtn.setEnabled(isStart);
         billbtn.setEnabled(isStart);
+        startbtn.setEnabled(!isStart);
     }
     
     private void startbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startbtnActionPerformed
@@ -910,7 +938,6 @@ public class MainMenuForm extends javax.swing.JFrame {
             setButton(true);
             String giovao = date.format(new Date()) + " " + time.format(new Date()), tenphong = nameroomlabel.getText();
             checkinlabel.setText(giovao);
-            startbtn.setEnabled(false);
             if (checkButon != null) {
                 checkButon.setBackground(Color.green);
             }
@@ -1030,10 +1057,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     }
     
     private void pane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pane1ComponentShown
-        if (startbtn.isEnabled()) {
-            setButton(false);
-        }
-        else {
+        if (!startbtn.isEnabled()) {
             setTienPhong();
             thanhtoantxt.setText(String.valueOf(getTongTien()));
         }
@@ -1054,6 +1078,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         tongtien = tiensp + tienphong + phuthu - giamgia - tratruoc;
         return round(tongtien, -3);
     }
+
     private void billbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billbtnActionPerformed
         checkoutlabel.setText(setTienPhong());
         thanhtoantxt.setText(String.valueOf(getTongTien()));
@@ -1075,6 +1100,7 @@ public class MainMenuForm extends javax.swing.JFrame {
             spdvMap.put(String.valueOf(tablespdvadded.getValueAt(i, 1)), (int)tablespdvadded.getValueAt(i, 4));
         }
         Controller.CHITIETORDERService.insertChiTietOrder(idorder, spdvMap);
+        
     }//GEN-LAST:event_billbtnActionPerformed
 
     private void menuspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuspActionPerformed
@@ -1092,10 +1118,10 @@ public class MainMenuForm extends javax.swing.JFrame {
         rd.setVisible(true);
     }//GEN-LAST:event_qlytkmenuMousePressed
 
-    private void tabbedpaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedpaneStateChanged
-        // TODO add your handling code here:
-        System.out.println("Focus has changed");
-    }//GEN-LAST:event_tabbedpaneStateChanged
+    private void reopenitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reopenitemActionPerformed
+        ReopenRoomForm f = new ReopenRoomForm();
+        f.setVisible(true);
+    }//GEN-LAST:event_reopenitemActionPerformed
 
     /**
      * @param args the command line arguments

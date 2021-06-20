@@ -18,4 +18,12 @@ public class CHITIETPHONGService {
     public static List<Object[]> getBillbyDate(String datefrom, String dateto) {
         return Model.CHITIETPHONGModel.getBillbyDate(datefrom, dateto);
     }
+    
+    public static Object[] displayDetailPhong(String tenphong) {
+        return Model.CHITIETPHONGModel.displayDetailPhong(tenphong);
+    }
+    
+    public static List<Object[]> displayDetailOrder(String tenphong) {
+        return Model.CHITIETPHONGModel.displayDetailOrder(tenphong);
+    }
 }

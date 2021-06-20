@@ -51,8 +51,7 @@ public class PHONGModel {
         try {
             Connection conn = getJDBCConnection();
             Statement stmt = conn.createStatement();
-            String query = "SELECT TenPhong FROM PHONG WHERE ID_PHONG IN (SELECT DISTINCT ID_Phong FROM CHITIETPHONG "
-                    + "WHERE GioVao > '" + today + " 00:00:00')";
+            String query = "SELECT DISTINCT TenPhong FROM PHONG JOIN CHITIETPHONG ON PHONG.ID_Phong = CHITIETPHONG.ID_Phong WHERE CHITIETPHONG.GioVao > '" + today + " 00:00:00'";
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 namerList.add(rs.getString("TenPhong"));
