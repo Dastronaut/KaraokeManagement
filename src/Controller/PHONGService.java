@@ -52,5 +52,11 @@ public class PHONGService {
         return Model.PHONGModel.getRecentRoom(today);
     }
     
+    public static List<String> getEmptyRoom() {
+        return Model.PHONGModel.getEmptyRoom();
+    }
     
+    public static void switchRoomButton(String phongchuyen, String phongdich, String giovao) {
+        Model.PHONGModel.switchRoomButton(phongchuyen, phongdich, giovao);
+    }
 }

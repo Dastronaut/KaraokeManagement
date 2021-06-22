@@ -4,7 +4,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
-      <Point value="[850, 150]"/>
+      <Point value="[1050, 150]"/>
     </Property>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[448, 309]"/>
@@ -61,13 +61,20 @@
                           <Component id="btn3" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
                           <Component id="btn9" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="dongbtn" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="thembtn1" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="xoabtn" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="thembtn1" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="xoabtn" min="-2" pref="100" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="dongbtn" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
@@ -102,7 +109,8 @@
                   <Component id="btn6" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="xoabtn" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btn7" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -112,12 +120,9 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btn0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                      <Component id="dongbtn" min="-2" pref="115" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="dongbtn" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

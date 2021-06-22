@@ -51,7 +51,7 @@ public class LocSanPham extends javax.swing.JFrame {
         btnsearch = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(500, 200));
+        setLocation(new java.awt.Point(1050, 150));
 
         buttonGroup1.add(cboxdate);
         cboxdate.setText("Theo ngày: ");
@@ -190,38 +190,41 @@ public class LocSanPham extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btncloseActionPerformed
 
-    private void SearchbyDate() {
+    private void SearchbyDate(DefaultTableModel tableModel) {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String timefrom = df.format(datechoosefrom.getDate()) + " " + String.valueOf(cbbhourfrom.getSelectedItem()) + ":00:00",
                 timeto = df.format(datechooseto.getDate()) + " " + String.valueOf(cbbhourto.getSelectedItem()) + ":00:00";
-        DefaultTableModel tableModel = (DefaultTableModel)MainMenuForm.tablesold.getModel();
-        tableModel.getDataVector().removeAllElements();
-        tableModel.fireTableDataChanged();
         for (Object[] sanpham:Controller.CHITIETORDERService.getSPbyDate(timefrom, timeto)) {
             tableModel.addRow(sanpham);
         }
-        int tong = 0;
-        for (int i = 0; i < tableModel.getRowCount(); i++) {
-            tong += Integer.valueOf(String.valueOf(tableModel.getValueAt(i, 2)));
-        }
-        tableModel.addRow(new Object[]{"Tổng", "", String.valueOf(tong)});
     }
 
-    private void SearchbyItem() {
+    private void SearchbyItem(DefaultTableModel tableModel) {
         String tensp = String.valueOf(cbbsp.getSelectedItem());
         Object[] sanpham = Controller.CHITIETORDERService.getSoldbySP(tensp);
-        DefaultTableModel tableModel = (DefaultTableModel)MainMenuForm.tablesold.getModel();
         tableModel.getDataVector().removeAllElements();
         tableModel.fireTableDataChanged();
         tableModel.addRow(sanpham);
     }
     
     private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
+        DefaultTableModel tableModel = (DefaultTableModel)MainMenuForm.tablesold.getModel();
+        tableModel.getDataVector().removeAllElements();
+        tableModel.fireTableDataChanged();
+        
         if (cboxdate.isSelected()) {
-            SearchbyDate();
+            SearchbyDate(tableModel);
         }
         if (cboxspdv.isSelected()) {
-            SearchbyItem();
+            SearchbyItem(tableModel);
+        }
+        
+        if (tableModel.getRowCount() != 0) {
+            int tong = 0;
+            for (int i = 0; i < tableModel.getRowCount(); i++) {
+                tong += Integer.valueOf(String.valueOf(tableModel.getValueAt(i, 2)));
+            }
+            tableModel.addRow(new Object[]{"Tổng", "", String.valueOf(tong)});
         }
     }//GEN-LAST:event_btnsearchActionPerformed
 

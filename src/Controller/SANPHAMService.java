@@ -11,12 +11,12 @@ public class SANPHAMService {
     public static List<SANPHAM> getAllSanPham() {
         return Model.SANPHAMModel.getAllSanPham();
     }
-    public static int setSanPham(String ten, int soluong, String donvi, int gianhap, int giaban) {
-        return Model.SANPHAMModel.setSanPham(ten, soluong, donvi, gianhap, giaban);
+    public static int setSanPham(SANPHAM sanpham) {
+        return Model.SANPHAMModel.setSanPham(sanpham);
     }
     
-    public static int updateSanPham(String tencu, String tenmoi, int soluong, String donvi, int gianhap, int giaban) {
-        return Model.SANPHAMModel.updateSanPham(tencu, tenmoi, soluong, donvi, gianhap, giaban);
+    public static int updateSanPham(SANPHAM sanpham, String tenmoi) {
+        return Model.SANPHAMModel.updateSanPham(sanpham, tenmoi);
     }
     
     public static int deleteSanPham(String tensp) {

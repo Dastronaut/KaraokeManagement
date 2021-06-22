@@ -51,7 +51,8 @@ public class PHONGModel {
         try {
             Connection conn = getJDBCConnection();
             Statement stmt = conn.createStatement();
-            String query = "SELECT DISTINCT TenPhong FROM PHONG JOIN CHITIETPHONG ON PHONG.ID_Phong = CHITIETPHONG.ID_Phong WHERE CHITIETPHONG.GioVao > '" + today + " 00:00:00'";
+            String query = "SELECT DISTINCT TenPhong FROM PHONG JOIN CHITIETPHONG ON PHONG.ID_Phong = CHITIETPHONG.ID_Phong WHERE CHITIETPHONG.GioVao > '" 
+                    + today + " 00:00:00'" + " AND PHONG.TinhTrang = true";
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 namerList.add(rs.getString("TenPhong"));
@@ -60,5 +61,47 @@ public class PHONGModel {
         } catch (SQLException e) {
         }
         return namerList;
+    }
+    
+    public static List<String> getEmptyRoom() {
+        List<String> namerList = new ArrayList<>();
+        try {
+            Connection conn = getJDBCConnection();
+            Statement stmt = conn.createStatement();
+            String query = "SELECT TenPhong FROM PHONG WHERE TinhTrang = true";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                namerList.add(rs.getString("TenPhong"));
+            }
+            stmt.close();
+        } catch (SQLException e) {
+        }
+        return namerList;
+    }
+    
+    public static void switchRoomButton(String phongchuyen, String phongdich, String giovao) {
+        try {
+            Connection conn = getJDBCConnection();
+            Statement stmt = conn.createStatement();
+            String query, idphong = "";
+            query = "SELECT ID_Phong FROM PHONG WHERE TenPhong = '" + phongchuyen + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                idphong = rs.getString("ID_Phong");
+            }
+            query = "UPDATE PHONG SET TinhTrang = true WHERE ID_Phong = '" + idphong + "'";
+            stmt.executeUpdate(query);
+            query = "SELECT ID_Phong FROM PHONG WHERE TenPhong = '" + phongdich + "'";
+            rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                idphong = rs.getString("ID_Phong");
+            }
+            query = "UPDATE PHONG SET TinhTrang = false WHERE ID_Phong = '" + idphong + "'";
+            stmt.executeUpdate(query);
+            query = "Update CHITIETPHONG SET ID_Phong = '" + idphong + "' WHERE GioVao = '" + giovao + "'";
+            stmt.executeUpdate(query);
+            stmt.close();
+        } catch (SQLException e) {
+        }
     }
 }

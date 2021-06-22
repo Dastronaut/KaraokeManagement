@@ -63,10 +63,9 @@ public class CHITIETORDERModel {
         try {
             Connection conn = getJDBCConnection();
             Statement stmt = conn.createStatement();
-            String query = "SELECT SANPHAM.TenSanPham, CHITIETORDER.SOLUONG, (SANPHAM.GiaBan*CHITIETORDER.SOLUONG) "
-                + "FROM SANPHAM INNER JOIN CHITIETORDER ON SANPHAM.ID_SanPham = CHITIETORDER.ID_SanPham "
-                + "AND CHITIETORDER.ID_Order IN (SELECT ID_Order FROM CHITIETPHONG WHERE GioVao > '" + timefrom + "' "
-                + "AND GioRa < '" + timeto + "')";
+            String query = "SELECT SANPHAM.TenSanPham, SUM(CHITIETORDER.SoLuong), SANPHAM.GiaBan*SUM(CHITIETORDER.SoLuong) "
+                    + "FROM SANPHAM JOIN CHITIETORDER ON SANPHAM.ID_SanPham = CHITIETORDER.ID_SanPham AND CHITIETORDER.ID_Order IN " 
+                    + "(SELECT ID_Order FROM CHITIETPHONG WHERE GioVao > '" + timefrom + "' AND GioRa < '" + timeto + "') group by SANPHAM.TenSanPham";
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Object[] o = new Object[]{
@@ -76,10 +75,6 @@ public class CHITIETORDERModel {
                 };    
                 spsList.add(o);
             }
-//            int tong = 0;
-//            for (Object[] sp:spsList) {
-//                tong +=
-//            }
             stmt.close();
         } catch (SQLException e) {
         }

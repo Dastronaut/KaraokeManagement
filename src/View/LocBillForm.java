@@ -5,11 +5,16 @@
  */
 package View;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -51,7 +56,7 @@ public class LocBillForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lọc bill đơn hàng");
-        setLocation(new java.awt.Point(500, 250));
+        setLocation(new java.awt.Point(1050, 150));
         setMaximumSize(new java.awt.Dimension(322, 133));
         setMinimumSize(new java.awt.Dimension(322, 133));
         setResizable(false);
@@ -179,6 +184,19 @@ public class LocBillForm extends javax.swing.JFrame {
         tableModel.fireTableDataChanged();
         for (Object[] bill:Controller.CHITIETPHONGService.getBillbyDate(timefrom, timeto)) {
             tableModel.addRow(bill);
+        }
+        if (tableModel.getRowCount() != 0) {
+            int tienphong = 0, tiendv = 0, tratruoc = 0, phuthu = 0, giamgia = 0, tongtien = 0;
+            for (int i = 0; i < tableModel.getRowCount(); i++) {
+                tiendv += (int) tableModel.getValueAt(i, 1);
+                tienphong += (int) tableModel.getValueAt(i, 2);
+                phuthu += (int) (int) tableModel.getValueAt(i, 3);
+                giamgia += (int) tableModel.getValueAt(i, 4);
+                tratruoc += (int) tableModel.getValueAt(i, 5);
+                tongtien += (int) tableModel.getValueAt(i, 6);
+            }
+            Object[] o = {"Tổng", tiendv, tienphong, phuthu, giamgia, tratruoc, tongtien};
+            tableModel.addRow(o);
         }
     }//GEN-LAST:event_btnsubmitActionPerformed
 

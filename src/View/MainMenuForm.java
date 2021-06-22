@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -16,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MainMenuForm extends javax.swing.JFrame {
     private static String user = "";
-    private  static JButton checkButon = null;
+    private static JButton checkButon = null;
     SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
     SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
     public MainMenuForm(String userString) {
@@ -106,6 +107,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         setLocation(new java.awt.Point(150, 50));
         setResizable(false);
 
+        tabbedpane.setBackground(new java.awt.Color(51, 153, 255));
         tabbedpane.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         mp3.setBackground(java.awt.Color.lightGray);
@@ -320,6 +322,11 @@ public class MainMenuForm extends javax.swing.JFrame {
         });
 
         swroombtn.setText("Chuyển phòng");
+        swroombtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                swroombtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -421,7 +428,7 @@ public class MainMenuForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "TT", "SP dịch vụ", "ĐVT", "Giá", "SL", "T. Tiền"
+                "TT", "Tên SP", "Đơn Vị", "Giá bán", "Số Lượng", "T. Tiền"
             }
         ) {
             Class[] types = new Class [] {
@@ -439,7 +446,7 @@ public class MainMenuForm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tablespdvadded.setColumnSelectionAllowed(true);
+        tablespdvadded.getTableHeader().setReorderingAllowed(false);
         tablespdvadded.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tablespdvaddedMousePressed(evt);
@@ -451,26 +458,10 @@ public class MainMenuForm extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(tablespdvadded);
-        tablespdvadded.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (tablespdvadded.getColumnModel().getColumnCount() > 0) {
-            tablespdvadded.getColumnModel().getColumn(0).setMinWidth(20);
-            tablespdvadded.getColumnModel().getColumn(0).setPreferredWidth(20);
-            tablespdvadded.getColumnModel().getColumn(0).setMaxWidth(40);
-            tablespdvadded.getColumnModel().getColumn(1).setMinWidth(70);
-            tablespdvadded.getColumnModel().getColumn(1).setPreferredWidth(80);
-            tablespdvadded.getColumnModel().getColumn(1).setMaxWidth(100);
-            tablespdvadded.getColumnModel().getColumn(2).setMinWidth(30);
-            tablespdvadded.getColumnModel().getColumn(2).setPreferredWidth(40);
-            tablespdvadded.getColumnModel().getColumn(2).setMaxWidth(60);
-            tablespdvadded.getColumnModel().getColumn(3).setMinWidth(50);
-            tablespdvadded.getColumnModel().getColumn(3).setPreferredWidth(70);
-            tablespdvadded.getColumnModel().getColumn(3).setMaxWidth(90);
-            tablespdvadded.getColumnModel().getColumn(4).setMinWidth(30);
-            tablespdvadded.getColumnModel().getColumn(4).setPreferredWidth(30);
-            tablespdvadded.getColumnModel().getColumn(4).setMaxWidth(50);
-            tablespdvadded.getColumnModel().getColumn(5).setMinWidth(50);
-            tablespdvadded.getColumnModel().getColumn(5).setPreferredWidth(80);
-            tablespdvadded.getColumnModel().getColumn(5).setMaxWidth(100);
+            tablespdvadded.getColumnModel().getColumn(0).setMinWidth(40);
+            tablespdvadded.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tablespdvadded.getColumnModel().getColumn(0).setMaxWidth(70);
         }
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 255)));
@@ -482,6 +473,9 @@ public class MainMenuForm extends javax.swing.JFrame {
         });
 
         jLabel2.setText("SP dịch vụ:");
+
+        spdvlabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        spdvlabel.setForeground(new java.awt.Color(0, 204, 51));
 
         removebtn.setText("Bỏ");
         removebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -501,35 +495,36 @@ public class MainMenuForm extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(115, 115, 115)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(82, 82, 82)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(spdvlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(spdvlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(sltxt, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
                 .addComponent(choosebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(removebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spdvlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(spdvlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(choosebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(sltxt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(removebtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(51, 51, 51))
+                .addGap(41, 41, 41))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 153, 51));
@@ -555,12 +550,10 @@ public class MainMenuForm extends javax.swing.JFrame {
             }
         });
 
-        spdvtxt.setEditable(false);
         spdvtxt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         spdvtxt.setText("0");
         spdvtxt.setEnabled(false);
 
-        tienphongtxt.setEditable(false);
         tienphongtxt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tienphongtxt.setText("0");
         tienphongtxt.setEnabled(false);
@@ -572,6 +565,8 @@ public class MainMenuForm extends javax.swing.JFrame {
         discounttxt.setText("0");
 
         thanhtoantxt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        thanhtoantxt.setText("0");
+        thanhtoantxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         thanhtoantxt.setEnabled(false);
 
         tratruoctxt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -670,6 +665,12 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         tabbedpane.addTab("Chi tiết phòng", pane1);
 
+        pane2.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                pane2ComponentShown(evt);
+            }
+        });
+
         tabledsbilll.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null}
@@ -686,6 +687,7 @@ public class MainMenuForm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabledsbilll.getTableHeader().setReorderingAllowed(false);
         pane2.setViewportView(tabledsbilll);
         if (tabledsbilll.getColumnModel().getColumnCount() > 0) {
             tabledsbilll.getColumnModel().getColumn(0).setPreferredWidth(40);
@@ -695,6 +697,12 @@ public class MainMenuForm extends javax.swing.JFrame {
         }
 
         tabbedpane.addTab("Danh sách bill", pane2);
+
+        pane3.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                pane3ComponentShown(evt);
+            }
+        });
 
         tablesold.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -744,16 +752,20 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         tabbedpane.addTab("SP dịch vụ đã bán", pane3);
 
+        navbar.setBackground(new java.awt.Color(255, 153, 0));
         navbar.setAutoscrolls(true);
         navbar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        navbar.setMargin(new java.awt.Insets(0, 10, 0, 10));
 
-        qlykaramenu.setBackground(new java.awt.Color(204, 204, 255));
+        qlykaramenu.setBackground(new java.awt.Color(255, 153, 0));
         qlykaramenu.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 204), null));
         qlykaramenu.setMnemonic('K');
         qlykaramenu.setText("Quản lý Karaoke");
         qlykaramenu.setBorderPainted(true);
         qlykaramenu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        qlykaramenu.setMargin(new java.awt.Insets(0, 10, 0, 10));
 
+        reopenitem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         reopenitem.setText("Mở lại phòng vừa đóng");
         reopenitem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -763,6 +775,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         qlykaramenu.add(reopenitem);
 
         locbillitem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        locbillitem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         locbillitem.setMnemonic('b');
         locbillitem.setText("Lọc bill đơn hàng");
         locbillitem.addActionListener(new java.awt.event.ActionListener() {
@@ -780,9 +793,10 @@ public class MainMenuForm extends javax.swing.JFrame {
         qlykhomenu.setText("Quản lý Kho hàng");
         qlykhomenu.setBorderPainted(true);
         qlykhomenu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        qlykhomenu.setMargin(new java.awt.Insets(0, 8, 0, 8));
+        qlykhomenu.setMargin(new java.awt.Insets(0, 10, 0, 10));
 
         menusp.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        menusp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menusp.setText("SP Dịch vụ");
         menusp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -792,6 +806,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         qlykhomenu.add(menusp);
 
         spdv.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
+        spdv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         spdv.setText("Lọc SP Dịch vụ");
         spdv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -808,7 +823,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         qlytkmenu.setText("Quản lý Tài khoản");
         qlytkmenu.setBorderPainted(true);
         qlytkmenu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        qlytkmenu.setMargin(new java.awt.Insets(0, 8, 0, 8));
+        qlytkmenu.setMargin(new java.awt.Insets(0, 10, 0, 10));
         qlytkmenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 qlytkmenuMousePressed(evt);
@@ -821,9 +836,10 @@ public class MainMenuForm extends javax.swing.JFrame {
         settingmenu.setText("Cài Đặt");
         settingmenu.setBorderPainted(true);
         settingmenu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        settingmenu.setMargin(new java.awt.Insets(0, 8, 0, 8));
+        settingmenu.setMargin(new java.awt.Insets(0, 10, 0, 10));
 
         settingroomitm.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        settingroomitm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         settingroomitm.setText("Cài đặt giá phòng");
         settingroomitm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -840,7 +856,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         thoatmenu.setText("Thoát");
         thoatmenu.setBorderPainted(true);
         thoatmenu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        thoatmenu.setMargin(new java.awt.Insets(0, 8, 0, 8));
+        thoatmenu.setMargin(new java.awt.Insets(0, 10, 0, 10));
         thoatmenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 thoatmenuMousePressed(evt);
@@ -870,12 +886,48 @@ public class MainMenuForm extends javax.swing.JFrame {
         f.setVisible(true);
     }//GEN-LAST:event_spdvActionPerformed
 
-    private void roomDetailSelect(String roomname, JButton f) {
+    public static void displayRoom(String tenphong, JButton f) {
+        setButton(true);
         checkButon = f;
+        checkButon.setBackground(Color.green);
+        // hiện phòng
+        Object o[] = Controller.CHITIETPHONGService.displayDetailPhong(tenphong);
+        nameroomlabel.setText(tenphong);
+        String giovao = String.valueOf(o[0]);
+        checkinlabel.setText(giovao);
+        checkoutlabel.setText("0 - 0");
+        spdvtxt.setText(String.valueOf(o[3]));
+        tienphongtxt.setText(String.valueOf(o[2]));
+        phuthutxt.setText(String.valueOf(o[4]));
+        discounttxt.setText(String.valueOf(o[5]));
+        // hiện order
+        List<Object[]> listOrder = Controller.CHITIETPHONGService.displayDetailOrder(tenphong);
+        if (listOrder != null) {
+            DefaultTableModel tableadd = (DefaultTableModel)tablespdvadded.getModel();
+            tableadd.getDataVector().removeAllElements();
+            tableadd.fireTableDataChanged();
+            for (Object[] order:listOrder) {
+                int tongtien = ((int) order[2])*((int) order[3]);
+                Object orderrow[] = {tablespdvadded.getRowCount()+1, String.valueOf(order[0]), String.valueOf(order[1]),(int) order[2],(int) order[3], tongtien};
+                tableadd.addRow(orderrow);
+            }
+        }
+        // hiện sản phẩm
+        DefaultTableModel tableModel = (DefaultTableModel)tablespdv.getModel();
+        tableModel.getDataVector().removeAllElements();
+        tableModel.fireTableDataChanged();
+        List<SANPHAM> sps = Controller.SANPHAMService.getAllSanPham();
+        for (SANPHAM sanpham:sps) {
+            Object sp[] = {sanpham.getTenSanPham(), sanpham.getGiaBan()};
+            tableModel.addRow(sp);
+        } 
+    }
+    
+    private void roomDetailSelect(String roomname, JButton f) {
         tabbedpane.setSelectedIndex(1);
-        userlabel.setText(user);
         nameroomlabel.setText(roomname);
         if (Controller.PHONGService.checkRoomStatus(roomname) == true) {
+            checkButon = f;
             checkinlabel.setText("0 - 0");
             checkoutlabel.setText("0 - 0");
             spdvtxt.setText("0");
@@ -888,30 +940,7 @@ public class MainMenuForm extends javax.swing.JFrame {
             tableModel.fireTableDataChanged();
         }
         else {
-            // Lấy tên phòng để hiện ra detail phòng
-            // Hiện phòng
-            setButton(true);
-            Object o[] = Controller.CHITIETPHONGService.displayDetailPhong(roomname);
-            String giovao = String.valueOf(o[0]), giora = String.valueOf(o[1]);
-            checkinlabel.setText(giovao);
-            if (giovao.equals(giora))
-                checkoutlabel.setText("0 - 0");
-            else
-                checkoutlabel.setText(giora);
-            spdvtxt.setText(String.valueOf(o[3]));
-            tienphongtxt.setText(String.valueOf(o[2]));
-            phuthutxt.setText(String.valueOf(o[4]));
-            discounttxt.setText(String.valueOf(o[5]));
-            // hiện order
-            List<Object[]> listOrder = Controller.CHITIETPHONGService.displayDetailOrder(roomname);
-            DefaultTableModel tableadd = (DefaultTableModel)tablespdvadded.getModel();
-            tableadd.getDataVector().removeAllElements();
-            tableadd.fireTableDataChanged();
-            for (Object[] order:listOrder) {
-                int tongtien = ((int) order[2])*((int) order[3]);
-                Object orderrow[] = {tablespdvadded.getRowCount()+1, String.valueOf(order[0]), String.valueOf(order[1]),(int) order[2],(int) order[3], tongtien};
-                tableadd.addRow(orderrow);
-            }
+            displayRoom(roomname, f);
         }
     }
     private void mp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp1ActionPerformed
@@ -924,7 +953,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         roomDetailSelect(roomname, mp2);
     }//GEN-LAST:event_mp2ActionPerformed
 
-    private void setButton(boolean isStart) {
+    private static void setButton(boolean isStart) {
         endroombtn.setEnabled(isStart);
         swroombtn.setEnabled(isStart);
         choosebtn.setEnabled(isStart);
@@ -956,7 +985,11 @@ public class MainMenuForm extends javax.swing.JFrame {
     private void endroombtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endroombtnActionPerformed
         int n = JOptionPane.showConfirmDialog(this,"Phòng sẽ không được lưu?", "Hủy phòng", JOptionPane.YES_NO_OPTION);
         if (n == 0) {
-            nameroomlabel.setText("");
+            Controller.CHITIETPHONGService.endRoomButton(nameroomlabel.getText(), checkinlabel.getText());
+            setButton(false);
+            DefaultTableModel tableModel = (DefaultTableModel)tablespdvadded.getModel();
+            tableModel.getDataVector().removeAllElements();
+            tableModel.fireTableDataChanged();
             checkinlabel.setText("0 - 0");
             checkoutlabel.setText("0 - 0");
             checkButon.setBackground(Color.lightGray);
@@ -1046,6 +1079,7 @@ public class MainMenuForm extends javax.swing.JFrame {
             spdvtxt.setText("0");
         }
     }
+    
     private void tablespdvaddedComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tablespdvaddedComponentResized
         reloadTienDV();
     }//GEN-LAST:event_tablespdvaddedComponentResized
@@ -1057,6 +1091,12 @@ public class MainMenuForm extends javax.swing.JFrame {
     }
     
     private void pane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pane1ComponentShown
+        JTableHeader h1 = tablespdvadded.getTableHeader(),
+                h2 = tablespdv.getTableHeader();
+        h1.setBackground(new Color(0,128,128));
+        h1.setForeground(Color.white);
+        h2.setBackground(new Color(0,128,128));
+        h2.setForeground(Color.white);
         if (!startbtn.isEnabled()) {
             setTienPhong();
             thanhtoantxt.setText(String.valueOf(getTongTien()));
@@ -1100,7 +1140,6 @@ public class MainMenuForm extends javax.swing.JFrame {
             spdvMap.put(String.valueOf(tablespdvadded.getValueAt(i, 1)), (int)tablespdvadded.getValueAt(i, 4));
         }
         Controller.CHITIETORDERService.insertChiTietOrder(idorder, spdvMap);
-        
     }//GEN-LAST:event_billbtnActionPerformed
 
     private void menuspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuspActionPerformed
@@ -1119,9 +1158,26 @@ public class MainMenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_qlytkmenuMousePressed
 
     private void reopenitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reopenitemActionPerformed
-        ReopenRoomForm f = new ReopenRoomForm();
+        ChangeRoomForm f = new ChangeRoomForm(true);
         f.setVisible(true);
     }//GEN-LAST:event_reopenitemActionPerformed
+
+    private void pane2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pane2ComponentShown
+        JTableHeader h1 = tabledsbilll.getTableHeader();
+        h1.setBackground(new Color(0,128,128));
+        h1.setForeground(Color.white);
+    }//GEN-LAST:event_pane2ComponentShown
+
+    private void pane3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pane3ComponentShown
+        JTableHeader h1 = tablesold.getTableHeader();
+        h1.setBackground(new Color(0,128,128));
+        h1.setForeground(Color.white);
+    }//GEN-LAST:event_pane3ComponentShown
+
+    private void swroombtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swroombtnActionPerformed
+        ChangeRoomForm f = new ChangeRoomForm(false);
+        f.setVisible(true);
+    }//GEN-LAST:event_swroombtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1135,12 +1191,12 @@ public class MainMenuForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton billbtn;
-    private javax.swing.JLabel checkinlabel;
-    private javax.swing.JLabel checkoutlabel;
-    private javax.swing.JButton choosebtn;
-    private javax.swing.JTextField discounttxt;
-    private javax.swing.JButton endroombtn;
+    private static javax.swing.JButton billbtn;
+    public static javax.swing.JLabel checkinlabel;
+    private static javax.swing.JLabel checkoutlabel;
+    private static javax.swing.JButton choosebtn;
+    private static javax.swing.JTextField discounttxt;
+    private static javax.swing.JButton endroombtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1161,7 +1217,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JMenuItem locbillitem;
     private javax.swing.JMenuItem menusp;
-    private javax.swing.JButton mp1;
+    public static javax.swing.JButton mp1;
     private javax.swing.JButton mp10;
     private javax.swing.JButton mp11;
     private javax.swing.JButton mp12;
@@ -1169,49 +1225,43 @@ public class MainMenuForm extends javax.swing.JFrame {
     private javax.swing.JButton mp14;
     private javax.swing.JButton mp15;
     private javax.swing.JButton mp16;
-    private javax.swing.JButton mp2;
-    private javax.swing.JButton mp3;
-    private javax.swing.JButton mp4;
-    private javax.swing.JButton mp5;
-    private javax.swing.JButton mp6;
-    private javax.swing.JButton mp7;
-    private javax.swing.JButton mp8;
-    private javax.swing.JButton mp9;
-    private javax.swing.JLabel nameroomlabel;
+    public static javax.swing.JButton mp2;
+    public static javax.swing.JButton mp3;
+    public static javax.swing.JButton mp4;
+    public static javax.swing.JButton mp5;
+    public static javax.swing.JButton mp6;
+    public static javax.swing.JButton mp7;
+    public static javax.swing.JButton mp8;
+    public static javax.swing.JButton mp9;
+    public static javax.swing.JLabel nameroomlabel;
     private javax.swing.JMenuBar navbar;
     private javax.swing.JPanel pane0;
     public static javax.swing.JPanel pane1;
     private javax.swing.JScrollPane pane2;
     private javax.swing.JPanel pane3;
-    private javax.swing.JTextField phuthutxt;
+    private static javax.swing.JTextField phuthutxt;
     private javax.swing.JMenu qlykaramenu;
     private javax.swing.JMenu qlykhomenu;
     private javax.swing.JMenu qlytkmenu;
-    private javax.swing.JButton removebtn;
+    private static javax.swing.JButton removebtn;
     private javax.swing.JMenuItem reopenitem;
     private javax.swing.JMenu settingmenu;
     private javax.swing.JMenuItem settingroomitm;
     public static javax.swing.JTextField sltxt;
     private javax.swing.JMenuItem spdv;
     private javax.swing.JLabel spdvlabel;
-    private javax.swing.JTextField spdvtxt;
-    private javax.swing.JButton startbtn;
-    private javax.swing.JButton swroombtn;
-    private javax.swing.JTabbedPane tabbedpane;
+    private static javax.swing.JTextField spdvtxt;
+    private static javax.swing.JButton startbtn;
+    private static javax.swing.JButton swroombtn;
+    public static javax.swing.JTabbedPane tabbedpane;
     public static javax.swing.JTable tabledsbilll;
     public static javax.swing.JTable tablesold;
-    private javax.swing.JTable tablespdv;
+    public static javax.swing.JTable tablespdv;
     public static javax.swing.JTable tablespdvadded;
-    private javax.swing.JTextField thanhtoantxt;
+    private static javax.swing.JTextField thanhtoantxt;
     private javax.swing.JMenu thoatmenu;
-    private javax.swing.JTextField tienphongtxt;
-    private javax.swing.JTextField tratruoctxt;
+    private static javax.swing.JTextField tienphongtxt;
+    private static javax.swing.JTextField tratruoctxt;
     private javax.swing.JLabel userlabel;
     // End of variables declaration//GEN-END:variables
 }
-
-
-/*
-    - Sửa lại đoạn 888
-    - Các hàm gọi Model phải tạo Constructor trước
-*/

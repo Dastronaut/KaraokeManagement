@@ -24,6 +24,13 @@ public class SANPHAM {
         this.GiaBan = GiaBan;
     }
 
+    public SANPHAM(String TenSanPham, String DonVi, int SoLuong, int GiaNhap, int GiaBan) {
+        this.TenSanPham = TenSanPham;
+        this.DonVi = DonVi;
+        this.SoLuong = SoLuong;
+        this.GiaNhap = GiaNhap;
+        this.GiaBan = GiaBan;
+    }
     
     public String getDonVi() {
         return DonVi;

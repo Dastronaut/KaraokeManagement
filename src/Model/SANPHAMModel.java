@@ -37,14 +37,14 @@ public class SANPHAMModel {
         return sps;
     }
     
-    public static int setSanPham(String ten, int soluong, String donvi, int gianhap, int giaban) {
+    public static int setSanPham(SANPHAM sanpham) {
         int rs = 0;
         try {
             Connection conn = getJDBCConnection();
             Statement stmt = conn.createStatement();
             
-            String query = "INSERT INTO SANPHAM(TenSanPham, DonVi, SoLuong, GiaNhap, GiaBan) VALUES ('" + ten + "', '" 
-                    + donvi + "', " + soluong + ", " + gianhap + ", " + giaban + ")";
+            String query = "INSERT INTO SANPHAM(TenSanPham, DonVi, SoLuong, GiaNhap, GiaBan) VALUES ('" + sanpham.getTenSanPham() + "', '" 
+                    + sanpham.getDonVi() + "', " + sanpham.getSoLuong() + ", " + sanpham.getGiaNhap() + ", " + sanpham.getGiaBan()+ ")";
             rs = stmt.executeUpdate(query);
             stmt.close();
         } catch (SQLException e) {
@@ -52,14 +52,15 @@ public class SANPHAMModel {
         return rs;
     }
     
-    public static int updateSanPham(String tencu, String tenmoi, int soluong, String donvi, int gianhap, int giaban) {
+    public static int updateSanPham(SANPHAM sanpham, String tenmoi) {
         int rs = 0;
         try {
             Connection conn = getJDBCConnection();
             Statement stmt = conn.createStatement();
             
             String query = "UPDATE karaokemanagement.SANPHAM SET TenSanPham = '" + tenmoi + "', DonVi = '"
-                    + donvi + "', SoLuong = " + soluong + ", GiaNhap = " + gianhap + ", GiaBan = " + giaban + " WHERE TenSanPham = '" + tencu + "'";
+                    + sanpham.getDonVi() + "', SoLuong = " + sanpham.getSoLuong() + ", GiaNhap = " + sanpham.getGiaNhap() + ", GiaBan = " 
+                    + sanpham.getGiaBan() + " WHERE TenSanPham = '" + sanpham.getTenSanPham() + "'";
             rs = stmt.executeUpdate(query);
             stmt.close();
         } catch (SQLException e) {

@@ -1,9 +1,11 @@
 package View;
 
 import Model.DataModel.PHONG;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -18,8 +20,7 @@ public class SetPhongForm extends javax.swing.JFrame {
     }
 
     private void LoadData() {
-        String giaphong = "";
-        String pString[];
+        String giaphong;
         List<PHONG> ps = Controller.PHONGService.getAllPhongs();
         DefaultTableModel tm = (DefaultTableModel)banggiaphong.getModel();
         tm.getDataVector().removeAllElements();
@@ -57,6 +58,7 @@ public class SetPhongForm extends javax.swing.JFrame {
         phongtocbb = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 200));
         setMaximumSize(new java.awt.Dimension(595, 324));
         setMinimumSize(new java.awt.Dimension(595, 324));
         setResizable(false);
@@ -86,6 +88,8 @@ public class SetPhongForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(banggiaphong);
 
+        jPanel1.setBackground(new java.awt.Color(255, 153, 51));
+
         jLabel1.setText("Phòng");
 
         jLabel2.setText("Giá Phòng");
@@ -96,6 +100,7 @@ public class SetPhongForm extends javax.swing.JFrame {
 
         jLabel5.setText("Giá Phòng");
 
+        submitbtn1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         submitbtn1.setForeground(new java.awt.Color(51, 51, 255));
         submitbtn1.setText("Thay đổi");
         submitbtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -104,9 +109,11 @@ public class SetPhongForm extends javax.swing.JFrame {
             }
         });
 
+        submitbtn2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         submitbtn2.setForeground(new java.awt.Color(0, 0, 255));
         submitbtn2.setText("Thay đổi");
 
+        closebtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         closebtn.setForeground(new java.awt.Color(255, 51, 51));
         closebtn.setText("Đóng");
         closebtn.addActionListener(new java.awt.event.ActionListener() {

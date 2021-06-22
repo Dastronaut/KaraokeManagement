@@ -26,4 +26,8 @@ public class CHITIETPHONGService {
     public static List<Object[]> displayDetailOrder(String tenphong) {
         return Model.CHITIETPHONGModel.displayDetailOrder(tenphong);
     }
+    
+    public static void endRoomButton(String tenphong, String giovao) {
+        Model.CHITIETPHONGModel.endRoomButton(tenphong, giovao);
+    }
 }

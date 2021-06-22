@@ -48,7 +48,7 @@ public class ThemSanPhamForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quản lý Menu Sản phẩm");
-        setLocation(new java.awt.Point(500, 200));
+        setLocation(new java.awt.Point(300, 200));
         setMaximumSize(new java.awt.Dimension(814, 331));
         setMinimumSize(new java.awt.Dimension(814, 331));
         setResizable(false);
@@ -87,6 +87,8 @@ public class ThemSanPhamForm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablespthem);
         tablespthem.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
+        jPanel1.setBackground(new java.awt.Color(255, 153, 51));
+
         jLabel4.setText("Giá nhập: ");
 
         jLabel5.setText("Giá bán: ");
@@ -121,7 +123,7 @@ public class ThemSanPhamForm extends javax.swing.JFrame {
                             .addComponent(soluongtxt)
                             .addComponent(giabantxt)
                             .addComponent(gianhaptxt, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 17, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -148,7 +150,7 @@ public class ThemSanPhamForm extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(giabantxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(filllabel, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addComponent(filllabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -243,15 +245,13 @@ public class ThemSanPhamForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -259,7 +259,7 @@ public class ThemSanPhamForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -319,7 +319,8 @@ public class ThemSanPhamForm extends javax.swing.JFrame {
             int soluong = Integer.valueOf(soluongtxt.getText()),
                 giaban = Integer.valueOf(giabantxt.getText()),
                 gianhap = Integer.valueOf(gianhaptxt.getText());
-            if (!Controller.SANPHAMService.checkExistedSP(tensp) && Controller.SANPHAMService.setSanPham(tensp, soluong, donvi, gianhap, giaban) != 0) {
+            SANPHAM sp = new SANPHAM(tensp, donvi, soluong, gianhap, giaban);
+            if (!Controller.SANPHAMService.checkExistedSP(tensp) && Controller.SANPHAMService.setSanPham(sp) != 0) {
                 JOptionPane.showMessageDialog(this, "Thêm sản phẩm thành công.");
             }
             else {
@@ -337,7 +338,8 @@ public class ThemSanPhamForm extends javax.swing.JFrame {
             int soluong = Integer.valueOf(soluongtxt.getText()),
                 giaban = Integer.valueOf(giabantxt.getText()),
                 gianhap = Integer.valueOf(gianhaptxt.getText());
-            if (Controller.SANPHAMService.updateSanPham(TenSanPham, tenmoi, soluong, donvi, gianhap, giaban) != 0) {
+            SANPHAM sp = new SANPHAM(TenSanPham, donvi, soluong, gianhap, giaban);
+            if (Controller.SANPHAMService.updateSanPham(sp, tenmoi) != 0) {
                 JOptionPane.showMessageDialog(this, "Sửa sản phẩm thành công.");
             }
             resetText();

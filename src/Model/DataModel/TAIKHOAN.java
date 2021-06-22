@@ -1,5 +1,4 @@
 package Model.DataModel;
-import org.mindrot.jbcrypt.BCrypt;
 /**
  *
  * @author Trần Kim Tiến Đạt

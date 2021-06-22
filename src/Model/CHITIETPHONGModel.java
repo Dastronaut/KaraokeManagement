@@ -41,7 +41,7 @@ public class CHITIETPHONGModel {
             Statement stmt = conn.createStatement();
             String idphong = "", query;
             // Tìm ID_Phong theo Tên phòng
-            query = "SELECT * FROM karaokemanagement.PHONG WHERE TenPhong = '" + tenphong + "'";
+            query = "SELECT ID_Phong FROM karaokemanagement.PHONG WHERE TenPhong = '" + tenphong + "'";
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 idphong = rs.getString("ID_Phong");
@@ -139,8 +139,8 @@ public class CHITIETPHONGModel {
             Statement stmt = conn.createStatement();
             int idorder = 0;
             String query;
-            query = "SELECT CTP.ID_Order from CHITIETPHONG AS CTP LEFT JOIN PHONG AS P ON CTP.ID_PHONG = P.ID_PHONG WHERE P.TENPHONG = '"
-                    + tenphong + "' and date(ctp.giovao) = current_date() order by ctp.id_order desc limit 1";
+            query = "SELECT CTP.ID_Order from CHITIETPHONG AS CTP LEFT JOIN PHONG AS P ON CTP.ID_PHONG = P.ID_PHONG WHERE P.TenPhong = '"
+                    + tenphong + "' and date(ctp.giovao) = current_date() order by ctp.ID_Order desc limit 1";
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 idorder = rs.getInt("ID_Order");
@@ -162,5 +162,25 @@ public class CHITIETPHONGModel {
         } catch (SQLException e) {
         }
         return listOrder;
+    }
+    
+    public static void endRoomButton(String tenphong, String giovao) {
+        try {
+            Connection conn = getJDBCConnection();
+            Statement stmt = conn.createStatement();
+            String idorder = "", idphong = "", query;
+            query = "SELECT CHITIETPHONG.ID_Order, PHONG.ID_Phong FROM CHITIETPHONG JOIN PHONG ON CHITIETPHONG.ID_Phong = PHONG.ID_Phong "
+                    + "WHERE PHONG.TinhTrang = false AND CHITIETPHONG.GioVao = '" + giovao + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                idorder = rs.getString("ID_Order");
+                idphong = rs.getString("ID_Phong");
+            }
+            query = "DELETE FROM CHITIETPHONG WHERE ID_Order = '" + idorder + "'"; 
+            stmt.executeUpdate(query);
+            query = "UPDATE PHONG SET TinhTrang = true WHERE ID_Phong = '" + idphong + "'";
+            stmt.close();
+        } catch (SQLException e) {
+        }
     }
 }

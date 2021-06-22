@@ -44,6 +44,9 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Register Details");
+        setLocation(new java.awt.Point(1050, 150));
+
+        jPanel1.setBackground(new java.awt.Color(255, 153, 51));
 
         jLabel1.setText("Tên");
 
@@ -164,6 +167,8 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        btnadd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnadd.setForeground(new java.awt.Color(0, 204, 0));
         btnadd.setText("Add");
         btnadd.setName("btnAdd"); // NOI18N
         btnadd.addActionListener(new java.awt.event.ActionListener() {
@@ -172,6 +177,8 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
             }
         });
 
+        btnedit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnedit.setForeground(new java.awt.Color(0, 0, 204));
         btnedit.setText("Edit");
         btnedit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,6 +186,8 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
             }
         });
 
+        btndel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btndel.setForeground(new java.awt.Color(255, 0, 0));
         btndel.setText("Delete");
         btndel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,6 +195,8 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
             }
         });
 
+        btnclose.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnclose.setForeground(new java.awt.Color(255, 0, 0));
         btnclose.setText("Close");
         btnclose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
