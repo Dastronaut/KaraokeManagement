@@ -2,10 +2,15 @@ package View;
 
 import Model.DataModel.SANPHAM;
 import java.awt.Color;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +25,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     private static JButton checkButon = null;
     SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
     SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat timep = new SimpleDateFormat("HH:mm");
     public MainMenuForm(String userString) {
         user = userString;
         initComponents();
@@ -795,7 +801,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         qlykhomenu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         qlykhomenu.setMargin(new java.awt.Insets(0, 10, 0, 10));
 
-        menusp.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        menusp.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         menusp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         menusp.setText("SP Dịch vụ");
         menusp.addActionListener(new java.awt.event.ActionListener() {
@@ -805,7 +811,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         });
         qlykhomenu.add(menusp);
 
-        spdv.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
+        spdv.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         spdv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         spdv.setText("Lọc SP Dịch vụ");
         spdv.addActionListener(new java.awt.event.ActionListener() {
@@ -838,7 +844,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         settingmenu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         settingmenu.setMargin(new java.awt.Insets(0, 10, 0, 10));
 
-        settingroomitm.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        settingroomitm.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
         settingroomitm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         settingroomitm.setText("Cài đặt giá phòng");
         settingroomitm.addActionListener(new java.awt.event.ActionListener() {
@@ -1120,26 +1126,46 @@ public class MainMenuForm extends javax.swing.JFrame {
     }
 
     private void billbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billbtnActionPerformed
-        checkoutlabel.setText(setTienPhong());
-        thanhtoantxt.setText(String.valueOf(getTongTien()));
-        setButton(false);
-        checkButon.setBackground(Color.lightGray);
-        // Insert value vào ChiTietPhong
         String giora = date.format(new Date()) + " " + time.format(new Date()),
-                tenphong = nameroomlabel.getText(),
-                giovao = checkinlabel.getText();
+            tenphong = nameroomlabel.getText(),
+            giovao = checkinlabel.getText(),
+                giophutvao = "",
+                giophutra = "";
+        try {
+            giophutra = timep.format(new Date());
+            giophutvao = timep.format(timep.parse(giovao.substring(11, 16)));
+        } catch (ParseException ex) {
+        }
         int tiengio = round(Math.round(Float.valueOf(tienphongtxt.getText())), -3),
             tiendv = Integer.valueOf(spdvtxt.getText()),
             phuthu = Integer.valueOf(phuthutxt.getText()),
             giamgia = Integer.valueOf(discounttxt.getText()),
             tratruoc = Integer.valueOf(tratruoctxt.getText()),
+            tongtien = getTongTien(),
             idorder = Controller.CHITIETPHONGService.updateChiTietPhong(tenphong, true, giovao, giora, tiengio, tiendv, phuthu, giamgia, tratruoc);
-        // Insert value vao CHITIETORDER
         HashMap<String, Integer> spdvMap = new HashMap<>();
+        List<Object[]> listorder = new ArrayList<>();
+        checkoutlabel.setText(setTienPhong());
+        thanhtoantxt.setText(String.valueOf(tongtien));
+        setButton(false);
+        checkButon.setBackground(Color.lightGray);
         for (int i = 0; i < tablespdvadded.getRowCount(); i++) {
             spdvMap.put(String.valueOf(tablespdvadded.getValueAt(i, 1)), (int)tablespdvadded.getValueAt(i, 4));
         }
         Controller.CHITIETORDERService.insertChiTietOrder(idorder, spdvMap);
+        
+        // In bill đơn hàng
+        for (int i = 0; i < tablespdvadded.getRowCount(); i++) {
+            Object[] order = {
+                tablespdvadded.getValueAt(i, 1),
+                tablespdvadded.getValueAt(i, 3),
+                tablespdvadded.getValueAt(i, 4),
+                tablespdvadded.getValueAt(i, 5),
+            };
+            listorder.add(order);
+        }
+        BillPrinterForm f = new BillPrinterForm(tenphong, giophutvao, giophutra, tiengio, tongtien, listorder);
+        f.setVisible(true);
     }//GEN-LAST:event_billbtnActionPerformed
 
     private void menuspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuspActionPerformed
@@ -1153,7 +1179,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_locbillitemActionPerformed
 
     private void qlytkmenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qlytkmenuMousePressed
-        RegisterDetailsForm rd = new RegisterDetailsForm();
+        RegisterDetailsForm rd = new RegisterDetailsForm(true);
         rd.setVisible(true);
     }//GEN-LAST:event_qlytkmenuMousePressed
 

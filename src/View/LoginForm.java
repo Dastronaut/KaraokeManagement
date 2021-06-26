@@ -175,7 +175,7 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_resetbtnActionPerformed
 
     private void registerlabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerlabelMouseClicked
-        RegisterDetailsForm f = new RegisterDetailsForm();
+        RegisterDetailsForm f = new RegisterDetailsForm(false);
         f.setVisible(true);
     }//GEN-LAST:event_registerlabelMouseClicked
 

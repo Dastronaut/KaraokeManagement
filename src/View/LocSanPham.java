@@ -51,7 +51,10 @@ public class LocSanPham extends javax.swing.JFrame {
         btnsearch = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(1050, 150));
+        setTitle("Lọc Sản Phẩm Đã Bán");
+        setLocation(new java.awt.Point(950, 150));
+        setMaximumSize(new java.awt.Dimension(487, 264));
+        setMinimumSize(new java.awt.Dimension(487, 264));
 
         buttonGroup1.add(cboxdate);
         cboxdate.setText("Theo ngày: ");

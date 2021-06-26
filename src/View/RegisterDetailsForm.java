@@ -11,8 +11,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class RegisterDetailsForm extends javax.swing.JFrame {
 
-    public RegisterDetailsForm() {
+    private static boolean isAdmin = true;
+    public RegisterDetailsForm(boolean isadmin) {
         initComponents();
+        isAdmin = isadmin;
+        if (!isAdmin) {
+            btnedit.setEnabled(false);
+            btndel.setEnabled(false);
+        }
         loadTableTaiKhoan();
     }
     @SuppressWarnings("unchecked")
@@ -44,7 +50,7 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Register Details");
-        setLocation(new java.awt.Point(1050, 150));
+        setLocation(new java.awt.Point(800, 150));
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
 
@@ -398,7 +404,7 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegisterDetailsForm().setVisible(true);
+                new RegisterDetailsForm(isAdmin).setVisible(true);
             }
         });
     }

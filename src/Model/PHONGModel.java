@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +33,39 @@ public class PHONGModel {
         return ps;
     }
     
+    public static boolean checkRoomStatus(String tenphong) {
+        List<PHONG> ps = getAllPhongs();
+        for (PHONG phong:ps) {
+            if (phong.getTenPhong().equals(tenphong)) {
+                return phong.isTinhTrang();
+            }
+        }
+        return false;
+    }
+    
+    private static float toHours(String s) {
+        String[] hourMin = s.split(":");
+        int hour = Integer.parseInt(hourMin[0]);
+        int mins = Integer.parseInt(hourMin[1]);
+        float mintohour = mins / 60.0f;
+        return (hour + mintohour);
+    }
+    
+    public static float getTienPhong(String tenphong, String giovao, String giora) {
+        float giodung = 0;
+        int giaphong = 0;
+        giovao = giovao.substring(11, 16);
+        List<PHONG> ps = getAllPhongs();
+        for (PHONG phong:ps) {
+            if (phong.getTenPhong().equals(tenphong)) {
+                giaphong = phong.getGiaPhong();
+                break;
+            }
+        }
+        giodung = (toHours(giora)-toHours(giovao))*giaphong;
+        return giodung;
+    }
+    
     public static void setGiaPhong(String tenPhong, int giaphong) {
         try {
             Connection conn = getJDBCConnection();
@@ -46,6 +78,17 @@ public class PHONGModel {
         }
     }
     
+    public static int getGiaPhong(String tenphong) {
+        List<PHONG> ps = getAllPhongs();
+        int giaphong = 0;
+        for (PHONG phong:ps) {
+            if (phong.getTenPhong().equals(tenphong)) {
+                giaphong = phong.getGiaPhong();
+                break;
+            }
+        }
+        return giaphong;
+    }
     public static List<String> getRecentRoom(String today) {
         List<String> namerList = new ArrayList<>();
         try {
