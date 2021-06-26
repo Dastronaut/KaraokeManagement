@@ -3,8 +3,6 @@ package View;
  *
  * @author Trần Kim Tiến Đạt
  */
-import Controller.TAIKHOANService;
-
 public class LoginForm extends javax.swing.JFrame {
 
     public LoginForm() {
@@ -28,7 +26,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng Nhập");
-        setLocation(new java.awt.Point(1050, 150));
+        setLocation(new java.awt.Point(500, 150));
 
         usernamelabel.setText("Username:");
 
@@ -159,10 +157,11 @@ public class LoginForm extends javax.swing.JFrame {
         checkFill();
         String us = usernametxt.getText(),
             pw = pwtxt.getText(),
-            loaitk = TAIKHOANService.checkLogin(us, pw);
+            loaitk = Controller.TAIKHOANService.checkLogin(us, pw),
+                tentk = Controller.TAIKHOANService.getTenTaiKhoan(us);
         if (loaitk.equals("Quản Trị") || loaitk.equals("Khách Hàng")) {
             this.dispose();
-            MainMenuForm f = new MainMenuForm(us);
+            MainMenuForm f = new MainMenuForm(tentk);
             f.setVisible(true);
         }
         else invalidlabel.setText("Tài khoản hoặc mật khẩu không đúng.");

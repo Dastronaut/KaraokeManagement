@@ -12,6 +12,9 @@ public class TAIKHOANService {
         return Model.TAIKHOANModel.getAllTaikhoans();
     }
     
+    public static String getTenTaiKhoan(String usString) {
+        return Model.TAIKHOANModel.getTenTaiKhoan(usString);
+    }
     public static String checkLogin(String usString, String pwString) {
         return Model.TAIKHOANModel.checkLogin(usString, pwString);
     }

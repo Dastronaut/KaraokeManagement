@@ -35,6 +35,26 @@ public class TAIKHOANModel {
         return lgs;
     }
     
+    public static String getTenTaiKhoan(String usString) {
+        Connection conn = null;
+        String tentk = "";
+        try {
+            conn = getJDBCConnection();
+            Statement stmt = conn.createStatement();
+            
+            String query = "SELECT Ten FROM TAIKHOAN WHERE Username = '" + usString + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                tentk = rs.getString("Ten");
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            if (conn == null) System.out.println("Ket noi that bai!");
+        }
+        return tentk;
+    }
+    
     public static int insertTaiKhoan(TAIKHOAN account) {
         int rs = 0;
         Connection conn;
