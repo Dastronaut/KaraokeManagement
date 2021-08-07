@@ -5,16 +5,11 @@
  */
 package View;
 
-import java.awt.Color;
-import java.awt.Component;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 
 /**
  *

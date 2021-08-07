@@ -178,7 +178,7 @@ public class CHITIETPHONGModel {
             }
             query = "DELETE FROM CHITIETPHONG WHERE ID_Order = '" + idorder + "'"; 
             stmt.executeUpdate(query);
-            query = "UPDATE PHONG SET TinhTrang = true WHERE ID_Phong = '" + idphong + "'";
+            query = "UPDATE PHONG SET TinhTrang = false WHERE ID_Phong = '" + idphong + "'";
             stmt.executeUpdate(query);
             stmt.close();
         } catch (SQLException e) {

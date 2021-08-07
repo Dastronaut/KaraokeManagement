@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -26,7 +27,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     public MainMenuForm(String userString) {
         user = userString;
         initComponents();
-//        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -120,12 +121,22 @@ public class MainMenuForm extends javax.swing.JFrame {
         mp3.setText("Phòng 3");
         mp3.setMaximumSize(new java.awt.Dimension(100, 30));
         mp3.setPreferredSize(new java.awt.Dimension(90, 25));
+        mp3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mp3ActionPerformed(evt);
+            }
+        });
 
         mp4.setBackground(java.awt.Color.lightGray);
         mp4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp4.setText("Phòng 4");
         mp4.setMaximumSize(new java.awt.Dimension(100, 30));
         mp4.setPreferredSize(new java.awt.Dimension(90, 25));
+        mp4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mp4ActionPerformed(evt);
+            }
+        });
 
         mp1.setBackground(java.awt.Color.lightGray);
         mp1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -167,12 +178,22 @@ public class MainMenuForm extends javax.swing.JFrame {
         mp6.setText("Phòng 6");
         mp6.setMaximumSize(new java.awt.Dimension(100, 30));
         mp6.setPreferredSize(new java.awt.Dimension(90, 25));
+        mp6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mp6ActionPerformed(evt);
+            }
+        });
 
         mp5.setBackground(java.awt.Color.lightGray);
         mp5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         mp5.setText("Phòng 5");
         mp5.setMaximumSize(new java.awt.Dimension(100, 30));
         mp5.setPreferredSize(new java.awt.Dimension(90, 25));
+        mp5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mp5ActionPerformed(evt);
+            }
+        });
 
         mp12.setBackground(java.awt.Color.lightGray);
         mp12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -948,6 +969,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         List<Object[]> listOrder = Controller.CHITIETPHONGService.displayDetailOrder(tenphong);
         if (listOrder != null) {
             DefaultTableModel tableadd = (DefaultTableModel)tablespdvadded.getModel();
+            tableadd.setRowCount(0);
             tableadd.getDataVector().removeAllElements();
             tableadd.fireTableDataChanged();
             for (Object[] order:listOrder) {
@@ -1144,6 +1166,7 @@ public class MainMenuForm extends javax.swing.JFrame {
             setTienPhong();
             thanhtoantxt.setText(String.valueOf(getTongTien()));
         }
+        else setButton(false);
     }//GEN-LAST:event_pane1ComponentShown
 
     private static int round(int d, int decimalPlacesRequired) {
@@ -1221,7 +1244,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_qlytkmenuMousePressed
 
     private void reopenitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reopenitemActionPerformed
-        ChangeRoomForm f = new ChangeRoomForm(true);
+        ReopenRoomForm f = new ReopenRoomForm(true);
         f.setVisible(true);
     }//GEN-LAST:event_reopenitemActionPerformed
 
@@ -1236,9 +1259,29 @@ public class MainMenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_pane3ComponentShown
 
     private void swroombtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swroombtnActionPerformed
-        ChangeRoomForm f = new ChangeRoomForm(false);
+        ReopenRoomForm f = new ReopenRoomForm(false);
         f.setVisible(true);
     }//GEN-LAST:event_swroombtnActionPerformed
+
+    private void mp3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp3ActionPerformed
+        String roomname = mp3.getText();
+        roomDetailSelect(roomname, mp3);
+    }//GEN-LAST:event_mp3ActionPerformed
+
+    private void mp4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp4ActionPerformed
+        String roomname = mp4.getText();
+        roomDetailSelect(roomname, mp4);
+    }//GEN-LAST:event_mp4ActionPerformed
+
+    private void mp5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp5ActionPerformed
+        String roomname = mp5.getText();
+        roomDetailSelect(roomname, mp5);
+    }//GEN-LAST:event_mp5ActionPerformed
+
+    private void mp6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp6ActionPerformed
+        String roomname = mp6.getText();
+        roomDetailSelect(roomname, mp6);
+    }//GEN-LAST:event_mp6ActionPerformed
 
     /**
      * @param args the command line arguments

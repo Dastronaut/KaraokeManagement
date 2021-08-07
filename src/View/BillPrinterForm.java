@@ -186,9 +186,9 @@ public class BillPrinterForm extends javax.swing.JFrame {
     }
     
     private void btnprintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprintActionPerformed
-        // TODO add your handling code here:
+        String header = "Bill" + tenphong.getText() + " " + giovaoString;
         PrinterJob job = PrinterJob.getPrinterJob();
-        job.setJobName("In form thoi");
+        job.setJobName(header);
         job.setPrintable(new Printable() {
             @Override
             public int print(Graphics pg, PageFormat pf, int pageNum) {

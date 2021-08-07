@@ -10,10 +10,10 @@ import javax.swing.JFrame;
  *
  * @author Trần Kim Tiến Đạt
  */
-public class ChangeRoomForm extends javax.swing.JFrame {
+public class ReopenRoomForm extends javax.swing.JFrame {
 
     private static boolean isReopen = true;
-    public ChangeRoomForm(boolean status) {
+    public ReopenRoomForm(boolean status) {
         initComponents();
         isReopen = status;
         if (isReopen) {
@@ -163,6 +163,7 @@ public class ChangeRoomForm extends javax.swing.JFrame {
     private void btnokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnokActionPerformed
         String phongdich = String.valueOf(cbbroom.getSelectedItem());
         if (isReopen) {
+            Controller.PHONGService.setEmptyRoom(phongdich);
             MainMenuForm.tabbedpane.setSelectedIndex(1);
             MainMenuForm.displayRoom(phongdich, roomToButton(phongdich));
         }
@@ -205,19 +206,19 @@ public class ChangeRoomForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChangeRoomForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReopenRoomForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChangeRoomForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReopenRoomForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChangeRoomForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReopenRoomForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChangeRoomForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReopenRoomForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ChangeRoomForm(isReopen).setVisible(true);
+                new ReopenRoomForm(isReopen).setVisible(true);
             }
         });
     }

@@ -50,7 +50,7 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Register Details");
-        setLocation(new java.awt.Point(800, 150));
+        setLocation(new java.awt.Point(450, 150));
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
 

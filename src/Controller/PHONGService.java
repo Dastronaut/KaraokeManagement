@@ -37,4 +37,8 @@ public class PHONGService {
     public static void switchRoomButton(String phongchuyen, String phongdich, String giovao) {
         Model.PHONGModel.switchRoomButton(phongchuyen, phongdich, giovao);
     }
+    
+    public static void setEmptyRoom(String tenphong) {
+        Model.PHONGModel.setEmptyRoom(tenphong);
+    }
 }

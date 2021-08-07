@@ -147,4 +147,16 @@ public class PHONGModel {
         } catch (SQLException e) {
         }
     }
+    
+    public static void setEmptyRoom(String tenphong) {
+        try {
+            Connection conn = getJDBCConnection();
+            Statement stmt = conn.createStatement();
+            
+            String query = "UPDATE PHONG SET TinhTrang = false WHERE TenPhong = '" + tenphong + "'";
+            stmt.executeUpdate(query);
+            stmt.close();
+        } catch (SQLException e) {
+        }
+    }
 }

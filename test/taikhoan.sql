@@ -1,0 +1,11 @@
+use karaokemanagement
+-- BẢNG TÀI KHOẢN
+
+CREATE TABLE TAIKHOAN(
+	Username 		VARCHAR(50) NOT NULL,
+	MatKhau 		VARCHAR(100) NOT NULL,
+	Ten 			NVARCHAR(50),
+	SoDienThoai 	VARCHAR(20) NOT NULL,
+	LoaiTaiKhoan 	NVARCHAR(20) NOT NULL,
+	CONSTRAINT PK_TAIKHOAN PRIMARY KEY (Username)
+)

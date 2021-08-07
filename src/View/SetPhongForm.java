@@ -1,11 +1,9 @@
 package View;
 
 import Model.DataModel.PHONG;
-import java.awt.Color;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -58,6 +56,7 @@ public class SetPhongForm extends javax.swing.JFrame {
         phongtocbb = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cài Đặt Giá Phòng");
         setLocation(new java.awt.Point(300, 200));
         setMaximumSize(new java.awt.Dimension(595, 324));
         setMinimumSize(new java.awt.Dimension(595, 324));
