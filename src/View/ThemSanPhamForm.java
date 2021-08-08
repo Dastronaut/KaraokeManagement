@@ -12,9 +12,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ThemSanPhamForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LocSPForm
-     */
     private static String TenSanPham= "";
     public ThemSanPhamForm() {
         initComponents();

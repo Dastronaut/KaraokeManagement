@@ -15,9 +15,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class BillPrinterForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form BillPrinterForm
-     */
     private static String tenphongString;
     private static String giovaoString;
     private static String gioraString;
@@ -216,9 +213,6 @@ public class BillPrinterForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btncloseActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
