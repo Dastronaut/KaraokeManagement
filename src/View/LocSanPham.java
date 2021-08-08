@@ -17,18 +17,6 @@ public class LocSanPham extends javax.swing.JFrame {
         loadUIForm();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
-
-    private void loadUIForm() {
-        List<String> namesps = Controller.SANPHAMService.getAllnameSP();
-        for (String name:namesps) {
-            cbbsp.addItem(name);
-        }
-        datechoosefrom.setDate(new Date());
-        datechooseto.setDate(new Date());
-        cbbhourfrom.setSelectedIndex(0);
-        cbbhourto.setSelectedIndex(0);
-        cboxdate.setSelected(true);
-    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -189,6 +177,18 @@ public class LocSanPham extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void loadUIForm() {
+        List<String> namesps = Controller.SANPHAMService.getAllnameSP();
+        for (String name:namesps) {
+            cbbsp.addItem(name);
+        }
+        datechoosefrom.setDate(new Date());
+        datechooseto.setDate(new Date());
+        cbbhourfrom.setSelectedIndex(0);
+        cbbhourto.setSelectedIndex(0);
+        cboxdate.setSelected(true);
+    }
+    
     private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed
         this.dispose();
     }//GEN-LAST:event_btncloseActionPerformed

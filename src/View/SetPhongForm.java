@@ -17,23 +17,6 @@ public class SetPhongForm extends javax.swing.JFrame {
         LoadData();
     }
 
-    private void LoadData() {
-        String giaphong;
-        List<PHONG> ps = Controller.PHONGService.getAllPhongs();
-        DefaultTableModel tm = (DefaultTableModel)banggiaphong.getModel();
-        tm.getDataVector().removeAllElements();
-        tm.fireTableDataChanged();
-        for (PHONG phong:ps) {
-            if (phong.getGiaPhong() == 0) giaphong = "Chưa khai báo";
-            else giaphong = String.valueOf(phong.getGiaPhong());
-            Object o[] = {phong.getTenPhong(), giaphong};
-            tm.addRow(o);
-            phongcbb.addItem(phong.getTenPhong());
-            phongfromcbb.addItem(phong.getTenPhong());
-            phongtocbb.addItem(phong.getTenPhong());
-        }
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -204,6 +187,22 @@ public class SetPhongForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void LoadData() {
+        String giaphong;
+        List<PHONG> ps = Controller.PHONGService.getAllPhongs();
+        DefaultTableModel tm = (DefaultTableModel)banggiaphong.getModel();
+        tm.getDataVector().removeAllElements();
+        tm.fireTableDataChanged();
+        for (PHONG phong:ps) {
+            if (phong.getGiaPhong() == 0) giaphong = "Chưa khai báo";
+            else giaphong = String.valueOf(phong.getGiaPhong());
+            Object o[] = {phong.getTenPhong(), giaphong};
+            tm.addRow(o);
+            phongcbb.addItem(phong.getTenPhong());
+            phongfromcbb.addItem(phong.getTenPhong());
+            phongtocbb.addItem(phong.getTenPhong());
+        }
+    }
     private void submitbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbtn1ActionPerformed
         int giaphong = Integer.valueOf(giaphonglabel1.getText());
         String tenphong = String.valueOf(phongcbb.getSelectedItem());

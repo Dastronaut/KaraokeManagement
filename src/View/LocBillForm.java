@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import java.text.DateFormat;
@@ -18,9 +13,6 @@ import javax.swing.table.DefaultTableModel;
 public class LocBillForm extends javax.swing.JFrame {
 
     DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-    /**
-     * Creates new form LocBillForm
-     */
     public LocBillForm() {
         initComponents();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

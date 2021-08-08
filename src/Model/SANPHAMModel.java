@@ -1,8 +1,5 @@
 package Model;
-/**
- *
- * @author Trần Kim Tiến Đạt
- */
+
 import Model.DataModel.SANPHAM;
 import static Model.JDBCConnection.getJDBCConnection;
 import java.sql.Connection;
@@ -14,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author USER
+ * @author Trần Kim Tiến Đạt
  */
 public class SANPHAMModel {
     public static List<SANPHAM> getAllSanPham() {
