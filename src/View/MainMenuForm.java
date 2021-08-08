@@ -945,12 +945,23 @@ public class MainMenuForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void spdvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spdvActionPerformed
-        tabbedpane.setSelectedIndex(3);
-        LocSanPham f = new LocSanPham();
-        f.setVisible(true);
-    }//GEN-LAST:event_spdvActionPerformed
-
+    private static int round(int d, int decimalPlacesRequired) {
+        double factor = Math.pow(10, decimalPlacesRequired);
+        int result = (int)(Math.round((d * factor)) / factor);
+        return result;
+    }
+        
+    private int getTongTien() {
+        int tongtien = 0,
+            tiensp = Integer.valueOf(spdvtxt.getText()),
+            tienphong = Math.round(Float.valueOf(tienphongtxt.getText())),
+            phuthu = Integer.valueOf(phuthutxt.getText()),
+            giamgia = Integer.valueOf(discounttxt.getText()),
+            tratruoc = Integer.valueOf(tratruoctxt.getText());
+        tongtien = tiensp + tienphong + phuthu - giamgia - tratruoc;
+        return round(tongtien, -3);
+    }
+    
     public static void displayRoom(String tenphong, JButton f) {
         setButton(true);
         checkButon = f;
@@ -988,7 +999,7 @@ public class MainMenuForm extends javax.swing.JFrame {
             tableModel.addRow(sp);
         } 
     }
-    
+
     private void roomDetailSelect(String roomname, JButton f) {
         tabbedpane.setSelectedIndex(1);
         nameroomlabel.setText(roomname);
@@ -1009,6 +1020,78 @@ public class MainMenuForm extends javax.swing.JFrame {
             displayRoom(roomname, f);
         }
     }
+    
+    private static void setButton(boolean isStart) {
+        endroombtn.setEnabled(isStart);
+        swroombtn.setEnabled(isStart);
+        choosebtn.setEnabled(isStart);
+        removebtn.setEnabled(isStart);
+        billbtn.setEnabled(isStart);
+        startbtn.setEnabled(!isStart);
+    }
+    
+    private boolean checkExistedSP(String sp) {
+        boolean existed = false;
+        if (tablespdvadded.getRowCount() != 0) {
+            for (int i = 0; i < tablespdvadded.getRowCount(); i++) {
+                if (String.valueOf(tablespdvadded.getValueAt(i, 1)).equals(sp)) {
+                    JOptionPane.showMessageDialog(this, "Sản phẩm đã được thêm. Hãy nhập số lượng.");
+                    existed = true;
+                    break;
+                }
+            }
+        }
+        return existed;
+    }
+    
+    private void reloadTienDV() {
+        if (tablespdvadded.getRowCount() != 0) {
+            int tienspdv = 0;
+            for (int i = 0; i < tablespdvadded.getRowCount(); i++) {
+                String sl = String.valueOf(tablespdvadded.getValueAt(i, 4)),
+                        gia = String.valueOf(tablespdvadded.getValueAt(i, 3));
+                tienspdv += Integer.valueOf(sl)*Integer.valueOf(gia);
+            }
+            spdvtxt.setText(String.valueOf(tienspdv));
+        }
+        else {
+            spdvtxt.setText("0");
+        }
+    }
+    
+    private String setTienPhong() {
+        String giotmp = time.format(new Date()), tenphong = nameroomlabel.getText(), giovao = checkinlabel.getText();
+        tienphongtxt.setText(String.format("%.1f", Controller.PHONGService.getTienPhong(tenphong, giovao, giotmp)));
+        return (date.format(new Date())+ " " + giotmp);
+    }
+    
+    public static void reloadBill(String timefrom, String timeto) {
+        DefaultTableModel tableModel = (DefaultTableModel)MainMenuForm.tabledsbilll.getModel();
+        tableModel.getDataVector().removeAllElements();
+        tableModel.fireTableDataChanged();
+        for (Object[] bill:Controller.CHITIETPHONGService.getBillbyDate(timefrom, timeto)) {
+            tableModel.addRow(bill);
+        }
+        if (tableModel.getRowCount() != 0) {
+            int tienphong = 0, tiendv = 0, tratruoc = 0, phuthu = 0, giamgia = 0, tongtien = 0;
+            for (int i = 0; i < tableModel.getRowCount(); i++) {
+                tiendv += (int) tableModel.getValueAt(i, 1);
+                tienphong += (int) tableModel.getValueAt(i, 2);
+                phuthu += (int) (int) tableModel.getValueAt(i, 3);
+                giamgia += (int) tableModel.getValueAt(i, 4);
+                tratruoc += (int) tableModel.getValueAt(i, 5);
+                tongtien += (int) tableModel.getValueAt(i, 6);
+            }
+            Object[] o = {"Tổng", tiendv, tienphong, phuthu, giamgia, tratruoc, tongtien};
+            tableModel.addRow(o);
+        }
+    }
+    private void spdvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spdvActionPerformed
+        tabbedpane.setSelectedIndex(3);
+        LocSanPham f = new LocSanPham();
+        f.setVisible(true);
+    }//GEN-LAST:event_spdvActionPerformed
+    
     private void mp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mp1ActionPerformed
         String roomname = mp1.getText();
         roomDetailSelect(roomname, mp1);
@@ -1019,15 +1102,6 @@ public class MainMenuForm extends javax.swing.JFrame {
         roomDetailSelect(roomname, mp2);
     }//GEN-LAST:event_mp2ActionPerformed
 
-    private static void setButton(boolean isStart) {
-        endroombtn.setEnabled(isStart);
-        swroombtn.setEnabled(isStart);
-        choosebtn.setEnabled(isStart);
-        removebtn.setEnabled(isStart);
-        billbtn.setEnabled(isStart);
-        startbtn.setEnabled(!isStart);
-    }
-    
     private void startbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startbtnActionPerformed
         if (!nameroomlabel.getText().equals("")) {
             setButton(true);
@@ -1079,19 +1153,6 @@ public class MainMenuForm extends javax.swing.JFrame {
         f.setVisible(true);
     }//GEN-LAST:event_settingroomitmActionPerformed
 
-    private boolean checkExistedSP(String sp) {
-        boolean existed = false;
-        if (tablespdvadded.getRowCount() != 0) {
-            for (int i = 0; i < tablespdvadded.getRowCount(); i++) {
-                if (String.valueOf(tablespdvadded.getValueAt(i, 1)).equals(sp)) {
-                    JOptionPane.showMessageDialog(this, "Sản phẩm đã được thêm. Hãy nhập số lượng.");
-                    existed = true;
-                    break;
-                }
-            }
-        }
-        return existed;
-    }
     private void tablespdvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablespdvMouseClicked
         if (evt.getClickCount() == 2) {
             String tensp = String.valueOf(tablespdv.getValueAt(tablespdv.getSelectedRow(), tablespdv.getSelectedColumn()));
@@ -1131,31 +1192,10 @@ public class MainMenuForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tablespdvaddedMousePressed
 
-    private void reloadTienDV() {
-        if (tablespdvadded.getRowCount() != 0) {
-            int tienspdv = 0;
-            for (int i = 0; i < tablespdvadded.getRowCount(); i++) {
-                String sl = String.valueOf(tablespdvadded.getValueAt(i, 4)),
-                        gia = String.valueOf(tablespdvadded.getValueAt(i, 3));
-                tienspdv += Integer.valueOf(sl)*Integer.valueOf(gia);
-            }
-            spdvtxt.setText(String.valueOf(tienspdv));
-        }
-        else {
-            spdvtxt.setText("0");
-        }
-    }
-    
     private void tablespdvaddedComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tablespdvaddedComponentResized
         reloadTienDV();
     }//GEN-LAST:event_tablespdvaddedComponentResized
 
-    private String setTienPhong() {
-        String giotmp = time.format(new Date()), tenphong = nameroomlabel.getText(), giovao = checkinlabel.getText();
-        tienphongtxt.setText(String.format("%.1f", Controller.PHONGService.getTienPhong(tenphong, giovao, giotmp)));
-        return (date.format(new Date())+ " " + giotmp);
-    }
-    
     private void pane1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pane1ComponentShown
         userlabel.setText(user);
         JTableHeader h1 = tablespdvadded.getTableHeader(),
@@ -1168,22 +1208,6 @@ public class MainMenuForm extends javax.swing.JFrame {
         }
         else setButton(false);
     }//GEN-LAST:event_pane1ComponentShown
-
-    private static int round(int d, int decimalPlacesRequired) {
-        double factor = Math.pow(10, decimalPlacesRequired);
-        int result = (int)(Math.round((d * factor)) / factor);
-        return result;
-    }
-    private int getTongTien() {
-        int tongtien = 0,
-            tiensp = Integer.valueOf(spdvtxt.getText()),
-            tienphong = Math.round(Float.valueOf(tienphongtxt.getText())),
-            phuthu = Integer.valueOf(phuthutxt.getText()),
-            giamgia = Integer.valueOf(discounttxt.getText()),
-            tratruoc = Integer.valueOf(tratruoctxt.getText());
-        tongtien = tiensp + tienphong + phuthu - giamgia - tratruoc;
-        return round(tongtien, -3);
-    }
 
     private void billbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billbtnActionPerformed
         String giora = date.format(new Date()) + " " + time.format(new Date()),
@@ -1251,6 +1275,9 @@ public class MainMenuForm extends javax.swing.JFrame {
     private void pane2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pane2ComponentShown
         JTableHeader h1 = tabledsbilll.getTableHeader();
         h1.setBackground(Color.CYAN);
+        String timeFrom = date.format(new Date()) + " " + "00:00:00",
+                timeTo = date.format(new Date()) + " " + time.format(new Date()) + ":00:00";
+        reloadBill(timeFrom, timeTo);
     }//GEN-LAST:event_pane2ComponentShown
 
     private void pane3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pane3ComponentShown
@@ -1283,9 +1310,6 @@ public class MainMenuForm extends javax.swing.JFrame {
         roomDetailSelect(roomname, mp6);
     }//GEN-LAST:event_mp6ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

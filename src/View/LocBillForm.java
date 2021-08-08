@@ -174,25 +174,7 @@ public class LocBillForm extends javax.swing.JFrame {
     private void btnsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsubmitActionPerformed
         String timefrom = df.format(datechoosefrom.getDate()) + " " + String.valueOf(cbbhourfrom.getSelectedItem()) + ":00:00",
                 timeto = df.format(datechooseto.getDate()) + " " + String.valueOf(cbbhourto.getSelectedItem()) + ":00:00";
-        DefaultTableModel tableModel = (DefaultTableModel)MainMenuForm.tabledsbilll.getModel();
-        tableModel.getDataVector().removeAllElements();
-        tableModel.fireTableDataChanged();
-        for (Object[] bill:Controller.CHITIETPHONGService.getBillbyDate(timefrom, timeto)) {
-            tableModel.addRow(bill);
-        }
-        if (tableModel.getRowCount() != 0) {
-            int tienphong = 0, tiendv = 0, tratruoc = 0, phuthu = 0, giamgia = 0, tongtien = 0;
-            for (int i = 0; i < tableModel.getRowCount(); i++) {
-                tiendv += (int) tableModel.getValueAt(i, 1);
-                tienphong += (int) tableModel.getValueAt(i, 2);
-                phuthu += (int) (int) tableModel.getValueAt(i, 3);
-                giamgia += (int) tableModel.getValueAt(i, 4);
-                tratruoc += (int) tableModel.getValueAt(i, 5);
-                tongtien += (int) tableModel.getValueAt(i, 6);
-            }
-            Object[] o = {"Tổng", tiendv, tienphong, phuthu, giamgia, tratruoc, tongtien};
-            tableModel.addRow(o);
-        }
+        MainMenuForm.reloadBill(timefrom, timeto);
     }//GEN-LAST:event_btnsubmitActionPerformed
 
     /**
