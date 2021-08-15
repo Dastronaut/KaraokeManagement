@@ -161,13 +161,16 @@ public class LoginForm extends javax.swing.JFrame {
     private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
         if (!checkFill()) return;
         String us = usernametxt.getText(),
-            pw = pwtxt.getText(),
-            loaitk = Controller.TAIKHOANService.checkLogin(us, pw),
-                tentk = Controller.TAIKHOANService.getTenTaiKhoan(us);
-        if (loaitk.equals("Quản Trị") || loaitk.equals("Khách Hàng")) {
+            pw = pwtxt.getText();
+        Object[] o = Controller.TAIKHOANService.checkLogin(us, pw);
+        if (o[0].toString().equals("Quản Trị")) {
+            String tentk = o[1].toString();
             this.dispose();
             MainMenuForm f = new MainMenuForm(tentk);
             f.setVisible(true);
+        }
+        if (o[0].toString().equals("Khách Hàng")) {
+            invalidlabel.setText("Đang update giao diện người dùng");
         }
         else invalidlabel.setText("Tài khoản hoặc mật khẩu không đúng.");
     }//GEN-LAST:event_loginbtnActionPerformed

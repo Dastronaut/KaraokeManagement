@@ -1,1 +1,8 @@
-# test again
+- Clone Code
+- Chạy các SQL File có ở trong Test theo thứ tự: TAIKHOAN, SANPHAM, PHONG, CHITIETPHONG, CHITIETORDER
+- Mở IDE chạy java (NetBeans) add các package có ở trong file Package
+- Run Code
+- Tạo tài khoản ở màn hình đăng nhập (Chọn loại tài khoản là Quản trị viên) sau đó Close để đăng nhập
+- Vào Quản lý kho hàng -> SP Dịch vụ -> Nhập thêm món
+- Vào Cài đặt -> Cài đặt giá phòng
+- Chọn phòng -> Thêm SPDV -> Xuất bill -> In bill

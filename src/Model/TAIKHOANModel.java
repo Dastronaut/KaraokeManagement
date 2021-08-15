@@ -35,29 +35,9 @@ public class TAIKHOANModel {
         return lgs;
     }
     
-    public static String getTenTaiKhoan(String usString) {
-        Connection conn = null;
-        String tentk = "";
-        try {
-            conn = getJDBCConnection();
-            Statement stmt = conn.createStatement();
-            
-            String query = "SELECT Ten FROM TAIKHOAN WHERE Username = '" + usString + "'";
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                tentk = rs.getString("Ten");
-            }
-            rs.close();
-            stmt.close();
-        } catch (SQLException e) {
-            if (conn == null) System.out.println("Ket noi that bai!");
-        }
-        return tentk;
-    }
-    
     public static int insertTaiKhoan(TAIKHOAN account) {
         int rs = 0;
-        Connection conn;
+        Connection conn= null;
         try {
             conn = getJDBCConnection();
             Statement stmt = conn.createStatement();
@@ -67,7 +47,7 @@ public class TAIKHOANModel {
             rs = stmt.executeUpdate(query);
             stmt.close();
         } catch (SQLException e) {
-            System.out.println("Kết nối thất bại!");
+            if (conn == null) System.out.println("Ket noi that bai!");
         }
         return rs;
     }
@@ -77,20 +57,22 @@ public class TAIKHOANModel {
         return lgs.stream().anyMatch(lg -> (lg.getUsername().equals(usString) || lg.getSoDienThoai().equals(sdtString)));
     }
     
-    public static String checkLogin(String usString, String pwString) {
+    public static Object[] checkLogin(String usString, String pwString) {
         List<TAIKHOAN> lgs = getAllTaikhoans();
-        String loaitk = "";
+        String loaitk = "",
+                tentk = "";
         for (TAIKHOAN lg:lgs) {
             if (lg.getUsername().equals(usString) && BCrypt.checkpw(pwString, lg.getMatKhau())) {
                 loaitk = lg.getLoaiTaiKhoan();
+                tentk = lg.getTen();
             }
         }
-        return loaitk;
+        return new Object[]{loaitk, tentk};
     }
     
     public static int updateTaiKhoan(TAIKHOAN account) {
         int rs = 0;
-        Connection conn;
+        Connection conn = null;
         try {
             conn = getJDBCConnection();
             Statement stmt = conn.createStatement();
@@ -100,14 +82,14 @@ public class TAIKHOANModel {
             rs = stmt.executeUpdate(query);
             stmt.close();
         } catch (SQLException e) {
-            System.out.println("Kết nối thất bại!");
+            if (conn == null) System.out.println("Ket noi that bai!");
         }
         return rs;
     }
     
     public static int deleteTaiKhoan(String username) {
         int rs = 0;
-        Connection conn;
+        Connection conn = null;
         try {
             conn = getJDBCConnection();
             Statement stmt = conn.createStatement();
@@ -116,7 +98,7 @@ public class TAIKHOANModel {
             rs = stmt.executeUpdate(query);
             stmt.close();
         } catch (SQLException e) {
-            System.out.println("Kết nối thất bại!");
+            if (conn == null) System.out.println("Ket noi that bai!");
         }
         return rs;
     }

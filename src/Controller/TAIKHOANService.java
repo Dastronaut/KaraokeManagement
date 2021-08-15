@@ -11,11 +11,8 @@ public class TAIKHOANService {
     public static List<TAIKHOAN> getAllTaikhoans() {
         return Model.TAIKHOANModel.getAllTaikhoans();
     }
-    
-    public static String getTenTaiKhoan(String usString) {
-        return Model.TAIKHOANModel.getTenTaiKhoan(usString);
-    }
-    public static String checkLogin(String usString, String pwString) {
+   
+    public static Object[] checkLogin(String usString, String pwString) {
         return Model.TAIKHOANModel.checkLogin(usString, pwString);
     }
     

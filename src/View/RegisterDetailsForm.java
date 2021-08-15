@@ -78,7 +78,7 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
         buttonGroup1.add(khrbtn);
         khrbtn.setText("Khách hàng");
 
-        filllabel.setForeground(new java.awt.Color(255, 0, 0));
+        filllabel.setForeground(new java.awt.Color(0, 51, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,25 +87,24 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTen)
+                    .addComponent(txtSdt)
+                    .addComponent(txtUsername)
+                    .addComponent(txtMatkhau)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
                         .addComponent(qtvrbtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(khrbtn))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(filllabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtTen)
-                            .addComponent(txtSdt)
-                            .addComponent(txtUsername)
-                            .addComponent(txtMatkhau))))
+                        .addGap(44, 44, 44)
+                        .addComponent(khrbtn)
+                        .addGap(0, 12, Short.MAX_VALUE))
+                    .addComponent(filllabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -127,14 +126,13 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtMatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(filllabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
                     .addComponent(qtvrbtn)
+                    .addComponent(jLabel5)
                     .addComponent(khrbtn))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(filllabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         tabletaikhoan.setModel(new javax.swing.table.DefaultTableModel(
@@ -159,6 +157,9 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tabletaikhoan);
+        if (tabletaikhoan.getColumnModel().getColumnCount() > 0) {
+            tabletaikhoan.getColumnModel().getColumn(0).setPreferredWidth(100);
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -169,7 +170,7 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -260,6 +261,13 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void resetField() {
+        txtMatkhau.setText("");
+        txtSdt.setText("");
+        txtTen.setText("");
+        txtUsername.setText("");
+        txtUsername.enable(true);
+    }
     private void loadTableTaiKhoan() {
         DefaultTableModel tableModel = (DefaultTableModel)tabletaikhoan.getModel();
         tableModel.getDataVector().removeAllElements();
@@ -291,6 +299,7 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
                 else {
                     filllabel.setText("");
                     JOptionPane.showMessageDialog(this, "Đăng kí thành công.");
+                    resetField();
                 }
             }
             else {
@@ -351,6 +360,7 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Chọn tài khoản cần sửa.");
         }
         loadTableTaiKhoan();
+        resetField();
     }//GEN-LAST:event_btneditActionPerformed
 
     private void btndelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndelActionPerformed
@@ -368,6 +378,7 @@ public class RegisterDetailsForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Chọn tài khoản trước khi xóa.");
         }
         loadTableTaiKhoan();
+        resetField();
     }//GEN-LAST:event_btndelActionPerformed
 
     private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed

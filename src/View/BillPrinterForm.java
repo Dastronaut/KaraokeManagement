@@ -15,17 +15,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class BillPrinterForm extends javax.swing.JFrame {
 
-    private static String tenphongString;
-    private static String giovaoString;
-    private static String gioraString;
-    private static int TienGio;
-    private static int TongTien;
+    private static String tenphongString, giovaoString, gioraString;
+    private static int TienGio, TienDV, GiamGia, PhuThu, TraTruoc, TongTien;
     private static List<Object[]> Listorder;
-    public BillPrinterForm(String tenphong, String giovao, String giora, int tiengio, int tongtien, List<Object[]> listorder) {
+    public BillPrinterForm(
+            String tenphong, String giovao, String giora, int tiendv, int phuthu, 
+            int giamgia, int tratruoc, int tiengio, int tongtien, List<Object[]> listorder) {
         tenphongString = tenphong;
         giovaoString = giovao;
         gioraString = giora;
         TienGio = tiengio;
+        TienDV = tiendv;
+        PhuThu = phuthu;
+        GiamGia = giamgia;
+        TraTruoc = tratruoc;
         TongTien = tongtien;
         Listorder = listorder;
         initComponents();
@@ -175,8 +178,24 @@ public class BillPrinterForm extends javax.swing.JFrame {
         DefaultTableModel tableModel = (DefaultTableModel)tablebillprint.getModel();
         tableModel.getDataVector().removeAllElements();
         tableModel.fireTableDataChanged();
-        for (Object[] order:Listorder) {
-            tableModel.addRow(order);
+        if (!Listorder.isEmpty()) {
+            for (Object[] order:Listorder) {
+               tableModel.addRow(order);
+           }
+            Object[] tiendvrow = { "Tiền SPDV: ", "", "", TienDV };
+            tableModel.addRow(tiendvrow);
+        }
+        if (PhuThu != 0) {
+            Object[] phuthurow = { "Phụ Thu: ", "", "", PhuThu };
+            tableModel.addRow(phuthurow);
+        }
+        if (GiamGia != 0) {
+            Object[] giamgiarow = { "Giảm Giá: ", "", "", GiamGia };
+            tableModel.addRow(giamgiarow);
+        }
+        if (TraTruoc != 0) {
+            Object[] tratruocrow = { "Trả Trước: ", "", "", TraTruoc };
+            tableModel.addRow(tratruocrow);
         }
         tableModel.addRow(tiengiorow);
         tableModel.addRow(tongtienrow);
@@ -240,7 +259,7 @@ public class BillPrinterForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BillPrinterForm(tenphongString, giovaoString, gioraString, TienGio, TongTien, Listorder).setVisible(true);
+                new BillPrinterForm(tenphongString, giovaoString, gioraString, TienDV, PhuThu, GiamGia, TraTruoc, TienGio, TongTien, Listorder).setVisible(true);
             }
         });
     }

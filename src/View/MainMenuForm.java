@@ -108,7 +108,7 @@ public class MainMenuForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Phần mềm quản lý Karaoke - Team");
-        setLocation(new java.awt.Point(150, 50));
+        setLocation(new java.awt.Point(180, 50));
         setResizable(false);
 
         tabbedpane.setBackground(new java.awt.Color(51, 153, 255));
@@ -282,7 +282,7 @@ public class MainMenuForm extends javax.swing.JFrame {
                         .addComponent(mp15, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(mp16, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(276, Short.MAX_VALUE))
         );
         pane0Layout.setVerticalGroup(
             pane0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -465,7 +465,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -792,11 +792,11 @@ public class MainMenuForm extends javax.swing.JFrame {
         pane3.setLayout(pane3Layout);
         pane3Layout.setHorizontalGroup(
             pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 835, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
             .addGroup(pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pane3Layout.createSequentialGroup()
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 374, Short.MAX_VALUE)))
+                    .addGap(0, 289, Short.MAX_VALUE)))
         );
         pane3Layout.setVerticalGroup(
             pane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1248,7 +1248,7 @@ public class MainMenuForm extends javax.swing.JFrame {
             };
             listorder.add(order);
         }
-        BillPrinterForm f = new BillPrinterForm(tenphong, giophutvao, giophutra, tiengio, tongtien, listorder);
+        BillPrinterForm f = new BillPrinterForm(tenphong, giophutvao, giophutra, tiendv, phuthu, giamgia, tratruoc, tiengio, tongtien, listorder);
         f.setVisible(true);
     }//GEN-LAST:event_billbtnActionPerformed
 
